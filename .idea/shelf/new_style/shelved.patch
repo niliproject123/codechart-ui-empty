@@ -1,0 +1,182 @@
+Index: src/app/app.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!-- <pre id=\"fileContent\" ><code [innerHTML]=\"sampleContent\"></code></pre> -->\r\n<div *ngIf=\"showNodeEditBox\" class=\"stylingPopup\" id='nodeStylePopup'>\r\n  <textarea id='nodeTitleInput' [ngModel]=\"selectedNode?.label\" (keyup)=\"setTitle($event)\"></textarea>\r\n  <node-styling [appComponent]=\"this\"></node-styling>\r\n</div>\r\n<div class=\"main\">\r\n  <div id=\"topbox\" class=\"topbox\">\r\n    <div class=\"dropdown mr5\">\r\n      <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">File\r\n        <span class=\"caret\"></span>\r\n      </button>\r\n      <ul class=\"dropdown-menu \">\r\n        <li (click)=\"saveJsonVisible = true\" class=\"dropdown-item\">Save to JSON</li>\r\n        <li class=\"dropdown-item\"><label style=\"cursor: pointer\">Load from JSON\r\n          <input id='fileLoadInput' type=\"file\" (change)=\"loadFromFile($event)\"/>\r\n        </label>\r\n        </li>\r\n        <li (click)=\"saveFullVisible = true\" class=\"dropdown-item\">Save to Code and JSON</li>\r\n        <li (click)=\"saveToCode()\" class=\"dropdown-item\">Save to Code</li>\r\n        <li (click)=\"reload()\" class=\"dropdown-item\">Reload from Code</li>\r\n        <li (click)=\"clearVisiIds()\" class=\"dropdown-item\">Clear Visi Tags From Code</li>\r\n        <!-- <li (click)=\"rewriteVisiIds()\" class=\"dropdown-item\">rewrite visi ids</li> -->\r\n      </ul>\r\n    </div>\r\n    <div class=\"dropdown mr5\">\r\n      <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Config\r\n        <span class=\"caret\"></span>\r\n      </button>\r\n      <ul class=\"dropdown-menu\">\r\n        <li>\r\n          <p-dropdown wtf [options]=\"paths\"\r\n                      (click)=\"pathDropdownClick($event)\" (onChange)=\"setSelectedPath($event.value)\" [filter]=\"true\"\r\n                      [style]=\"{'width': '500px','margin': '5px'}\"></p-dropdown>\r\n        </li>\r\n        <li>\r\n          <input #customPath placeholder='custom path' (keyup)=\"setCustomPath($event) \" type=\"text\"\r\n                 style=\"width: 500px;margin: 5px;\"\r\n                 [style.backgroundColor]=\"searchJson.dirPath===customPath.value ? 'lightpink' : ''\"/>\r\n        </li>\r\n        <li>\r\n          <input placeholder='file pattern' type=\"text\"\r\n                 [(ngModel)]=\"searchJson.filenamePattern\" style=\"width: 150px;margin: 5px;\"/>\r\n          <button [ngClass]=\"{'active': searchJson.isFileNameRegex===true}\" pTooltip=\"is pattern regex\"\r\n                  (click)=\"searchJson.isFileNameRegex=!searchJson.isFileNameRegex\">\r\n            RegEx\r\n          </button>\r\n          <button [ngClass]=\"{'active': Options.showCodeLabels===true}\" pTooltip=\"toggle match labels\" (click)=\"toggleMatchNodesLabel()\">\r\n            Toggle Labels\r\n          </button>\r\n          <br/>\r\n        </li>\r\n        <li>\r\n          <div style=\"display:flex\">\r\n            <button class=\"fa fa-chevron-right\" [ngClass]=\"{'active': Options.positioning===PositioningOptions.RIGHT}\"\r\n                    (click)=\"Options.positioning=PositioningOptions.RIGHT\"></button>\r\n            <button class=\"fa fa-chevron-down\" [ngClass]=\"{'active': Options.positioning===PositioningOptions.DOWN}\"\r\n                    (click)=\"Options.positioning=PositioningOptions.DOWN\"></button>\r\n            <button class=\"fa fa-chevron-left\" [ngClass]=\"{'active': Options.positioning===PositioningOptions.LEFT}\"\r\n                    (click)=\"Options.positioning=PositioningOptions.LEFT\"></button>\r\n            <button class=\"fa fa-chevron-up\" [ngClass]=\"{'active': Options.positioning===PositioningOptions.UP}\"\r\n                    (click)=\"Options.positioning=PositioningOptions.UP\"></button>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <span class=\"seperator\"></span>\r\n    <button pTooltip=\"undo\" (click)=\"undo()\" class=\"mr5\"><i class=\"fa fa-undo\" aria-hidden=\"true\"> </i></button>\r\n    <button pTooltip=\"fit all\" (click)=\"fitAllNodesOnScreen()\" class=\"mr5\"><i class=\"fa fa-arrows-alt\"\r\n                                                                              aria-hidden=\"true\"> </i></button>\r\n    <button (click)=\"chartActions.clearChart()\" class=\"mr5\">clear results</button>\r\n\r\n    <!-- <button *ngFor=\"let item of linkTypes\" (click)=\"linkNodes(item.style)\" class=\"mr5\">\r\n      <i class=\"fa fa-link\" aria-hidden=\"true\"></i>\r\n    </button> -->\r\n    <button pTooltip=\"link selected nodes. all nodes will be connected to last selected node\" (click)=\"linkNodes({})\"\r\n            class=\"mr5\">\r\n      <i class=\"fa fa-link\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <span class=\"seperator\"></span>\r\n    <button *ngFor=\"let shape of shapes\" (click)=\"createShape(shape)\" class=\"mr5\">\r\n      <i [pTooltip]=\"shape.details.tooltip\" [class]=\"shape.details.class\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <span class=\"seperator\"></span>\r\n    <input placeholder='pattern' class=\"mr5\" type=\"text\"\r\n           [(ngModel)]=\"searchJson.pattern\" (keypress)=\"performSearch($event)\">\r\n    <input placeholder='regex flags' class=\"mr5\" type=\"text\" [(ngModel)]=\"searchJson.flags\"\r\n           style=\"width: 40px\"/>\r\n    <button pTooltip=\"is regex search\" [ngClass]=\"{'active': searchJson.isRegex===true}\"\r\n            (click)=\"searchJson.isRegex=!searchJson.isRegex\">\r\n      (.*)\r\n    </button>\r\n    <span class=\"seperator\"></span>\r\n    <span class=\"seperator\"></span>\r\n    <button pTooltip=\"get sepecific file node\" (click)=\"openFileVisible=true\" class=\"mr5\"><i\r\n      class=\"fa fa-file-code-o left\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <span class=\"seperator\"></span>\r\n    <button pTooltip=\"search in entire folder\" (click)=\"searchActions.totalSearch()\" class=\"mr5\"><i\r\n      class=\"fa fa-folder-o\" aria-hidden=\"true\"></i></button>\r\n    <button pTooltip=\"search in selected file\" (click)=\"searchActions.searchSelectedFile()\" class=\"mr5\"><i\r\n      class=\"fa fa-file-o\" aria-hidden=\"true\">\r\n    </i></button>\r\n    <button pTooltip=\"search in selection content\" (click)=\"searchActions.contentSearch()\" class=\"mr5\">(..)</button>\r\n    <button pTooltip=\"create match from selection\" (click)=\"createMatchFromSelection()\" class=\"mr5\"><i\r\n      class=\"fa fa-hand-pointer-o\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <button pTooltip=\"replace selected node with selection\" (click)=\"createMatchFromSelection(true)\" class=\"mr5\"><i\r\n      class=\"fa fa-hand-o-right\" aria-hidden=\"true\"></i>\r\n    </button>\r\n    <button pTooltip=\"create file node\" (click)=\"createFileNode()\" class=\"mr5\"><i class=\"far fa-plus-square\"\r\n                                                                                  aria-hidden=\"true\"></i></button>\r\n    <span class=\"seperator\"></span>\r\n    <p-dropdown wtf [options]=\"dropdownLanguageSelection\" (onChange)=\"setSelectedLanguage($event.value)\"\r\n                [style]=\"{'width': '100px','margin': '5px'}\"></p-dropdown>\r\n    <button *ngFor=\"let item of selectedLanguageRegexes\" class=\"mr5\"\r\n            (click)=\"performSavedSearch(item)\">{{item.name}}</button>\r\n    <span class=\"seperator\"></span>\r\n    <div class=\"dropdown mr5\">\r\n      <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\"><i\r\n        class=\"fa fa-paint-brush\"\r\n        aria-hidden=\"true\"></i>\r\n        <span class=\"caret\"></span>\r\n      </button>\r\n      <div class=\"dropdown-menu dropdown-menu-right\">\r\n        <node-styling [appComponent]=\"this\"></node-styling>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div id=\"filer\" class=\"filer\">\r\n    <div id=\"bordered\" [ngStyle]=\"{'width': setFilerWidth()}\">\r\n      <div class=\"fixedOnTopOfComponent alignFlexToRight\" [style.visibility]=\"chartFullscreen?'hidden':'visible'\">\r\n        <i class=\"fa fa-compress\" (click)=\"filerFullscreen=!filerFullscreen\" aria-hidden=\"true\"></i>\r\n      </div>\r\n      <code-viewer #aceEditor [fileData]=\"currentFile\" (selectionChange)=\"codeSelectionChange($event)\"></code-viewer>\r\n    </div>\r\n    <div class=\"h100w50 visjs\" [ngStyle]=\"{'width': setChartWidth()}\"\r\n         [style.visibility]=\"filerFullscreen?'hidden':'visible'\">\r\n      <div class=\"fixedOnTopOfComponent alignFlexToRight\">\r\n        <i class=\"fa fa-compress\" (click)=\"chartFullscreen=!chartFullscreen\" aria-hidden=\"true\"></i>\r\n      </div>\r\n      <div *ngIf=\"Options.showFileLegend\" class=\"fixedOnTopOfComponent\">\r\n        <span class=\"fileLegendItem\" *ngFor=\"let fileItem of filesInLegend\"\r\n              [ngStyle]=\"{'background-color': fileItem.color}\">{{fileItem.fileLabel}}</span>\r\n      </div>\r\n      <div id=\"vis_element\" style=\"height:100%\" (click)=\"clickedChart($event)\"></div>\r\n    </div>\r\n  </div>\r\n  <div id='message_box'>\r\n    <pre style=\"font-weight: bolder\">{{messageBoxQueue[0]?.title}}</pre>\r\n    <div>{{messageBoxQueue[0]?.message}}</div>\r\n  </div>\r\n</div>\r\n<p-dialog [contentStyle]=\"{'overflow':'visible'}\" [(visible)]=\"openFileVisible\" [width]=\"1500\" [height]=\"500\"\r\n          (onShow)=\"focusOnFileOpenInput()\">\r\n  <p-header> Get File</p-header>\r\n  <p-autoComplete #openfileInput [suggestions]=\"openFileSuggestions\"\r\n                  (onSelect)=\"openFile($event); openFileVisible=false\"\r\n                  (completeMethod)=\"filterAvailableFiles($event.query)\"\r\n                  [delay]=\"0\" [size]=\"120\"></p-autoComplete>\r\n</p-dialog>\r\n<p-dialog [width]=\"400\" [(visible)]=\"saveJsonVisible\">\r\n  <p-header> Enter File Name</p-header>\r\n  <input type=\"text\" style=\"width:95%\" [(ngModel)]=\"saveJsonFileName\"/>\r\n  <p-footer>\r\n    <button type=\"button\" (click)=\"saveJsonVisible=false\">Cancel</button>\r\n    <button type=\"button\" (click)=\"jsonSave(); saveJsonVisible=false\">Save</button>\r\n  </p-footer>\r\n</p-dialog>\r\n<p-dialog [(visible)]=\"saveFullVisible\" [width]=\"800\">\r\n  <p-header> Enter File Name</p-header>\r\n  <input type=\"text\" style=\"width:100%\" [ngModel]=\"saveJsonFileName\"/>\r\n  <p-footer>\r\n    <button type=\"button\" (click)=\"saveFullVisible=false\">Cancel</button>\r\n    <button type=\"button\" (click)=\"fullSaveToFile(); saveFullVisible=false\">Save</button>\r\n  </p-footer>\r\n</p-dialog>\r\n<p-dialog [(visible)]=\"showFindResults\" [width]=\"1800\">\r\n  <p-header> Select Results (total {{findResults.totalMatchCount}} matches in {{findResults.findResults.length}} files)\r\n  </p-header>\r\n  <div class=\"noSelectedNodeInResults\" *ngIf=\"!selectedNode\"> NOTE: No node is selected. Result matches will appear in\r\n    left position, and will not be connected to any nodes\r\n  </div>\r\n  <div style=\"height: 700px\">\r\n    <div style=\"height: 70%; border: 1px solid darkblue; padding: 1px; margin-bottom: 3px\">\r\n      <div style=\"height:100%; overflow: auto\">\r\n        <div>\r\n          <p-checkbox [binary]=\"true\" [ngModel]=\"allMatchesSelected\" (onChange)=\"toggleSelectAllMatches()\"></p-checkbox>\r\n          <span>: All</span>\r\n        </div>\r\n        <div *ngFor=\"let fileResults of findResults.findResults; let i = index\">\r\n          <div>\r\n            <p-checkbox [binary]=\"true\" [ngModel]=\"fileResults?.selectedByUser\"\r\n                        (onChange)=\"selectfileMatches($event, fileResults)\"></p-checkbox>\r\n            <span class=\"fileMatchInDialog\">{{fileResults.file}}</span>\r\n          </div>\r\n          <div>\r\n            <div class=\"matchInDialog\" *ngFor=\"let match of fileResults?.matches\">\r\n              <p-checkbox [binary]=\"true\" (onChange)=\"selectMatch($event, match, fileResults)\"\r\n                          [ngModel]=\"match.selectedByUser\"></p-checkbox>\r\n              <span style=\"cursor: pointer\" (click)=\"selectSearchResultForDisplay(fileResults, match)\">\r\n                <span>{{match.lineNumber}}: </span><span>{{match.line}}</span>\r\n              </span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div style=\"height: 30%; border: 1px solid darkblue; padding: 1px\">\r\n      <code-viewer #searchResultsCodeEditor [showTopBar]=\"false\"></code-viewer>\r\n    </div>\r\n  </div>\r\n  <p-footer>\r\n    <button type=\"button\" (click)=\"showFindResults=false\">Cancel</button>\r\n    <button type=\"button\" (click)=\"loadFindResults(); showFindResults=false\">Display</button>\r\n  </p-footer>\r\n</p-dialog>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/app.component.html	(date 1593851749000)
++++ src/app/app.component.html	(date 1593857537692)
+@@ -4,125 +4,17 @@
+   <node-styling [appComponent]="this"></node-styling>
+ </div>
+ <div class="main">
+-  <div id="topbox" class="topbox">
+-    <div class="dropdown mr5">
+-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">File
+-        <span class="caret"></span>
+-      </button>
+-      <ul class="dropdown-menu ">
+-        <li (click)="saveJsonVisible = true" class="dropdown-item">Save to JSON</li>
+-        <li class="dropdown-item"><label style="cursor: pointer">Load from JSON
+-          <input id='fileLoadInput' type="file" (change)="loadFromFile($event)"/>
+-        </label>
+-        </li>
+-        <li (click)="saveFullVisible = true" class="dropdown-item">Save to Code and JSON</li>
+-        <li (click)="saveToCode()" class="dropdown-item">Save to Code</li>
+-        <li (click)="reload()" class="dropdown-item">Reload from Code</li>
+-        <li (click)="clearVisiIds()" class="dropdown-item">Clear Visi Tags From Code</li>
+-        <!-- <li (click)="rewriteVisiIds()" class="dropdown-item">rewrite visi ids</li> -->
+-      </ul>
+-    </div>
+-    <div class="dropdown mr5">
+-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Config
+-        <span class="caret"></span>
+-      </button>
+-      <ul class="dropdown-menu">
+-        <li>
+-          <p-dropdown wtf [options]="paths"
+-                      (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)" [filter]="true"
+-                      [style]="{'width': '500px','margin': '5px'}"></p-dropdown>
+-        </li>
+-        <li>
+-          <input #customPath placeholder='custom path' (keyup)="setCustomPath($event) " type="text"
+-                 style="width: 500px;margin: 5px;"
+-                 [style.backgroundColor]="searchJson.dirPath===customPath.value ? 'lightpink' : ''"/>
+-        </li>
+-        <li>
+-          <input placeholder='file pattern' type="text"
+-                 [(ngModel)]="searchJson.filenamePattern" style="width: 150px;margin: 5px;"/>
+-          <button [ngClass]="{'active': searchJson.isFileNameRegex===true}" pTooltip="is pattern regex"
+-                  (click)="searchJson.isFileNameRegex=!searchJson.isFileNameRegex">
+-            RegEx
+-          </button>
+-          <button [ngClass]="{'active': Options.showCodeLabels===true}" pTooltip="toggle match labels" (click)="toggleMatchNodesLabel()">
+-            Toggle Labels
+-          </button>
+-          <br/>
+-        </li>
+-        <li>
+-          <div style="display:flex">
+-            <button class="fa fa-chevron-right" [ngClass]="{'active': Options.positioning===PositioningOptions.RIGHT}"
+-                    (click)="Options.positioning=PositioningOptions.RIGHT"></button>
+-            <button class="fa fa-chevron-down" [ngClass]="{'active': Options.positioning===PositioningOptions.DOWN}"
+-                    (click)="Options.positioning=PositioningOptions.DOWN"></button>
+-            <button class="fa fa-chevron-left" [ngClass]="{'active': Options.positioning===PositioningOptions.LEFT}"
+-                    (click)="Options.positioning=PositioningOptions.LEFT"></button>
+-            <button class="fa fa-chevron-up" [ngClass]="{'active': Options.positioning===PositioningOptions.UP}"
+-                    (click)="Options.positioning=PositioningOptions.UP"></button>
+-          </div>
+-        </li>
+-      </ul>
+-    </div>
+-    <span class="seperator"></span>
+-    <button pTooltip="undo" (click)="undo()" class="mr5"><i class="fa fa-undo" aria-hidden="true"> </i></button>
+-    <button pTooltip="fit all" (click)="fitAllNodesOnScreen()" class="mr5"><i class="fa fa-arrows-alt"
+-                                                                              aria-hidden="true"> </i></button>
+-    <button (click)="chartActions.clearChart()" class="mr5">clear results</button>
+-
+-    <!-- <button *ngFor="let item of linkTypes" (click)="linkNodes(item.style)" class="mr5">
+-      <i class="fa fa-link" aria-hidden="true"></i>
+-    </button> -->
+-    <button pTooltip="link selected nodes. all nodes will be connected to last selected node" (click)="linkNodes({})"
+-            class="mr5">
+-      <i class="fa fa-link" aria-hidden="true"></i>
+-    </button>
+-    <span class="seperator"></span>
+-    <button *ngFor="let shape of shapes" (click)="createShape(shape)" class="mr5">
+-      <i [pTooltip]="shape.details.tooltip" [class]="shape.details.class" aria-hidden="true"></i>
+-    </button>
+-    <span class="seperator"></span>
+-    <input placeholder='pattern' class="mr5" type="text"
+-           [(ngModel)]="searchJson.pattern" (keypress)="performSearch($event)">
+-    <input placeholder='regex flags' class="mr5" type="text" [(ngModel)]="searchJson.flags"
+-           style="width: 40px"/>
+-    <button pTooltip="is regex search" [ngClass]="{'active': searchJson.isRegex===true}"
+-            (click)="searchJson.isRegex=!searchJson.isRegex">
+-      (.*)
+-    </button>
+-    <span class="seperator"></span>
+-    <span class="seperator"></span>
+-    <button pTooltip="get sepecific file node" (click)="openFileVisible=true" class="mr5"><i
+-      class="fa fa-file-code-o left" aria-hidden="true"></i>
+-    </button>
+-    <span class="seperator"></span>
+-    <button pTooltip="search in entire folder" (click)="searchActions.totalSearch()" class="mr5"><i
+-      class="fa fa-folder-o" aria-hidden="true"></i></button>
+-    <button pTooltip="search in selected file" (click)="searchActions.searchSelectedFile()" class="mr5"><i
+-      class="fa fa-file-o" aria-hidden="true">
+-    </i></button>
+-    <button pTooltip="search in selection content" (click)="searchActions.contentSearch()" class="mr5">(..)</button>
+-    <button pTooltip="create match from selection" (click)="createMatchFromSelection()" class="mr5"><i
+-      class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+-    </button>
+-    <button pTooltip="replace selected node with selection" (click)="createMatchFromSelection(true)" class="mr5"><i
+-      class="fa fa-hand-o-right" aria-hidden="true"></i>
+-    </button>
+-    <button pTooltip="create file node" (click)="createFileNode()" class="mr5"><i class="far fa-plus-square"
+-                                                                                  aria-hidden="true"></i></button>
+-    <span class="seperator"></span>
+-    <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
+-                [style]="{'width': '100px','margin': '5px'}"></p-dropdown>
+-    <button *ngFor="let item of selectedLanguageRegexes" class="mr5"
+-            (click)="performSavedSearch(item)">{{item.name}}</button>
+-    <span class="seperator"></span>
+-    <div class="dropdown mr5">
+-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i
+-        class="fa fa-paint-brush"
+-        aria-hidden="true"></i>
+-        <span class="caret"></span>
+-      </button>
+-      <div class="dropdown-menu dropdown-menu-right">
+-        <node-styling [appComponent]="this"></node-styling>
++  <div id="topbox" class="controls">
++    <div  class="searchButtons">
++      <div>
++        <button *ngFor="let item of selectedLanguageRegexes" class="mr5"
++                (click)="performSavedSearch(item)">{{item.name}}</button>
++      </div>
++      <div>
++        <input placeholder='pattern' class="mr5" type="text"
++               [(ngModel)]="searchJson.pattern" (keypress)="performSearch($event)">
++        <input placeholder='regex flags' class="mr5" type="text" [(ngModel)]="searchJson.flags"
++               style="width: 40px"/>
+       </div>
+     </div>
+   </div>
+Index: src/app/app.component.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n.searchInput{\r\n  width: 20%;\r\n  overflow: auto;\r\n  white-space: nowrap;\r\n}\r\n\r\n\r\n.hljs-ln td.hljs-ln-numbers  {\r\n  -webkit-touch-callout: none;\r\n  -webkit-user-select: none;\r\n  -khtml-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n\r\n  /* text-align: center; */\r\n  color: #ccc;\r\n  /* border-right: 1px solid #CCC; */\r\n  vertical-align: top;\r\n  padding-right: 10px;\r\n\r\n  /* your custom style here */\r\n  border-right: 1px solid black !important;\r\n  text-align: left !important;\r\n}\r\n\r\n\r\n\r\n.main{\r\n  display: flex;\r\n  flex-direction: column;\r\n  height:100%;\r\n  margin: 0px;\r\n}\r\n\r\n.topbox {\r\n  width:100%; \r\n  display: -webkit-flex; /* Safari */\r\n  -webkit-flex-wrap: wrap; /* Safari 6.1+ */\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.buttonsbox {\r\n  display: flex; flex-direction: column\r\n}\r\n\r\n.wrap{\r\n  width: 100%\r\n}\r\n.dropdown.mr5{\r\n  border-right: 1px solid darkblue;\r\n  /*border:0px;*/\r\n}\r\n\r\nbutton.btn.btn-primary.dropdown-toggle{\r\n}\r\n.dropdown .dropdown-menu .dropdown-item label{\r\n  margin-bottom: 0px;\r\n}\r\n.dropdown .dropdown-menu .dropdown-item{\r\n  cursor: pointer;\r\n}\r\nspan.seperator{\r\n/* background-color: darkblue; */\r\n/* margin-left: 4px; */\r\n  margin-right: 4px;\r\n  border-right: 1px solid darkblue;\r\n/* border-left: 1px solid darkblue; */\r\n  padding-left: 2px;\r\n  padding-right: 2px;\r\n}\r\n.filer{\r\n  display: flex;\r\n  /*height:900px;*/\r\n  border: 1px solid darkblue;\r\n}\r\n\r\n.filer #bordered{\r\n  border-right: 1px solid darkblue;\r\n  border-bottom: 1px solid darkblue;\r\n}\r\n\r\n.fullWidth {\r\n  width:100%\r\n}\r\n\r\n.halfWidth {\r\n  width:50%;\r\n}\r\n\r\n#filer #fileContent {\r\n  margin: 0px; padding: 0px; width:9000px;\r\n}\r\n\r\n#filer #codepre {\r\n  margin: 0px; padding: 0px; display: inline-table;\r\n}\r\n\r\n#fileLoadInput{\r\n  visibility: hidden;\r\n  width: 0px\r\n}\r\n\r\nbutton.mr5{\r\n  margin: 0px;\r\n  border: 0px;\r\n  border-right: 1px solid darkblue;\r\n  padding: 0px 4px 0px 4px;\r\n}\r\n\r\nbutton.selected {\r\n\r\n}\r\n\r\ninput {\r\n  border: 0px;\r\n  border-right: 1px solid darkblue;\r\n  margin-right:4px;\r\n  margin-left: 4px;\r\n}\r\nbutton.left {\r\n  border-left: 1px solid darkblue;\r\n}\r\n\r\n\r\n\r\n/*#nodeTitle {width:0px; height:0px; opacity: 0}*/\r\n\r\n#nodeTitleInput {width:400px; height:100px; }\r\n#nodeStylePopup {position: absolute; z-index: 999}\r\n\r\n.visjs {\r\n}\r\npre {\r\n  white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */\r\n  white-space: -pre-wrap; /* Opera */\r\n  white-space: -o-pre-wrap; /* Opera */\r\n  white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */\r\n  margin: auto;\r\n}\r\n\r\n.w40{\r\n  width: 40px;\r\n}\r\n\r\n.h100w50{\r\n  height:100%;\r\n  width: 50%;\r\n}\r\n\r\n.h100{\r\n  flex: 1;\r\n}\r\n\r\n.w60p{\r\n  width: 60px;\r\n}\r\n\r\n#message_box {\r\n\r\n  height: 10%;\r\n  width: 50%;\r\n  position: fixed;\r\n  bottom: 0%;\r\n  background-color: lawngreen;\r\n  -ms-flex-line-pack: center;\r\n  align-content: center;\r\n visibility: hidden;\r\n  z-index: 99999;\r\n/* margin: 20px; */\r\n  border-radius: 50px 50px 0px 0px;\r\n  padding: 10px 50px;\r\n\r\n}\r\n\r\nbutton{\r\n  text-transform:capitalize;\r\n  cursor:pointer;\r\n  background-color:white;\r\n  border-right:1px solid darkblue;\r\n  border: 0px;\r\n  border-radius: 0px;\r\n  /*border-radius: 0px 10px 10px 0px;*/\r\n  color:darkblue;\r\n  white-space: nowrap;\r\n  text-align: center;\r\n  /*transition:all ease-in 0.4s*/\r\n}\r\n\r\n\r\n.alignFlexToRight{\r\n  justify-content: flex-end;\r\n}\r\n\r\n.fixedOnTopOfComponent {\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  position: fixed;\r\n  width: inherit;\r\n  /* height: fit-content; */\r\n  z-index: 999;\r\n}\r\n\r\n.fileLegendItem {\r\n  margin-left: 5px;\r\n  border-style: solid;\r\n  padding: 3px;\r\n  margin: 5px;\r\n  background-color: white;\r\n  /* border-color: aqua; */\r\n  border-radius: 10px 0px 10px 0px;\r\n  font-weight: bold;\r\n  cursor: default;\r\n  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;\r\n  color: white;\r\n}\r\n\r\n.label {\r\n  text-transform:capitalize;\r\n  cursor:pointer;\r\n  background-color:gray;\r\n  border:1px solid darkblue;\r\n  /*border-radius: 10px;*/\r\n  color:white;\r\n}\r\n\r\n\r\n\r\nbutton:hover{\r\n  background-color:darkblue;\r\n  color:white;\r\n}\r\n\r\nbutton.active {\r\n  background-color:darkblue;\r\n  color:white;\r\n}\r\n\r\n\r\n\r\n.mr5_1{\r\n/* margin: 3px 7px; */\r\n  margin: 0px;\r\n  border: 0px;\r\n  border-right: 1px solid black;\r\n  padding: 0px 4px 0px 4px;\r\n}\r\n\r\n.matchInDialog {\r\n  padding-left: 10px\r\n}\r\n\r\n.fileMatchInDialog {\r\n  font-weight: bold;\r\n  text-decoration: underline;\r\n}\r\n\r\n.noSelectedNodeInResults {  \r\n  border-radius: 2px;\r\n  border: 2px dashed red;\r\n  margin: 5px;\r\n  margin-bottom: 20px;\r\n  padding: 5px;\r\n  padding-left: 10px;\r\n  font-weight: bold;\r\n  background-color: lightpink;\r\n}\r\n\r\n.stylingPopup {\r\n  border: 1px solid darkblue;\r\n  border-radius: 2px;\r\n  padding: 3px;\r\n  background-color: white;\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/app/app.component.css	(date 1593851749000)
++++ src/app/app.component.css	(date 1593857481509)
+@@ -34,12 +34,22 @@
+   margin: 0px;
+ }
+ 
+-.topbox {
+-  width:100%; 
+-  display: -webkit-flex; /* Safari */
+-  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
++.controls {
++  width: 100%;
++  display: -webkit-flex;
++  -webkit-flex-wrap: wrap;
++  display: -ms-flexbox;
+   display: flex;
++  -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
++  position: fixed;
++  z-index: 99999;
++}
++
++.searchButtons {
++  position: fixed;
++  bottom: 0px;
++  right: 0px;
+ }
+ 
+ .buttonsbox {

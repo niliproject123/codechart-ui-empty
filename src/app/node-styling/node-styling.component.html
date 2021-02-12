@@ -1,0 +1,104 @@
+<div class="pads" style="padding: 10px;">
+  <div style="display: flex;">
+    <span class="tab" style="border-right: 1px solid #333333" [ngClass]="stylingType===StylingTypes.edge ? 'active' : 'inactive'" (click)="changeType($event, StylingTypes.edge)">Edge</span>
+    <span class="tab" [ngClass]="stylingType===StylingTypes.node ?  'active' : 'inactive'" (click)="changeType($event, StylingTypes.node)">Node</span>
+  </div>
+  <div *ngIf="stylingType==StylingTypes.node">
+    <ul class="pads_ul">
+      <li>
+            <span>
+               <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{
+                 'background-color':style.background, 'border-color': style.border
+                }"
+                     (click)="appComponent.setSelectionNodeStyle(style)">
+            </span>
+            </span>
+      </li>
+      <li>
+        <button *ngFor="let image of appComponent.allNodeImages" [style.background]="'url('+ image.path +')'"
+                class="imageButton" (click)="appComponent.setSelectionImage(image.path)" [style.backgroundSize]="'80%'"
+                [style.backgroundPosition]="'center'" [style.backgroundRepeat]="'no-repeat'"
+                pTooltip="{{image.name}}"></button>
+      </li>
+      <li>
+        <button *ngFor="let shape of appComponent.nodeShapes" class="imageButton" [ngClass]="shape.faClass"
+                (click)="appComponent.setSelectionShape(shape.visShape)" pTooltip="{{shape.visShape}}"></button>
+      </li>
+      <li class="column">
+        <div>
+          <div class="title">Node size:</div>
+          <span *ngFor="let size of sizes; let indexOf = index">
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+                       (click)="appComponent.setSelectedNodesSize(size)"> {{size}} </button>
+               </span>
+          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedNodesSize($event.target.value)" style="width: 40px"/>
+        </div>
+        <div>
+          <div class="title">Font size:</div>
+          <span *ngFor="let size of sizes; let indexOf = index">
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+                       (click)="appComponent.setSelectedNodesFontSize(size)"> {{size}} </button>
+               </span>
+          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedNodesFontSize($event.target.value)" style="width: 40px"/>
+        </div>
+      </li>
+      <li>
+            <span>
+            <button (click)="appComponent.showHideFile()">Hide/Show File</button>
+            </span>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="stylingType==StylingTypes.edge">
+    <ul class="pads_ul">
+      <li>
+         <span>
+            <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{'background-color':style.border}"
+                  (click)="appComponent.setSelectionEdgeStyle(style.border)">
+         </span>
+         </span>
+      </li>
+      <li class="column">
+        <div>
+          <div class="title">Edge size:</div>
+          <span *ngFor="let size of sizes; let indexOf = index">
+            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+                    (click)="appComponent.setSelectedEdgesSize(size)"> {{size}} </button>
+            </span>
+          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedEdgesSize($event.target.value)" style="width: 40px"/>
+        </div>
+        <div>
+          <div class="title">Edge font size:</div>
+          <span *ngFor="let size of sizes; let indexOf = index">
+            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+                    (click)="appComponent.setSelectedEdgesFontSize(size)"> {{size}} </button>
+            </span>
+          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedEdgesFontSize($event.target.value)" style="width: 40px"/>
+        </div>
+      </li>
+      <li>
+        <button (click)="appComponent.setSelectedEdgesDash(true)"> dash</button>
+        <button (click)="appComponent.setSelectedEdgesDash(false)"> normal</button>
+      </li>
+      <li>
+         <span>
+         <button class="fa fa-long-arrow-right " (click)="appComponent.setEdgePoint(true, false)"></button>
+         </span>
+        <span>
+         <button class="fa fa-long-arrow-left " (click)="appComponent.setEdgePoint(false, true)"></button>
+         </span>
+        <span>
+         <button (click)="appComponent.setEdgePoint(false, false)">-</button>
+         </span>
+        <span>
+         <button class="fa fa-arrows-h" (click)="appComponent.setEdgePoint(true, true)"></button>
+         </span>
+        <input placeholder='length' type="text" (keyup)="appComponent.setSelectedEdgesLength($event.target.value)" style="width: 60px"/>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+.colorpick {
+  margin: 1px;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.colorpick:hover {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid black
+}
+
+ul {
+  list-style-type: none;
+  background-color: white;
+}
+
+.imageButton {
+  height: 30px;
+  width: 30px;
+  border: 1px solid rgb(51, 51, 51);
+  margin: 3px;
+}
+
+.imageButton:hover {
+  height: 50px;
+  width: 50px;
+}
+
+li {
+  display:flex;
+  text-align: center;
+}
+
+.pads {
+  border: 1px solid #333333;
+  background-color: #f9ecf2;
+  border-radius: 15px;
+}
+
+.pads_ul
+{
+  background: none;
+  margin: auto;
+  padding: 0;
+}
+
+
+.title
+{
+  text-align: start;
+}
+
+.column
+{
+  display: flex;
+  flex-flow: column;
+}
+
+.tab {
+  flex-grow: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  border-top: 1px solid #333333;
+}
+
+.inactive {
+  border-bottom: 1px solid #333333;
+}

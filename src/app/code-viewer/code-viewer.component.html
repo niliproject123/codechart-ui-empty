@@ -1,0 +1,17 @@
+<div id="fullbox">
+  <div *ngIf="showTopBar" class="cfilenameholder" style="display: flex">
+    <div>
+      <button>
+        <i class ="fa" [ngClass]="(appComponent.filerFullscreen) ? 'fa-compress' : 'fa-expand'" (click)="appComponent.filerFullscreen=!appComponent.filerFullscreen" aria-hidden="true"></i>
+      </button>
+      <button pTooltip="increase font size" (click)="increaseFileContentFont()" class="zoom"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      <button pTooltip="decrease font size" (click)="decreaseFileContentFont()" class="zoom"><i class="fa fa-minus" aria-hidden="true"></i></button>
+      <button pTooltip="save file" (click)="saveFile()" class="zoom"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    </div>
+    <div class="fileContainer">
+      <span>{{fileInfo?.file}}</span>
+      <span class="fileName">{{fileInfo?.folder}}</span>
+    </div>
+  </div>
+  <ace-editor #aceEditor [autoUpdateContent]="true" [text]="fileData?.content" [mode]="'javascript'" style="height:100%;"></ace-editor>
+</div>
