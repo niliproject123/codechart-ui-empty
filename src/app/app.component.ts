@@ -45,6 +45,8 @@ export interface fileLegendItem {
     fileLabel
 }
 
+
+
 import * as $ from 'jquery'
 import { CreateUtils } from './chart/create.utils'
 import { SaveLoad } from './chart/save.load'
@@ -171,7 +173,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public loadedDiagrams: string[] = []
 
     public lastDiagramLoaded: string = ''
-    public
+   
 
     constructor(
         public http: HttpClient,
@@ -185,6 +187,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this.httpInterceptService.setAppComponent(this)
         window['Global_app'] = this
+
     }
 
 
@@ -376,7 +379,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         ]
       }
     ]
-
+    
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
     });

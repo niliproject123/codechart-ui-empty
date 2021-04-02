@@ -16,7 +16,18 @@
       
       <div class="vertical"></div>
 
-      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
+      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
+      
+        <div class="element">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+      
+        </div>
+      </button>
+      
+       
+       <div class="vertical"></div>
+       <button class="parent round-button"  style="margin-bottom: 5px;" pTooltip="Diagram Actions" (click)="fitAllNodesOnScreen()">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
       
         <div class="element">
@@ -25,29 +36,20 @@
         </div>
       </button>
       <div class="vertical"></div>
-      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
       
-        <div class="element">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
-      
-        </div>
-      </button>
-       
-       <div class="vertical"></div>
 
       <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
         <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" style="margin-top: 15px;">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg"  pTooltip="Add to Top"   style="margin-top: 15px;">
           <br/>
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg" style="margin-top: -25px;">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg"  pTooltip="Add to Bottom" style="margin-top: -15px;">
           </div>
         <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" style="margin-top: 20px;">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg"  pTooltip="Add to Left" style="margin-top: 20px;">
        
        
         </div>
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg" style="margin-left: 5px;margin-top: 20px;">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg"  pTooltip="Add to Right" style="margin-left: 5px;margin-top: 20px;">
 
       </div>
       <div class = "vertical"></div>
@@ -59,13 +61,13 @@
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
       </button>
      
-      <button class="round-button">
+      <button class="round-button"  pTooltip="Clear">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
     
       </button>
       <div class = "vertical"></div>
      
-        <button class="round-button" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
+        <button class="round-button"  pTooltip="Edit Diagram" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
         </button>
         
@@ -285,7 +287,7 @@
   
         </button>
         
-        <button class="round-button">
+        <button class="round-button" pTooltip="Save Options" >
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg"> 
   
         </button>
@@ -295,7 +297,8 @@
 
 
          
-        
+      
+     
          <span style="background-color: red;">
           <p-dropdown [options]="paths" (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '200px','margin': '5px'}">
@@ -319,9 +322,9 @@
              </button>
             </span>
   
-
+          
             
-            <button class="round-button" config type="button" data-toggle="dropdown" >
+            <button class="round-button" config type="button" data-toggle="dropdown" pTooltip="View Settings" >
               <img  src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg">
             </button>
               
@@ -353,22 +356,22 @@
             </ul> 
 
              
-            <button pTooltip="decrease font size" (click)="codeEditor.decreaseFileContentFont()" class="zoom" class="round-button">
+            <button pTooltip="Reduce Text" (click)="codeEditor.decreaseFileContentFont()" class="zoom" class="round-button">
               <img src="./../assets/icons/svg/CodeChart_Web_Icons__Smaller Text.svg">
          
             </button>
             
-             <button pTooltip="increase font size" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
+             <button pTooltip="Enlarge Text" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
                <img src="./../assets/icons/svg/CodeChart_Web_Icons__Larger Text.svg">
          
               
             </button>
              
-            <button class="round-button">
+            <button class="round-button" pTooltip="Reload from Code" >
               <img src="./../assets/icons/svg/CodeChart_Web_Icons__Reload.svg"  (click)="reloadFromCode()">
       
             </button>
-            <button class="round-button">
+            <button class="round-button" pTooltip="Approve Changes" >
               <img src="./../assets/icons/svg/CodeChart_Web_Icons__Approve Changes.svg"  (click)="clearFailedReloaded()">
       
             </button>
