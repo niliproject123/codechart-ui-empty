@@ -65,6 +65,8 @@ export class CodeViewerComponent implements OnInit {
   matchMarkers: number[] = []
   showEditor: boolean = false;
 
+  public demoText = ""
+
   constructor() {
     window['globalCode'] = this
   }

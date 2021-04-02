@@ -381,6 +381,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ]
 
+    this.http.get('assets/demo_text.txt', { responseType: 'text' })
+      .subscribe(data =>
+        this.codeEditor.demoText = (data)
+      );
+
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
     });
