@@ -6,21 +6,71 @@
 <div class="main">
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
     <div generalActions class="generalActions pads max-50" style="pointer-events:auto">
+      
+
+      
+      <button class="round-button">
+        <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
+    
+      </button>
+      
+      <div class="vertical"></div>
+
+      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
+      
+        <div class="element">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+      
+        </div>
+      </button>
+      <div class="vertical"></div>
+      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
+      
+        <div class="element">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+      
+        </div>
+      </button>
+       
+       <div class="vertical"></div>
+
+      <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
+        <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" style="margin-top: 15px;">
+          <br/>
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg" style="margin-top: -25px;">
+          </div>
+        <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" style="margin-top: 20px;">
+       
+       
+        </div>
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg" style="margin-left: 5px;margin-top: 20px;">
+
+      </div>
+      <div class = "vertical"></div>
+     
       <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
        </button>
        <button class="round-button" pTooltip="undo" (click)="undo()">
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
       </button>
-    
+     
       <button class="round-button">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
     
       </button>
+      <div class = "vertical"></div>
+     
         <button class="round-button" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
         </button>
         
+        
+
         <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
             class="fa fa-paint-brush" aria-hidden="true"></i>
           <span class="caret"></span>
@@ -30,9 +80,12 @@
       <!-- <button (click)="chartFullscreen=!chartFullscreen" class="clearSearchButton">
         <i class="fa" [ngClass]="(chartFullscreen) ? 'fa-compress' : 'fa-expand'" aria-hidden="true"></i>
       </button> -->
+      <div class = "vertical"></div>
+     
       <button class="round-button">
         <i class ="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'" (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
       </button>
+     
 
       <!-- <button class="round-button" pTooltip="undo" (click)="undo()" class="mr5"><i class="fa fa-undo" aria-hidden="true"> </i></button> -->
       <!-- <button pTooltip="fit all" (click)="fitAllNodesOnScreen()" class="mr5"><i class="fa fa-arrows-alt"
@@ -329,9 +382,13 @@
        <div class="pads dropup" style="pointer-events:auto">
      
       <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
-            [style]="{'width': '100px','margin': '5px'}"></p-dropdown>
+            [style]="{'width': '200px','margin': '5px'}"></p-dropdown>
        <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
-            [style]="{'width': '100px','margin': '5px'}"></p-dropdown>
+            [style]="{'width': '150px','margin': '5px'}"></p-dropdown>
+            <button class="round-button" style="margin-left: -20px;">
+              <img src="./../assets/icons/add.png">
+          
+            </button>
       </div> 
       
     </div>

@@ -84,9 +84,9 @@ input {
 
 .generalActions {
   position: fixed;
-  top: 0px;
+  top: -5px;
   right: 0px;
-  margin: 10px;
+  margin: 0px;
   display:flex;
   align-items: flex-end;
 
@@ -149,7 +149,10 @@ span.seperator{
   width:50%;
 }
 
-
+.vertical {
+  border-left: 1px solid lightgray;
+  height: 50px;
+}
 .round-button{
   min-width: 40px;
   max-width:80px;
@@ -164,8 +167,27 @@ span.seperator{
   overflow: none;
   text-align: center;
   padding:0;
+  margin-right: 5px;
+  margin-bottom: 5px;
  
 }
+.parent {
+  color: #0074d9;
+  margin-bottom: 1px;
+  margin-left: 5px;
+  margin-right: 5px; 
+}
+
+.element {
+  margin-top: -25px;
+  margin-left: 20px;
+  background-color: transparent;
+  padding: 10px;
+  color: #000;
+  position: absolute;
+}
+
+
 
 
 .round-button:before {
