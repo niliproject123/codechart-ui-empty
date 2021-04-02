@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+.highlight {
+  background-color: yellow
+}
+
+.marker {
+  position: absolute;
+  background-color: rgba(0, 255, 0, 0.4);
+}
+
+.matchMarker {
+  position: absolute;
+  background-color: lightyellow;
+}
+
+/* 
+button:hover{
+  color: rgb(51,51,51);
+  background-color:white;
+}
+
+button.active {
+  background-color:white;
+  color: #4f4f4f;;
+} */
+/* 
+button{
+  text-transform:capitalize;
+  cursor:pointer;
+  background-color:transparent;
+  margin: 2px;
+  border-radius: 50px; 
+  color: white;
+  /*border-radius: 0px 10px 10px 0px;
+  white-space: nowrap;
+  text-align: center;
+  /*transition:all ease-in 0.4s
+} */
+
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+

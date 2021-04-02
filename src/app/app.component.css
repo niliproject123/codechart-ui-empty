@@ -1,0 +1,413 @@
+
+.searchInput{
+  width: 20%;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+#funkystyling {
+  background: url(./../assets/icons/svg/CodeChart_Web_Icons__CodeChart\ Logo.svg) right no-repeat;
+  padding-right: 17px;
+  background-size: contain;
+  
+}
+.hljs-ln td.hljs-ln-numbers  {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* text-align: center; */
+  color: #ccc;
+  /* border-right: 1px solid #CCC; */
+  vertical-align: top;
+  padding-right: 10px;
+
+  /* your custom style here */
+  border-right: 1px solid black !important;
+  text-align: left !important;
+}
+
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  margin: 0px;
+}
+
+.controls {
+  width: 100%;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: fixed;
+  z-index:100;
+  pointer-events: none;
+  user-select: none
+}
+
+.fullScreenButtons {
+  z-index: 101;
+  border-radius: 5px 5px 5px 5px;
+  padding: 3px;
+  margin: 3px;
+  pointer-events: all;
+}
+
+.fullScreenButtons:hover {
+  border: 1px solid grey;
+}
+
+input {
+  background-color: #4f4f4f;
+}
+
+.max-50 {
+  max-width: 50%;
+}
+
+.searchButtons {
+  position: fixed;
+  bottom: 15px;
+  right: 0px;
+  padding: 10px;
+  display:flex;
+  align-items: flex-end;
+}
+
+.generalActions {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  display:flex;
+  align-items: flex-end;
+
+}
+
+.searchLocations{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  padding: 25px;
+  display:flex;
+  align-items: flex-end;
+}
+
+.buttonsbox {
+  display: flex; flex-direction: column
+}
+
+.wrap{
+  width: 100%
+}
+.dropdown.mr5{
+  /*border:0px;*/
+}
+
+button.btn.btn-primary.dropdown-toggle{
+}
+.dropdown .dropdown-menu .dropdown-item label{
+  margin-bottom: 0px;
+}
+.dropdown .dropdown-menu .dropdown-item{
+  cursor: pointer;
+}
+span.seperator{
+/* background-color: rgb(51,51,51); */
+/* margin-left: 4px; */
+  margin-right: 4px;
+  border-right: 1px solid rgb(51,51,51);
+/* border-left: 1px solid rgb(51,51,51); */
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.filer{
+  display: flex;
+  /*height:900px;*/
+  border: 1px solid rgb(51,51,51);
+}
+
+.filer #bordered{
+  border-right: 1px solid rgb(51,51,51);
+  border-bottom: 1px solid rgb(51,51,51);
+  background-color: #4f4f4f;
+}
+
+.fullWidth {
+  width:100%
+}
+
+.halfWidth {
+  width:50%;
+}
+
+
+.round-button{
+  min-width: 40px;
+  max-width:80px;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border-style: none;
+  color: white;
+  background-color:transparent;
+  border-radius: 100%;
+  overflow: none;
+  text-align: center;
+  padding:0;
+ 
+}
+
+
+.round-button:before {
+  content:'';
+  display:inline-block;;
+  vertical-align:middle;
+  padding-top:100%;
+}
+span {
+  display:inline-block;
+  vertical-align:middle;
+  max-width:90%;
+}
+.round-button:active{
+  background-color: #2980b9;
+}
+
+
+#filer #fileContent {
+  margin: 0px; padding: 0px; width:9000px;
+}
+
+#filer #codepre {
+  margin: 0px; padding: 0px; display: inline-table;
+}
+
+#fileLoadInput{
+  display: none;
+}
+
+.wtf_button.mr5{
+  margin: 2px;
+  border-radius: 50px;
+}
+
+button.selected {
+
+}
+
+input {
+  border: 1px solid rgb(51,51,51);
+  margin-right:4px;
+  margin-left: 4px;
+}
+
+button.left {
+  border-left: 1px solid rgb(51,51,51);
+}
+
+.alignContentToCenter {
+  text-align:center
+}
+
+
+/*#nodeTitle {width:0px; height:0px; opacity: 0}*/
+
+#nodeTitleInput {width:400px; height:100px; }
+#nodeStylePopup {position: absolute; z-index: 999}
+
+.visjs {
+}
+
+.w40{
+  width: 40px;
+}
+
+.h100w50{
+  height:100%;
+  width: 50%;
+}
+
+.h100{
+  flex: 1;
+}
+
+.w60p{
+  width: 60px;
+}
+
+#message_box {
+
+  width: 40%;
+  position: fixed;
+  bottom: 5%;
+  background-color: lawngreen;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  z-index: 99999;
+  border-radius: 50px 50px 50px 50px;
+  padding: 10px 50px;
+  left: 5%;
+  visibility: hidden;
+}
+
+button{
+  /* text-transform:capitalize;
+  cursor:pointer;
+  background-color:rgb(212,212,212);
+  margin: 2px;
+  border-radius: 50px;
+  color: rgb(51,51,51); */
+  /*border-radius: 0px 10px 10px 0px;*/
+  /* white-space: nowrap;
+  text-align: center; */
+  /*transition:all ease-in 0.4s*/
+}
+
+
+.alignFlexToRight{
+  justify-content: flex-end;
+}
+
+.fixedOnTopOfComponent {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: fixed;
+  width: inherit;
+  /* height: fit-content; */
+  z-index: 9;
+  pointer-events: none
+}
+
+.fileLegendItem {
+  margin-left: 5px;
+  border-style: solid;
+  padding: 3px;
+  margin: 5px;
+  background-color: white;
+  /* border-color: aqua; */
+  border-radius: 10px 0px 10px 0px;
+  font-weight: bold;
+  cursor: default;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: white;
+}
+
+.label {
+  text-transform:capitalize;
+  cursor:pointer;
+  background-color:gray;
+  border:1px solid rgb(51,51,51);
+  /*border-radius: 10px;*/
+  color:white;
+}
+
+
+
+/* button:hover{
+  color: rgb(51,51,51);
+  background-color:white;
+}
+
+button.active {
+  background-color:rgb(51,51,51);
+  color: rgb(212, 212, 212)
+} */
+
+
+
+.mr5_1{
+/* margin: 3px 7px; */
+  margin: 0px;
+  border: 0px;
+  border-right: 1px solid black;
+  padding: 0px 4px 0px 4px;
+}
+
+.matchInDialog {
+  padding-left: 10px
+}
+
+.fileMatchInDialog {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.noSelectedNodeInResults {  
+  border-radius: 2px;
+  border: 2px dashed red;
+  margin: 5px;
+  margin-bottom: 20px;
+  padding: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+  background-color: lightpink;
+}
+
+.stylingPopup {
+  border: 1px solid rgb(51,51,51);
+  border-radius: 2px;
+  padding: 3px;
+  background-color: white;
+}
+
+
+.pads {
+  /* border: 1px solid #333333; */
+  background-color: #4f4f4f;
+  /* border-radius: 15px; */
+}
+
+.searchPatterns {
+  padding:15px;
+  margin-right:20px
+
+}
+
+.keypad {
+  margin: 5px;
+  background-color: #cc6699;
+}
+
+.keypadAndButtons{
+
+}
+
+.chartAdditions {
+}
+
+.stylingPad {
+}
+/*
+.patternButtons button{
+  border: 1px solid rgb(90, 90, 40);
+  background-color: rgb(150, 70, 73);
+  color: white
+}
+*/
+
+.columnarButtonsWrapper {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+.tooltip {
+  display:block;
+  position:fixed;
+  overflow:hidden;
+  z-index: 999;
+}
