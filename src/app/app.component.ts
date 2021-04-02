@@ -45,6 +45,8 @@ export interface fileLegendItem {
   fileLabel
 }
 
+
+
 import * as $ from 'jquery'
 import { CreateUtils } from './chart/create.utils'
 import { SaveLoad } from './chart/save.load'
@@ -103,6 +105,7 @@ export interface SelectedDiagramInfo extends QueryDto {
   providers: [JsonPipe],
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
   @ViewChild('openfileInput') private openfileInput: AutoComplete
   @ViewChild('aceEditor') public codeEditor: CodeViewerComponent
   @ViewChild('searchResultsCodeEditor')
@@ -186,6 +189,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.httpInterceptService.setAppComponent(this)
     window['Global_app'] = this
   }
+
 
 
   ngAfterViewInit(): void {
@@ -381,10 +385,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ]
 
+
     this.http.get('assets/demo_text.txt', { responseType: 'text' })
       .subscribe(data =>
         this.codeEditor.demoText = (data)
       );
+
+    
 
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
