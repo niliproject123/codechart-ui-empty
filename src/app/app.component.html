@@ -1,4 +1,4 @@
-<div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
+ <div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
   <textarea *ngIf="selectedNode" id='nodeTitleInput' [ngModel]="selectedNode?.label"
     (keyup)="setTitle($event)"></textarea>
   <node-styling [appComponent]="this"></node-styling>
@@ -6,34 +6,88 @@
 <div class="main">
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
     <div generalActions class="generalActions pads max-50" style="pointer-events:auto">
+      
+
+      
+      <button class="round-button">
+        <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
+    
+      </button>
+      
+      <div class="vertical"></div>
+
+      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
+      
+        <div class="element">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+      
+        </div>
+      </button>
+      
+       
+       <div class="vertical"></div>
+       <button class="parent round-button"  style="margin-bottom: 5px;" pTooltip="Diagram Actions" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
+      
+        <div class="element">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+      
+        </div>
+      </button>
+      <div class="vertical"></div>
+      
+
+      <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
+        <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg"  pTooltip="Add to Top"   style="margin-top: 15px;">
+          <br/>
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg"  pTooltip="Add to Bottom" style="margin-top: -15px;">
+          </div>
+        <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg"  pTooltip="Add to Left" style="margin-top: 20px;">
+       
+       
+        </div>
+        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg"  pTooltip="Add to Right" style="margin-left: 5px;margin-top: 20px;">
+
+      </div>
+      <div class = "vertical"></div>
+     
       <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
+       </button>
+       <button class="round-button" pTooltip="undo" (click)="undo()">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
       </button>
-      <button class="round-button" pTooltip="undo" (click)="undo()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
-      </button>
-
-      <button class="round-button">
+     
+      <button class="round-button"  pTooltip="Clear">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
-
+    
       </button>
-      <button class="round-button" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
-      </button>
+      <div class = "vertical"></div>
+     
+        <button class="round-button"  pTooltip="Edit Diagram" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
+        </button>
+        
+        
 
-      <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
+        <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
             class="fa fa-paint-brush" aria-hidden="true"></i>
           <span class="caret"></span>
         </button> -->
       <!-- </div> -->
-
+     
       <!-- <button (click)="chartFullscreen=!chartFullscreen" class="clearSearchButton">
         <i class="fa" [ngClass]="(chartFullscreen) ? 'fa-compress' : 'fa-expand'" aria-hidden="true"></i>
       </button> -->
+      <div class = "vertical"></div>
+     
       <button class="round-button">
-        <i class="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
-          (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
+        <i class ="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'" (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
       </button>
+     
 
       <!-- <button class="round-button" pTooltip="undo" (click)="undo()" class="mr5"><i class="fa fa-undo" aria-hidden="true"> </i></button> -->
       <!-- <button pTooltip="fit all" (click)="fitAllNodesOnScreen()" class="mr5"><i class="fa fa-arrows-alt"
@@ -44,21 +98,20 @@
       </button> -->
     </div>
     <div class="searchButtons max-50">
-
-      <span style="pointer-events:auto;" class="pads searchPatterns">
+     
+       <span style="pointer-events:auto;" class="pads searchPatterns">
         <div style="padding-bottom: 5px;">
-          <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth()}"
-            [style.display]="filerFullscreen?'none':'inline'">
+          <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth()}" [style.display]="filerFullscreen?'none':'inline'">
             <span class="fileLegendItem" *ngFor="let fileItem of filesInLegend"
-              [ngStyle]="{'background-color': fileItem.color}">{{fileItem.fileLabel}}</span>
-          </div>
-        </div>
-
-        <!-- <div  [style]="{'width': '100px','margin': '5px'}">
+            [ngStyle]="{'background-color': fileItem.color}">{{fileItem.fileLabel}}</span>
+         </div>
+         </div>
+         
+          <!-- <div  [style]="{'width': '100px','margin': '5px'}">
 
           <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth()}" [style.display]="filerFullscreen?'none':'inline'">
             <div class="searchLocations max-50" style="display: flex; flex-direction: column; align-items: baseline; ">
-
+      
             <div *ngIf="Options.showFileLegend" class="fixedOnTopOfComponent">
               <span class="fileLegendItem" *ngFor="let fileItem of filesInLegend"
                 [ngStyle]="{'background-color': fileItem.color}">{{fileItem.fileLabel}}</span>
@@ -67,12 +120,12 @@
           </div>
           </div>
         </div> -->
-
-        <!-- <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
+         
+          <!-- <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
             [style]="{'width': '100px','margin': '5px'}"></p-dropdown> -->
-
-        <!-- <button *ngFor="let item of selectedLanguageRegexes" (click)="performSavedSearch(item)">{{item.name}}</button> -->
-
+            
+          <!-- <button *ngFor="let item of selectedLanguageRegexes" (click)="performSavedSearch(item)">{{item.name}}</button> -->
+        
         <!-- <div style="text-align:end" style="pointer-events:auto">
           <span><input style="user-select: text; placeholder:'pattern'" class=" " type="text"
               [(ngModel)]="searchObject.pattern" (keypress)="performSearch($event)" style="width:80%"></span>
@@ -109,7 +162,7 @@
           </div>
         </div>
         <div class="pads keypadAndButtons" keypadAndButtons>
-          <div getSpecificFileNode>
+           <div getSpecificFileNode>
             <button pTooltip="get sepecific file node" (click)="openFileVisible=true"
               style="padding: 5px; width: 60%; "><i class="fa fa-file-code-o left" aria-hidden="true"
                 style="font-size: 20px"></i>
@@ -121,8 +174,8 @@
               [ngClass]="{'active': Options.replaceClickedWithSelection}"><i class="fa fa-hand-o-right"
                 aria-hidden="true"></i>
             </button>
-          </div>
-          <div searchKeyboard class="pads keypad">
+          </div> 
+           <div searchKeyboard class="pads keypad">
             <button style="width:50%; border: 1px solid; border-radius: 50px 50px 0px 0px;" class="fa fa-chevron-up"
               [ngClass]="{'active': Options.positioning===PositioningOptions.UP}"
               (click)="Options.positioning=PositioningOptions.UP"></button>
@@ -158,8 +211,8 @@
               (click)="Options.positioning=PositioningOptions.DOWN"></button>
           </div>
         </div>
-      </span>
-    </div>
+      </span> 
+   </div>
     <div class="searchLocations max-50" style="display: flex; flex-direction: column; align-items: baseline; ">
       <div class="pads dropup" style="pointer-events:auto">
         <button pTooltip="save diagram" (click)="saveJsonVisible = true">
@@ -220,122 +273,156 @@
       </div>
     </div>
   </div>
-  <div id="filer" class="filer" (click)="showNodeEditBox=false">
+  <div id="filer" class="filer"  (click)="showNodeEditBox=false">
     <div id="bordered" [ngStyle]="{'width': setFilerWidth()}" [style.display]="chartFullscreen?'none':'inline'">
 
-
-
-      <button class="round-button">
-        <i class="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
-          (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
-      </button>
-
-      <button class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
-
-      </button>
-
-      <button class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg">
-
-      </button>
-
-
-
-
-
-
-
-      <span style="background-color: red;">
-        <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
-          [filter]="true" [style]="{'width': '200px','margin': '5px'}">
-        </p-dropdown>
-      </span>
-
-
-      <span class="form-horizontal">
-        <input type="text" name="..." class="form-control" placeholder="file pattern"
-          style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern" />
-
-        <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
-          (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-50px;margin-top:-2px;min-height:36px;border-left: 0.5px solid lightgray;
-                ">
-          <img src="./../assets/icons/icon-regex.svg">
-
+      
+      
+       <button class="round-button">
+          <i class ="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'" (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
         </button>
-      </span>
+
+        <button class="skewed">
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
+  
+        </button>
+        
+        <button class="round-button" pTooltip="Save Options" >
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg"> 
+  
+        </button>
+         
+   
+        
+
+        
+         
+      
+     
+         <span>
+          <p-dropdown [options]="paths" (click)="pathDropdownClick($event)"
+            (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '200px','margin': '5px'}" class="p-inputtext-sm">
+          </p-dropdown>
+        </span>
+        <!-- <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" [style]="{'width':'150px'}" filter="filter">
+          <ng-template let-car pTemplate="item">
+              <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                   <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;position:absolute;top:1px;left:5px"/>s
+                  <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+              </div>
+          </ng-template>
+      </p-dropdown> -->
 
 
+           <span class="form-horizontal">
+            <input type="text" name="..." 
+                class="form-control" 
+                placeholder="file pattern"
+                style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern"/>
+        
+            <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
+            (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" 
+                class="btn" 
+                style="margin-left:-50px;margin-top:-2px;min-height:36px;border-left: 0.5px solid #747575;
+                ">
+                <!-- <p>(.*)</p> -->
+               <img  src="./../assets/icons/icon-regex.svg"> 
+             </button>
+            </span>
+  
+          
 
-      <button class="round-button" config type="button" data-toggle="dropdown">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg">
-      </button>
+            <!-- <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name"
+  placeholder="Select a Country">
+  <ng-template pTemplate="selectedItem">
+    <div class="country-item country-item-value" *ngIf="selectedCountry">
+      <div>{{selectedCountry.name}}</div>
+    </div>
+  </ng-template>
+  <ng-template let-country pTemplate="item">
+    <div class="country-item">
+      <div>{{country.name}}</div>
+    </div>
+  </ng-template>
+</p-dropdown> -->
+         
+            <button style="border-left: 1px solid #747575;border-right: 1px solid #747575;border-bottom: 0px;border-top: 0px;background-color: transparent;" config type="button" data-toggle="dropdown" pTooltip="View Settings" >
+              <img  src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg" >
+            </button>
+              
+            <ul class="dropdown-menu">
+              <li>
+                <input #customPath placeholder='custom path' (keyup)="setCustomPath($event) " type="text"
+                  style="width: 500px;margin: 5px;"
+                  [style.backgroundColor]="searchObject.dirPath===customPath.value ? 'lightpink' : ''" />
+              </li>
+              <li>
+                <button [ngClass]="{'active': Options.showCodeLabels===true}" pTooltip="toggle match labels"
+                  (click)="toggleMatchNodesLabel()">
+                  Show Code Lines
+                </button>
+                <button [ngClass]="{'active': Options.showFileLegend===true}" pTooltip="toggle file legend"
+                  (click)="toggleFileLegend()">
+                  Show File Legend
+                </button>
+                <button [ngClass]="{'active': Options.keepChartOnLoadFromJson===true}"
+                  pTooltip="toggle show code lines on nodes" (click)="toggleReplaceChartWhenLoading()">
+                  Keep Chart When Loading
+                </button>
+                <button [ngClass]="{'active': Options.showInContentLines===true}" pTooltip="toggle in content lines"
+                  (click)="toggleInContentLines()">
+                  Show In Content
+                </button>
+                <br />
+              </li>
+            </ul> 
 
-      <ul class="dropdown-menu">
-        <li>
-          <input #customPath placeholder='custom path' (keyup)="setCustomPath($event) " type="text"
-            style="width: 500px;margin: 5px;"
-            [style.backgroundColor]="searchObject.dirPath===customPath.value ? 'lightpink' : ''" />
-        </li>
-        <li>
-          <button [ngClass]="{'active': Options.showCodeLabels===true}" pTooltip="toggle match labels"
-            (click)="toggleMatchNodesLabel()">
-            Show Code Lines
-          </button>
-          <button [ngClass]="{'active': Options.showFileLegend===true}" pTooltip="toggle file legend"
-            (click)="toggleFileLegend()">
-            Show File Legend
-          </button>
-          <button [ngClass]="{'active': Options.keepChartOnLoadFromJson===true}"
-            pTooltip="toggle show code lines on nodes" (click)="toggleReplaceChartWhenLoading()">
-            Keep Chart When Loading
-          </button>
-          <button [ngClass]="{'active': Options.showInContentLines===true}" pTooltip="toggle in content lines"
-            (click)="toggleInContentLines()">
-            Show In Content
-          </button>
-          <br />
-        </li>
-      </ul>
-
-
-      <button pTooltip="decrease font size" (click)="codeEditor.decreaseFileContentFont()" class="zoom"
-        class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Smaller Text.svg">
-
-      </button>
-
-      <button pTooltip="increase font size" (click)="codeEditor.increaseFileContentFont()" class="zoom"
-        class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Larger Text.svg">
-
-
-      </button>
-
-      <button class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Reload.svg" (click)="reloadFromCode()">
-
-      </button>
-      <button class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Approve Changes.svg" (click)="clearFailedReloaded()">
-
-      </button>
+           
+            <button pTooltip="Reduce Text" (click)="codeEditor.decreaseFileContentFont()" class="zoom" class="round-button">
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Smaller Text.svg">
+         
+            </button>
+            
+             <button pTooltip="Enlarge Text" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
+               <img src="./../assets/icons/svg/CodeChart_Web_Icons__Larger Text.svg">
+         
+              
+            </button>
+             
+            <button class="round-button" pTooltip="Reload from Code" >
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Reload.svg"  (click)="reloadFromCode()">
+      
+            </button>
+            <button class="round-button" pTooltip="Approve Changes" >
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Approve Changes.svg"  (click)="clearFailedReloaded()">
+      
+            </button>
 
       <code-viewer #aceEditor [appComponent]="this" [fileData]="currentFile"
         (selectionChange)="codeSelectionChange($event)"></code-viewer>
     </div>
-    <div class="h100w50 visjs" id="filter" class="filer" [ngStyle]="{'width': setChartWidth()}"
-      [style.display]="filerFullscreen?'none':'inline'" (click)="showNodeEditBox=false">
+    <div class="h100w50 visjs" id="filter" class="filer" [ngStyle]="{'width': setChartWidth()}" [style.display]="filerFullscreen?'none':'inline'" (click)="showNodeEditBox=false">
       <!-- <div id="filer" class="filer"  (click)="showNodeEditBox=false">
      -->
-      <div class="pads dropup" style="pointer-events:auto">
-
-        <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
-          [style]="{'width': '100px','margin': '5px'}"></p-dropdown>
-        <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
-          [style]="{'width': '100px','margin': '5px'}"></p-dropdown>
-      </div>
-      <div id="vis_element" style="height:100%" (click)="clickedChart($event)"></div>
+       <div class="pads dropup" style="pointer-events:auto">
+     
+      <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
+            [style]="{'width': '200px','margin': '5px'}"></p-dropdown>
+            <span>
+       <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
+            [style]="{'width': '160px'}">
+          
+          </p-dropdown>
+          
+      <!-- <button style="border: 1px solid #747575;background-color:#2d2d2d;height: 31.72px;"> -->
+        <span style="border:1px solid #747575;background-color:#2d2d2d;height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -3px;">
+        <img src="./../assets/icons/add.png">
+      </span>
+    
+      <!-- </button> -->
+    </span>
+      </div> 
+      
     </div>
     <!-- <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth()}" [style.display]="filerFullscreen?'none':'inline'">
       <div *ngIf="Options.showFileLegend" class="fixedOnTopOfComponent">
@@ -387,12 +474,12 @@
 
   <input #gb type="text" pInputText placeholder="Search for any text or info in diagram"
     style="width:100%; margin: 10px">
-  <p-dataTable [class]="'everything-tbl'" [globalFilter]="gb" selectionMode="single" expandableRows="true" [rows]="10"
-    [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" (onRowSelect)="onSelectLoadTable($event)"
-    (onFilter)="onLoadTableFilter($event)" [value]="diagramsList">
+  <p-dataTable [class]="'everything-tbl'" [globalFilter]="gb" selectionMode="single" expandableRows="true"
+    [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+    (onRowSelect)="onSelectLoadTable($event)" (onFilter)="onLoadTableFilter($event)" [value]="diagramsList" >
     <p-column expander="true" [style]="{'width': '70px'}"></p-column>
     <p-column [class]="'td'" filterMatchMode="contains" field="story" filter="true" header="story"></p-column>
-    <p-column filterMatchMode="contains" field="description" filter="true" header="Description"></p-column>
+    <p-column filterMatchMode="contains" field="description" filter="true" header="Description" ></p-column>
     <p-column filterMatchMode="contains" field="type" filter="true" header="type"></p-column>
     <p-column filterMatchMode="contains" field="fileNames" filter="true" header="files"></p-column>
     <p-column filterMatchMode="contains" field="projects" filter="true" header="projects"></p-column>
@@ -400,34 +487,34 @@
     <p-column filterMatchMode="contains" field="updatedAt" filter="true" header="updated">
       <ng-template let-col let-item="rowData" pTemplate="body">
         {{item[col.field] | date: 'medium'}}
-      </ng-template>
+    </ng-template>
     </p-column>
     <ng-template let-diagram pTemplate="rowexpansion">
       <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
-        <div class="ui-grid-row">
-          <div class="ui-grid-col-9">
-            <div class="ui-grid ui-grid-responsive ui-grid-pad">
-              <div class="ui-grid-row">
-                <div class="ui-grid-col-2 label">Story: </div>
-                <div class="ui-grid-col-10">{{diagram.story}}</div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-9">
+                  <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-2 label">Story: </div>
+                          <div class="ui-grid-col-10">{{diagram.story}}</div>
+                      </div>
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-2 label">Description: </div>
+                          <div class="ui-grid-col-10">{{diagram.description}}</div>
+                      </div>
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-2 label">files: </div>
+                          <div class="ui-grid-col-10">{{diagram.fileNames}}</div>
+                      </div>
+                      <div class="ui-grid-row">
+                          <div class="ui-grid-col-2 label">projects: </div>
+                          <div class="ui-grid-col-10">{{diagram.projects}}</div>
+                      </div>
+                  </div>
               </div>
-              <div class="ui-grid-row">
-                <div class="ui-grid-col-2 label">Description: </div>
-                <div class="ui-grid-col-10">{{diagram.description}}</div>
-              </div>
-              <div class="ui-grid-row">
-                <div class="ui-grid-col-2 label">files: </div>
-                <div class="ui-grid-col-10">{{diagram.fileNames}}</div>
-              </div>
-              <div class="ui-grid-row">
-                <div class="ui-grid-col-2 label">projects: </div>
-                <div class="ui-grid-col-10">{{diagram.projects}}</div>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
-    </ng-template>
+  </ng-template>
   </p-dataTable>
 </p-dialog>
 
@@ -471,3 +558,17 @@
     <button type="button" (click)="loadFindResults(); showFindResults=false">Display</button>
   </p-footer>
 </p-dialog>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
