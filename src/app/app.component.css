@@ -63,7 +63,8 @@
 }
 
 input {
-    background-color: #4f4f4f;
+    background-color: #2d2d2d;
+    color:#c3c3c3
 }
 
 .max-50 {
@@ -129,7 +130,7 @@ span.seperator {
 .filer {
     display: flex;
     /*height:900px;*/
-    border: 1px solid rgb(51, 51, 51);
+    border: 1px solid #747575;
 }
 
 .filer #bordered {
@@ -147,9 +148,48 @@ span.seperator {
 }
 
 .vertical {
-    border-left: 1px solid lightgray;
+    border-left: 1px solid #747575;
     height: 50px;
 }
+:host::ng-deep .ui-widget-content{
+    background: #4f4f4f;
+    color: #c3c3c3;
+}
+
+:host::ng-deep .ui-dropdown-item{
+  background-color:transparent;
+  color: white;
+}
+:host::ng-deep .ui-dropdown-item:hover{
+  color:#4f4f4f;
+  background-color: white;
+}
+
+
+:host::ng-deep .ui-inputtext {
+  background: #2d2d2d;  
+  color: #c3c3c3;
+  text-overflow: ellipsis;
+
+}
+:host::ng-deep .ui-state-default{
+   background-color: transparent;
+   border: 0px;
+}
+/* :host::ng-deep .ui-dropdown .ui-dropdown-trigger {
+  background: color #c3c3c3;
+} */
+:host::ng-deep .fa-caret-down:before {
+  content: "\f078";
+  color:#c3c3c3;
+}
+.skewed{
+  background-color:black;
+  transform: skewX(-20deg);
+  height: 50px;
+}
+
+
 .round-button {
     min-width: 40px;
     max-width: 80px;
@@ -382,6 +422,7 @@ button.active {
 .pads {
     /* border: 1px solid #333333; */
     background-color: #4f4f4f;
+    height: 49px;
     /* border-radius: 15px; */
 }
 

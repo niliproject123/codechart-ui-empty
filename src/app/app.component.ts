@@ -1,5 +1,5 @@
 ///aaaa///
-import { AutoComplete, DataTableModule } from 'primeng/primeng'
+import { AutoComplete, DataTableModule, Dropdown } from 'primeng/primeng'
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { SearchActions } from './search/search.actions'
@@ -45,8 +45,6 @@ export interface fileLegendItem {
   fileLabel
 }
 
-
-
 import * as $ from 'jquery'
 import { CreateUtils } from './chart/create.utils'
 import { SaveLoad } from './chart/save.load'
@@ -80,6 +78,7 @@ import {
 } from './services/SaveLoadService'
 import { ChartWrapper, EventItem } from './chart/chart.wrapper'
 import { Env } from './utils/Env'
+import { SelectItem } from 'primeng/primeng';
 
 export const Options = {
   printFileNames: false,
@@ -109,6 +108,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('openfileInput') private openfileInput: AutoComplete
   @ViewChild('aceEditor') public codeEditor: CodeViewerComponent
   @ViewChild('searchResultsCodeEditor')
+
   public searchResultsCodeEditor: CodeViewerComponent
   public PositioningOptions = PositioningOptions
 
@@ -175,6 +175,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public lastDiagramLoaded: string = ''
   public
+  cars: SelectItem[];
+
+
+
 
   constructor(
     public http: HttpClient,
@@ -188,8 +192,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.httpInterceptService.setAppComponent(this)
     window['Global_app'] = this
-  }
 
+  }
 
 
   ngAfterViewInit(): void {
@@ -208,10 +212,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         e.stopPropagation();
       });
     }
-
-    let chartElement = document.getElementById('vis_element');
-
-    this.chart.setUp(chartElement);
 
     this.initializeData()
   }
@@ -385,13 +385,30 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ]
 
-
     this.http.get('assets/demo_text.txt', { responseType: 'text' })
       .subscribe(data =>
         this.codeEditor.demoText = (data)
       );
 
-    
+
+    const searchActions = [
+      {
+        action_icon: "Add File Node",
+        action_name: ""
+      }, {
+        action_icon: "Add Comment",
+        action_name: ""
+      }, {
+        action_icon: "Add Task",
+        action_name: ""
+      }, {
+        action_icon: "Add Code node",
+        action_name: ""
+      }, {
+        action_icon: "Link Nodes",
+        action_name: ""
+      }
+    ]
 
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
@@ -421,6 +438,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   zoomOnSelected() {
     console.log('zoomOnSelected')
   }
+
 
   public setFilerWidth() {
     if (!this.filerFullscreen && !this.chartFullscreen) return '50%'
@@ -468,6 +486,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   setSelectedLanguageRegex(value) {
     console.log('SelectedLanguageRegex')
+  }
+  preventClose(event: MouseEvent) {
+    event.stopImmediatePropagation();
+  }
+  CloseDropDown(event: MouseEvent) {
+    event.stopImmediatePropagation();
   }
 
   setSelectedEdgesSize(size) {
