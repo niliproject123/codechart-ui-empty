@@ -1,0 +1,860 @@
+Press J to jump to the feed. Press question mark to learn the rest of the keyboard shortcuts
+Jump to content
+Search
+Log In
+Sign Up
+
+User account menu
+
+1
+
+Angular 6 (TypeScript) read content from file in assets directory
+Homework
+
+Close
+
+1
+
+Posted byu/[deleted]2 years ago
+Angular 6 (TypeScript) read content from file in assets directory
+Homework
+I'm having the darnest time with this. This particular screen I'm working on is supposed to display a string. Okay, cool. That's easy enough. Since the backend isn't written out, I was given a file with the string and told to read from the file (basically mock the call to the backend) but for the life of me, I can't seem to read from the file (sitting in the assets folder) and put the contents into a string to pass to the frontend. This doesn't get me the content (located in a file in the components folder):
+
+`let reader = new FileReader();
+
+let content = reader.readAsText("file://assets/file.txt");`
+
+What am I doing wrong?
+
+7 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+100% Upvoted
+This thread is archived
+New comments cannot be posted and votes cannot be cast
+SORT BY
+
+BEST
+User avatar
+level 1
+npersad
+2 years ago
+Instead of all that, do a http get request:
+
+import { HttpClient } from '@angular/common/http';
+
+// and then:
+this.http.get('assets/test.txt', {responseType: 'text'})
+        .subscribe(data => console.log(data));
+data will be your content
+
+
+2
+
+Share
+Report
+Save
+level 2
+[deleted]
+2 years ago
+I tried that shortly after posting this and got `ERROR Error: Uncaught (in promise): TypeError: Cannot read property 'get' of undefined`
+
+
+1
+
+Share
+Report
+Save
+Continue this thread
+
+View Entire Discussion (7 Comments)
+More posts from the learnprogramming community
+
+2.3k
+
+Posted byu/Wonder_Momoa
+5 days ago
+Silver
+Wow github is actually pretty addicting
+I recently made a github to see what all the fuss was about, I also installed WSL and got used to git. I pushed one project onto github and it just felt so satisfying that I went through all my past projects, cleaned them up, and added them. It makes me want to learn more languages and create more ambitious projects just so I can push them and so I can stare at all my repositories lmao.
+
+148 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+13
+
+PROMOTED•Posted byu/iConsumerCorp
+5 days ago
+How much is your online spending worth? There's lots of ways to get cashback and discounts on expenses, but with iConsumer you don't just get a deal: you get a share of the pie. Download the extension today and get 100 shares
+iConsumer.com
+Sign Up
+0 Comments
+
+Share
+
+Save
+
+2.2k
+
+Posted byu/palpalpalwarp
+4 days ago
+Silver15
+I made a site that randomly generates python practice programs to teach reading fluency (update)
+I've been a programming tutor for about 7 years. From this, I've learned that beginners' writing ability is often heavily limited by their reading ability, so I made a site to randomly generate python programs for the user to read and figure out the output. The quizzes can be customized for your ability level and what topic you want to focus on. I posted it here a while ago and you all seemed to like it, so since then I've made some additions. I've added an account system so that you can sign up to track your scores so that you can tell whether you're getting faster. Before each quiz you'll see your current personal best so that you know what to aim for to beat your record. You'll also see a graph of your progress after each quiz and all of your graphs on your user dashboard.
+
+Here's the link to the control flow exercise: https://trprt.io/python-practice-problems-ifs-loops-control-flow
+
+Let me know if this helps you!
+
+123 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+2.1k
+
+Posted byu/Jimmy_Lib
+3 days ago
+Platinum
+Silver8
+I tried for years to learn programming and never get off the ground. At the beginning of Covid I started to dabble with Game Dev and it all FINALLY clicked. Today I learned that I'll be assigned some custom scripting work at my dayjob (IT Consulting) as a direct result of what I've taught myself.
+TL;DR: Title.
+
+When I tell you I tried for years... I mean YEARS. My first attempt to learn this stuff (basic "Hello World") was in 2010. And for a decade, about every 18 months I'd try again and the effort would always flounder.
+
+There's a different threshold for everyone on what it means to "get it" but for me that feeling was absent time after time.
+
+In an unrelated effort, I decided I wanted to learn Unity and dabble with Indie Game Development. I was originally intending to actively avoid the "coding" part but there just is no way around it when using Unity.
+
+After committing to another attempt to learn this stuff the basic concepts finally started to reveal themselves. I was STUNNED. Learning finally started to happen.
+
+I think for me, the reason is that I had something I was interested in and I could visually see my changes applied (change this number, square get bigger!) ... that really helped for some reason.
+
+Fast forward a bit and I started to look into some more intermediate C# concepts as well as some industry best practices (SOLID Principles and all that).
+
+I still have a lot to learn, but I was able to lightly demonstrate my skills to my day job managers and they were thrilled. Today I found out I'll be on some customer assignments that will allow me to use what I've learned. (This is very exciting for me personally as it will lead to more enjoyable work, work hours and opportunities).
+
+I made a few videos with a bit more detail on exactly why I think I was successful (see my YouTube in my bio) but I'll also try to sum up the points here.
+
+Be humble / Don't be afraid to feel dumb--A lot of times I would close a blog, turn off a video or put down a book not because it didn't have value but because I didn't like how dumb it made me feel. This was stupid... and getting over this really helped me.
+
+Be patient ... I can't express this one enough. You just have to trust me that if you dedicate yourself and learn INTENTIONALLY that the knowledge will accumulate over time. I now know I didn't need game development to teach myself this... I just needed to commit. (It just so happens it was EASIER to commit when I had something I cared about).
+
+Don't judge yourself. There will be days where you just don't get any work done or don't even make it your keyboard. For some reason, the guilt of this sometimes made me feel like I should just give up. I think in the past there was a voice inside me that was saying "If you need a day off after only 4 days of giving this a go... you're not cutout for this." And that was bullshit.
+
+I hope this helps you guys.
+
+EDIT: Humbled and very pleased by the response this has received! It's always good to know others have shared in the same struggles I have and I hope all of us together can grow as a result of the great discussion taking place here. Keep it up!
+
+138 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+1.6k
+
+Posted byu/AlSweigart
+1 day ago
+Gold
+Silver9
+Tutorial
+"Automate the Boring Stuff with Python" online course is free to sign up for the next few days with code APR2021FREE
+https://inventwithpython.com/automateudemy (This link will automatically redirect you to the latest discount code.)
+
+You can also click this link or manually enter the code: APR2021FREE
+
+https://www.udemy.com/course/automate/?couponCode=APR2021FREE
+
+This promo code works until the 4th (I can't extend it past that). Sometimes it takes an hour or so for the code to become active just after I create it, so if it doesn't work, go ahead and try again a while later. I'll change it to APR2021FREE2 in three days.
+
+Udemy has changed their coupon policies, and I'm now only allowed to make 3 coupon codes each month with several restrictions. Hence why each code only lasts 3 days. I won't be able to make codes after this period, but I will be making free codes next month. Meanwhile, the first 15 of the course's 50 videos are free on YouTube.
+
+Frequently Asked Questions: (read this before posting questions)
+
+This course is for beginners and assumes no previous programming experience, but the second half is useful for experienced programmers who want to learn about various third-party Python modules.
+
+If you don't have time to take the course now, that's fine. Signing up gives you lifetime access so you can work on it at your own pace.
+
+This Udemy course covers roughly the same content as the 1st edition book (the book has a little bit more, but all the basics are covered in the online course), which you can read for free online at https://inventwithpython.com
+
+The 2nd edition of Automate the Boring Stuff with Python is free online: https://automatetheboringstuff.com/2e/
+
+I do plan on updating the Udemy course for the second edition, but it'll take a while because I have other book projects I'm working on. Expect that update to happen in mid-2021. If you sign up for this Udemy course, you'll get the updated content automatically once I finish it. It won't be a separate course.
+
+It's totally fine to start on the first edition and then read the second edition later. I'll be writing a blog post to guide first edition readers to the parts of the second edition they should read.
+
+I wrote a blog post to cover what's new in the second edition
+
+You're not too old to learn to code. You don't need to be "good at math" to be good at coding.
+
+Signing up is the first step. Actually finishing the course is the next. :) There are several ways to get/stay motivated. I suggest getting a "gym buddy" to learn with. Check out r/ProgrammingBuddies
+
+78 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+1.5k
+
+Posted byu/COPIUMKING666
+6 days ago
+Silver4
+Topic
+What are some talks every programmer should watch?
+I came across the video below today and it was amazing.
+
+What the heck is the event loop anyway? | Philip Roberts | JSConf EU https://www.youtube.com/watch?v=8aGhZQkoFbQ
+
+Are there any other great videos like this? Please share :)
+
+104 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+926
+
+Posted byu/912827161
+1 day ago
+Silver
+How much code should be done from scratch when you're a newbie (self-taught) looking to build a portfolio to present your work in interviews/potential employers?
+I always read that you don't go around reinventing the wheel. Programming is largely just pulling code that others have already written. Is it okay if none of the projects are completely original?
+
+Am I supposed to be able to be coding entire projects from scratch when first applying to jobs?
+
+Edit : Thanks for giving me your input everyone. I've been reading and thinking through it all all day.
+
+80 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+672
+
+Posted byu/SolidArmPump
+4 days ago
+Silver3
+First year of Computer Science: Rough Start
+I'm in my first year of a computer science degree ( focusing on cybersecurity) and im currently taking computer science 1. I really enjoy the class however I struggle a lot with thinking of the way algorithms work and I feel like most classmates are not struggling as much as me. I feel like I do hours and hours of research and I still have a hard time with homework, projects and quizzes and really stressing about the final exam in a couple weeks. I wanted the opinion of some people that may have been doing this for a while, is it common to have a rough start and is it likely to get better with this? I really enjoy what im learning but I'm just having a hard time starting off and wanted some opinions, thanks!
+
+141 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+654
+
+Posted byu/youngSins
+3 days ago
+Let's learn and teach Data Structures and Algorithms to each other ?
+Basically what I'm asking is -Im trying to learn DS and Algo but it feels like it's not working out. So if possible somebody else also learning. Then we can learn something together and teach it to other person. This will allow to have a better understanding over what we learn and work further on DSA Let me know if you are interested !
+
+106 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+628
+
+Posted byu/Kitchen-Injury-8938
+2 days ago
+Math knowledge required for Algorithms
+I've been coding python for about a year and a half and I think I'm ready to take the next step to algos.
+
+I think I was a little naïve to the background math that would be required. Are there any recommended courses or topics that are really essential for understanding Algo patterns?
+
+
+
+
+
+
+
+Currently reading Python Data Structures and Algos by Benjamin Baka
+
+84 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+399
+
+PROMOTED•Posted byu/JetBrains_official
+8 months ago
+Upgrade to PyCharm, the leading Python IDE: best in class debugging, code navigation, refactoring, support for Django, Flask, Pyramid, Docker, and more.
+jetbrains.com/pycharm
+Learn More
+73 Comments
+
+Share
+
+Save
+
+63
+
+Posted byu/SmilingNeophyte
+4 days ago
+Is Coding Bootcamp the Right Investment For me? Honest Opinions please.
+Hi Reddit Community!
+
+I have been reading a lot of blog posts on coding boot camps and I have not been able to find the right piece that could impart me the necessary kind of wisdom at this point in my career.
+
+And I finally decided to take refuge in God's greatest creation (reddit) after Megan Fox from 2002-present.
+
+A few facts about my background:
+
+29 male in a mid-senior role making 120k (annual) in a sociology-related field (don't ask how i am making six figures doing sociology stuff - i got lucky. In any case, I'm kind of getting bored of my work and want to switch to tech. I have a few startup ideas that will need AI-related coding skills. And i think i am fairly good at picking up new skills at this point in my career.
+
+My risk appetite is medium. Meaning can i quit my job and take the red pill? yes. However, i will need to take money from ya'll as unemployment wages in about 6 months coz that's what my savings would dictate me to do. Yes, we s$ck at saving money.
+
+Coming back. Do i have any coding experience? yes. Why am i suddenly interested in it? I have a lot of ideas I want to try out, but more importantly, I want to switch fields and i am kind of late in the game. So i thought bootcamp would be a deep-dive at a faster rate than burning 100k for a master's program.
+
+
+
+I am hoping to receive some honest advice. Thank you so much!
+
+57 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+32
+
+Posted byu/EepiReddit
+2 days ago
+I created a chatbot in java but it forgets.
+Hello everyone. I made a simple trainable chatbot in java which i am very new to. It is very simple and i can train it but when i close it, it forgets everything. How could i create something where it would remember it? Here is the code:
+
+
+
+
+
+import java.util.*;
+
+
+
+
+
+public class January {
+
+HashMap<String, String> knowledge = new HashMap<String, String>();
+
+
+
+public January()
+
+{
+
+	knowledge.put("hi", "hello");
+
+
+
+}
+
+
+public void answer(String question)
+
+{
+
+	Set<String> keys = knowledge.keySet();
+
+	for (String key : keys)
+
+	{
+
+		String lowerKey = key.toLowerCase();
+
+		String lowerQuestion = question.toLowerCase();
+
+		if (lowerKey.contains(lowerQuestion))
+
+		{
+System.out.println("Bot: " + knowledge.get(key));
+
+return;
+
+		}
+
+	}
+
+	trainMe(question);
+
+}
+
+
+
+public void trainMe(String question)
+
+{
+
+	System.out.println("Bot: idk what to answer");
+
+	System.out.print("User Suggestion: ");
+
+	Scanner sc = new Scanner([System.in](https://System.in));
+
+	String userInput = sc.nextLine();
+
+	knowledge.put(question, userInput);
+
+}
+
+
+}
+
+
+
+
+
+The other class:
+
+
+
+
+
+import java.util.*;
+
+
+
+public class Trainer {
+
+public static void main(String\[\] args)
+
+{
+
+	Scanner sc = new Scanner([System.in](https://System.in));
+
+	String userInput = "";
+
+	January chatbot = new January();
+
+
+
+	while(!userInput.equalsIgnoreCase("stop it"))
+
+	{
+
+		System.out.print("User: ");
+
+		userInput = sc.nextLine();
+
+		chatbot.answer(userInput);
+
+	}
+
+	sc.close();
+
+}
+}
+
+
+
+
+
+I appreciate any help really.
+
+26 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+30
+
+Posted byu/evasiveshag
+3 days ago
+Java vs Python for software engineering?
+I took two computer science courses using Java in high school, as well as 2 Java courses in college. I’m about to transfer to university and have to choose python or Java. My question is which should I take if my end game is software engineering? I heard the python courses are easier and I could add another language to my resume, but python is more used for data science/scripting. I’m super comfortable in Java and only used python like once. Let me know what you all think.
+
+47 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+26
+
+Posted byu/allun11
+1 day ago
+Resource
+My current journey to become a self-taught full-stack developer [Resources and study plan]
+Hope you get some value from this post and best of luck with your coding :) Any feedback or thoughts are appreciated!
+
+Hi there,
+
+I started coding in October last year, so around 6 months ago. I've learned a ton in these 6 months and discovered how much I enjoy coding. It took a while to understand all the different areas to learn, and I have searched for hours for good tutorials and resources and crafting a plan for moving toward the goal of becoming a full-stack developer. I though I could share the resources I've learned from and appreciated, for someone being in the same position in the beginning of their coding career.
+
+Some background on my goals for you to relate on how relevant the study plan is for you
+
+Taking on the path to becoming a full-stack developer is not something you can just do in a couple of months, but require a long-term commitment. My current is to be able to search for a job when I've got around 14 months of experience (I'm studying around 50 % pace and working the other half)
+
+The first goal is to master back-end and front-end enough to be able to get a job in web development, and from that I want to develop in the areas of algorithms and AI. I've separated my learning into four sections that build on top of the previous one:
+
+Learn basic programming-thinking
+
+Learn practical implementation and tools for web development
+
+Learn needed math and algorithm thinking
+
+Learn practical AI implementation
+
+These are the resources that I've used/planning to use in each episode:
+1) Learn basic programming-thinking
+
+Here I've finished the course CS50x from Harvard, a free course that's one of the best courses I've ever taken (including all the courses leading up to my master degree in business...). It's challenging and you will get a good start on learning to think like a programmer. It took me around 4 months to finish.
+
+https://online-learning.harvard.edu/course/cs50-introduction-computer-science?delta=0
+
+For the final project I maybe overdid it a bit and built an app in NodeJS, where I found a great tutorial by Traversy Media that worked as an inspiration:
+
+https://www.youtube.com/watch?v=SBvmnHTQIPY&ab_channel=TraversyMedia
+
+To complement the knowledge needed for the final project I took the following two great courses by Anthony Alicea. They are a bit old but still very much valuable.
+
+https://www.udemy.com/course/understand-javascript/
+
+https://www.udemy.com/course/understand-nodejs/
+
+2) Learn practical implementation and tools for web development
+
+The final project from CS50x actually was kind of a bridge over to step 2. After I finished CS50 I continued with CS50 Web development, which I'm currently enrolled in, planning to finish in a couple of months.
+
+https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript?delta=0
+
+For the final project I'm planning to build an app in React and Django, I'm currently enrolled in the following course with Stephen Grider which is really good at teaching React:
+
+https://www.udemy.com/course/react-redux/
+
+And I'm planning to go through the following tutorial, again with Traversy Media to get an understanding of how to integrate React and Django:
+
+https://www.youtube.com/watch?v=Uyei2iDA4Hs&ab_channel=TraversyMedia
+
+After finishing up to here, and working a bit on my portfolio and developing my personal projects, I believe I can be ready to apply for a full-stack position at a start-up. Not at one of the Big Tech companies (Google, Facebook, Amazon, etc) but that's not really my ambition right now, so that's fine.
+
+Goal to achieved at this point (around 14 months in): Getting hired as a full-stack developer in a start-up
+
+3) Learn needed math and algorithm thinking
+
+Next step is to get into learning the algorithmic thinking, which was covered a bit in CS50x, but to get much deeper into the subject and really understand it. The following course in discrete mathematics and algorithms I found has been recommended to me on this sub and have really good reviews. I estimate that this full step will take between 9-12 months and will hopefully be done alongside having a job a web developer.
+
+https://www.coursera.org/specializations/discrete-mathematics
+
+https://www.coursera.org/specializations/data-structures-algorithms?aid=true
+
+4) Learn practical AI implementation
+
+Learning AI and machine learning to implement the knowledge from step 3. I'm planning to enroll in CS50 AI course which can be found here:
+
+https://online-learning.harvard.edu/course/cs50s-introduction-artificial-intelligence-python?delta=0
+
+Goal to be achieved at this point (around 24 months in): Having a good understanding of web development and AI and looking at prospects of starting my own business in the field.
+
+16 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+26
+
+Posted byu/Dealiono
+6 days ago
+Resource
+Best podcast for programmers
+Anyone have a good recommendation for a podcast for beginners that isn’t to complicated? Doesn’t have to be a podcast where you learn how to program, could also be just talking about programming. 🧐
+
+25 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+23
+
+Posted byu/EmanuelRose
+4 days ago
+Should I continue learning Python?
+Hi everyone! Im 28, and for the last year or so i've been learning Python on my own. I have done some proyects following guides and then started creating some of my own mainly with Flask (using Bootstrap templates) or pyQT and basic databases. Recently a friend told me to stop working on backend and start learning JS and Java and its frameworks, because its gonna be more usefull in the future when i try to get a job/produce better apps.
+
+So basically, should i keep diving in Python (i feel i have SO much to learn still) or should i stop now and start from scratch with Java?
+
+Sorry if this been asked a million times! I guess its normal to feel lost in this huge world of programming right?
+
+17 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+22
+
+Posted byu/OstGeneralen
+5 days ago
+Tutorial
+Hello all of you learning C++, let's talk about lambdas
+One of the things I've noticed when looking at the questions/comments that are posted here as well as when I recently visited my old University is that lambdas seem to be an area that is often considered magic.
+
+When I say magic here, I mean that as in:
+
+I know how to use it, but I don't know how it works or exactly what it is.
+
+My aim with this post is to hopefully help you understand lambdas in C++ a bit better.
+
+I've made some assumptions that you already know a bit about lambdas, references and pointers. If you're reading this and feel lost at any point, let me know and I'll edit this to cover that too (or just answer as a reply if I feel like it might not fit into the post itself). There are no stupid questions.
+
+Using a struct in a lambda-like way
+If we have a lambda like this one:
+
+auto AddLambda = []( int X, int Y ){ return X + Y; };
+int AddResult = AddLambda( 10, 4 ); // AddResult == 14
+We could write that as our own struct/class that looks like this:
+
+struct SAddStruct
+{
+    int operator()( int X, int Y )
+    {
+        return X + Y;
+    }
+};
+
+SAddStruct Add;
+int AddResult = Add( 10, 4 ); // AddResult == 14
+We simply overload the () operator (the function call operator) to do what we want it to do. Now we can use it exactly like we did with our lambda!
+
+The good news
+Here's the really good news. Our struct in the previous example is basically equivalent to our lambda.
+
+This is going to be a bit technical, but bear with me, I'll try to explain as we go along.
+
+Let's use our friend Compiler Explorer to have a look at what the assembly for the lambda example looks like. I'm using x64 msvc v19.latest in case you want to have a look at this example yourself.
+
+We're only really interested in one line:
+
+call    <lambda_76e998ccba6e4d701d580fe921242341>::operator()(int,int)const
+Okay, cool. Now let's see what that line looks like for our struct example:
+
+call    int SAddStruct::operator()(int,int)
+They look rather similar don't they? That's because they are. The lambda we created is really just a shorthand way of generating a type which has an overloaded function call operator that looks like how we defined our lambda.
+
+In our case, msvc named that type lambda_76e998ccba6e4d701d580fe921242341 while we named ours SAddStruct. This is why we store lambdas using auto, we can't know the type, only the signature of its function call operator. It's up to the build process to generate the type.
+
+So what about captures?
+Yes, right. You can capture data in lambdas like this:
+
+int X = 5;
+auto AddLambda = [X]( int Y ){ return X + Y; };
+int AddResult = AddLambda( 10 ); // AddResult == 15
+Some of you may have already guessed this, but this would be the equivalent of making our struct like this:
+
+struct SAddStruct
+{
+    SAddStruct( int XVal )
+        : X( XVal )
+    {
+    }
+
+    int operator()( int Y )
+    {
+        return X + Y;
+    }
+
+private:
+    int X;
+}
+
+int X = 5;
+SAddStruct Add( X );
+int AddResult = Add( 10 ); // AddResult == 15
+If you instead capture like this:
+
+int X = 5;
+auto AddLambda = [&X]( int Y ){ return X + Y; };
+That just means we'll have to change our struct to look like this:
+
+struct SAddStruct
+{
+    SAddStruct( int& XRef )
+        : X( XRef )
+    {
+    }
+
+    int operator()( int Y ) // Unchanged
+
+private:
+    int& X;
+}
+But what about the [&] capture?
+So, at any point you write a lambda like:
+
+int X = 5;
+auto AddLambda = [&]( int Y ) { return X + Y; };
+All you're really saying is
+
+Capture all that I need as reference automatically.
+
+That means that this is the exact same as our previous example for a capture.
+
+If you're accessing a member or function from the type you create the lambda in, it will also capture the this pointer to the object. You're also capturing the this pointer obviously if you capture like so: [this].
+
+Be careful when capturing members or the pointer to the object since now that lambda is dependent on the life time of said object!
+
+Summary
+Lambdas are just types generated at build time which implements the call operator as you defined the lambda.
+
+You can now hopefully reason some more about what the size of any lambda type will be (what's the size of the equivalent struct?)
+
+Don't be scared of using lambdas, they don't add much (if any) additional runtime overhead compared to your own types.
+
+I've simplified some things in this example, so I still definitely recommend doing some more reading about lambdas on your own time.
+
+Bonus
+If you have a lambda with no captures, it can be implicitly converted to a traditional function pointer:
+
+int(*AddFuncPtr)( int, int ) = []( int X, int Y ){ return X + Y; };
+This might come in handy at times.
+
+For more clarity however, I strongly recommend using the STL function type.
+
+#include <functional>
+
+std::function< int( int, int ) > F;
+F = []( int X, int Y ){ return X + Y; };
+std::function<> also allows being assigned lambdas that do have captures.
+
+6 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+
+22
+
+Posted byu/veriteeternelle
+6 days ago
+C# or Java ?
+I decided to enroll on a local programming bootcamp in my city, outside USA. Only two options are possible, 1).NET and C# or 2)Java & Android. Which one do you suggest me to join in terms of job opportunities and their overall usability? Thank you.
+
+34 Comments
+
+Share
+
+Save
+
+Hide
+
+Report
+Continue browsing in r/learnprogramming
+r/learnprogramming
+A subreddit for all questions related to programming in any language.
+2.1m
+Members
+2.3k
+Online
+Created Sep 24, 2009
+Join
+
+
+
+TOP POSTS AUGUST 14TH 2018
+TOP POSTS OF AUGUST, 2018
+TOP POSTS 2018
+
+Help
+Reddit App
+Reddit Coins
+Reddit Premium
+Reddit Gifts
+About
+Careers
+Press
+Advertise
+Blog
+Terms
+Content Policy
+Privacy Policy
+Mod Policy
+Reddit Inc © 2021. All rights reserved
+Back to Top
+
+
