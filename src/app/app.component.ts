@@ -1,5 +1,5 @@
 ///aaaa///
-import { AutoComplete, DataTableModule } from 'primeng/primeng'
+import { AutoComplete, DataTableModule, Dropdown } from 'primeng/primeng'
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { SearchActions } from './search/search.actions'
@@ -107,6 +107,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     @ViewChild('openfileInput') private openfileInput: AutoComplete
     @ViewChild('aceEditor') public codeEditor: CodeViewerComponent
     @ViewChild('searchResultsCodeEditor')
+   
     public searchResultsCodeEditor: CodeViewerComponent
     public PositioningOptions = PositioningOptions
 
@@ -175,9 +176,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public
     cars: SelectItem[];
 
-    selectedCar: string;
-
-    selectedCar2: string = 'BMW';
+    
        
     
     constructor(
@@ -192,19 +191,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this.httpInterceptService.setAppComponent(this)
         window['Global_app'] = this
-
-        this.cars = [
-          {label: 'Audi', value: 'Audi'},
-          {label: 'BMW', value: 'BMW'},
-          {label: 'Fiat', value: 'Fiat'},
-          {label: 'Ford', value: 'Ford'},
-          {label: 'Honda', value: 'Honda'},
-          {label: 'Jaguar', value: 'Jaguar'},
-          {label: 'Mercedes', value: 'Mercedes'},
-          {label: 'Renault', value: 'Renault'},
-          {label: 'VW', value: 'VW'},
-          {label: 'Volvo', value: 'Volvo'}
-      ];
+        
     }
 
 
@@ -396,6 +383,24 @@ export class AppComponent implements OnInit, AfterViewInit {
         ]
       }
     ]
+    const searchActions = [
+       {
+         action_icon:"Add File Node",
+         action_name:""
+       },{
+        action_icon:"Add Comment",
+        action_name:""
+      },{
+        action_icon:"Add Task",
+        action_name:""
+      },{
+        action_icon:"Add Code node",
+        action_name:""
+      },{
+        action_icon:"Link Nodes",
+        action_name:""
+      }
+    ]
 
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
@@ -426,6 +431,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('zoomOnSelected')
     }
 
+    
   public setFilerWidth() {
     if (!this.filerFullscreen && !this.chartFullscreen) return '50%'
     if (this.filerFullscreen) return '100%'
@@ -472,6 +478,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     setSelectedLanguageRegex(value){
       console.log('SelectedLanguageRegex')
+    }
+    preventClose(event: MouseEvent) {
+      event.stopImmediatePropagation();
+      }
+    CloseDropDown(event: MouseEvent) {
+        event.stopImmediatePropagation();
     }
 
     setSelectedEdgesSize(size) {

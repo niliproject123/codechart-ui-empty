@@ -3,7 +3,7 @@
     (keyup)="setTitle($event)"></textarea>
   <node-styling [appComponent]="this"></node-styling>
 </div>
-<div class="main">
+<div class="main" >
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
     <div generalActions class="generalActions pads max-50" style="pointer-events:auto">
       
@@ -20,10 +20,32 @@
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
       
         <div class="element">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
-      
+          <!-- <div class="dropdown show"> -->
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:250px">
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
+                Get File Node</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg">
+                Replace Node</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg">
+                Search Folder</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg">
+                Search File</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg">
+                  Search Content</a></li>
+                  <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg">
+                    Create Match</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li style="text-align: center;margin-top: -10px;">
+                    <i class="fa fa-angle-up"></i>
+                  </li>
+            </ul>
+         <!-- </div> -->
+          
         </div>
       </button>
+     
+  
       
        
        <div class="vertical"></div>
@@ -31,7 +53,25 @@
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
       
         <div class="element">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+          <div class="dropdown show">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:210px">
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg">
+                Add File Node</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg">
+                Add Comment</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg">
+                Add Task</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg">
+                Add Code Node</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
+                  Link Nodes</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li style="text-align: center;margin-top: -10px;">
+                    <i class="fa fa-angle-up"></i>
+                  </li>
+            </ul>
+         </div>
       
         </div>
       </button>
@@ -232,10 +272,13 @@
       </div>
       <div class="pads dropup" style="pointer-events:auto">
         <span>
-          <p-dropdown wtf [options]="paths" (click)="pathDropdownClick($event)"
+          <p-dropdown wtf  [options]="paths" (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '500px','margin': '5px'}">
+            
           </p-dropdown>
         </span>
+
+
         <input placeholder='file pattern' type="text" [(ngModel)]="searchObject.filenamePattern"
           style="width: 150px;margin: 5px;" />
         <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
@@ -283,36 +326,44 @@
         </button>
 
         <button class="skewed">
+          
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
   
         </button>
         
         <button class="round-button" pTooltip="Save Options" >
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg"> 
-  
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:240px">
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Download to Cloud.svg">
+                Download/Save</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg">
+                Load</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Download.svg">
+                  Download</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Upload.svg">
+                Upload</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Import.svg">
+                Import</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Export.svg">
+                  Export</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li style="text-align: center;margin-top: -10px;">
+                    <i class="fa fa-angle-up"></i>
+                  </li>
+            </ul>
+      
         </button>
          
-   
-        
-
-        
-         
-      
-     
-         <span>
+      <span>
           <p-dropdown [options]="paths" (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '200px','margin': '5px'}" class="p-inputtext-sm">
+            
           </p-dropdown>
-        </span>
-        <!-- <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" [style]="{'width':'150px'}" filter="filter">
-          <ng-template let-car pTemplate="item">
-              <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-                   <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;position:absolute;top:1px;left:5px"/>s
-                  <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
-              </div>
-          </ng-template>
-      </p-dropdown> -->
 
+        </span>
+        
+        
 
            <span class="form-horizontal">
             <input type="text" name="..." 
@@ -332,22 +383,32 @@
   
           
 
-            <!-- <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name"
-  placeholder="Select a Country">
-  <ng-template pTemplate="selectedItem">
-    <div class="country-item country-item-value" *ngIf="selectedCountry">
-      <div>{{selectedCountry.name}}</div>
-    </div>
-  </ng-template>
-  <ng-template let-country pTemplate="item">
-    <div class="country-item">
-      <div>{{country.name}}</div>
-    </div>
-  </ng-template>
-</p-dropdown> -->
+         
          
             <button style="border-left: 1px solid #747575;border-right: 1px solid #747575;border-bottom: 0px;border-top: 0px;background-color: transparent;" config type="button" data-toggle="dropdown" pTooltip="View Settings" >
-              <img  src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg" >
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:280px">
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg">
+                Show Files</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg">
+                  Show Labels</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg">
+                Overlay</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Show Lines.svg">
+                  Show Lines</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg">
+                Show Range</a></li>
+              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg">
+                Light Theme</a></li>
+                <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg">
+                  Horizantal</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li style="text-align: center;margin-top: -10px;">
+                    <i class="fa fa-angle-up"></i>
+                  </li>
+            </ul>
+      
             </button>
               
             <ul class="dropdown-menu">
@@ -409,7 +470,7 @@
       <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
             [style]="{'width': '200px','margin': '5px'}"></p-dropdown>
             <span>
-       <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
+           <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
             [style]="{'width': '160px'}">
           
           </p-dropdown>
