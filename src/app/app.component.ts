@@ -213,6 +213,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     }
 
+    let chartElement = document.getElementById('vis_element');
+
+    this.chart.setUp(chartElement);
+
     this.initializeData()
   }
 
