@@ -2,16 +2,14 @@
   <textarea *ngIf="selectedNode" id='nodeTitleInput' [ngModel]="selectedNode?.label"
     (keyup)="setTitle($event)"></textarea>
   <node-styling [appComponent]="this"></node-styling>
+ 
 </div>
 <div class="main">
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
     <div generalActions class="generalActions pads max-50" style="pointer-events:auto">
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
       <button class="round-button">
         <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
 
@@ -24,57 +22,10 @@
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
 
         <div class="element">
-<<<<<<< HEAD
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:250px">
-              <li style="margin-left: 10px;margin-right: 10px;"  (click)="openFileVisible=true"><a href="#"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
-                Get File Node</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;" (click)="Options.replaceClickedWithSelection = !Options.replaceClickedWithSelection"
-              [ngClass]="{'active': Options.replaceClickedWithSelection}"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg">
-=======
-          <!-- <div class="dropdown show"> -->
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg" class="dropdown-toggle"
-            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <ul class="dropdown-menu" (click)="preventClose($event)"
-            style="background-color: #4f4f4f;width: 180px;height:250px">
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
-                Get File Node</a></li>
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg">
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
-                Replace Node</a></li>
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg">
-                Search Folder</a></li>
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg">
-                Search File</a></li>
-<<<<<<< HEAD
-                <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg">
-                  Search Content</a></li>
-                  <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg">
-                    Create Match</a></li>
-                  <div class="dropdown-divider"></div>
-                  <li style="text-align: center;margin-top: -10px;">
-                    <i class="fa fa-angle-up"></i>
-                  </li>
-            </ul>
-=======
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg">
-                Search Content</a></li>
-            <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                  src="./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg">
-                Create Match</a></li>
-            <div class="dropdown-divider"></div>
-            <li style="text-align: center;margin-top: -10px;">
-              <i class="fa fa-angle-up"></i>
-            </li>
-          </ul>
-          <!-- </div> -->
+            <app-dropdown [options]="view_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+     
+            </app-dropdown>
 
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
         </div>
       </button>
 
@@ -87,45 +38,16 @@
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
 
         <div class="element">
-          <div class="dropdown show">
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg" class="dropdown-toggle"
-              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <ul class="dropdown-menu" (click)="preventClose($event)"
-              style="background-color: #4f4f4f;width: 180px;height:210px">
-              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                    src="./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg">
-                  Add File Node</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                    src="./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg">
-                  Add Comment</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                    src="./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg">
-                  Add Task</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                    src="./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg">
-                  Add Code Node</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                    src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
-                  Link Nodes</a></li>
-              <div class="dropdown-divider"></div>
-              <li style="text-align: center;margin-top: -10px;">
-                <i class="fa fa-angle-up"></i>
-              </li>
-            </ul>
-<<<<<<< HEAD
-         </div>
-        </div>
-      </button>
-      <div class="vertical"></div>
-=======
-          </div>
+            <app-dropdown [options]="diagram_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+     
+            </app-dropdown>
+          
 
         </div>
       </button>
       <div class="vertical"></div>
 
 
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
       <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
         <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" pTooltip="Add to Top"
@@ -135,13 +57,6 @@
             style="margin-top: -15px;">
         </div>
         <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
-<<<<<<< HEAD
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg"  pTooltip="Add to Left" style="margin-top: 20px;">
-        </div>
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg"  pTooltip="Add to Right" style="margin-left: 5px;margin-top: 20px;">
-       </div>
-      <div class = "vertical"></div>
-=======
           <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" pTooltip="Add to Left"
             style="margin-top: 20px;">
 
@@ -153,31 +68,17 @@
       </div>
       <div class="vertical"></div>
 
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
       <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
       </button>
-<<<<<<< HEAD
-      <button class="round-button"  pTooltip="Clear">
-=======
       <button class="round-button" pTooltip="undo" (click)="undo()">
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
       </button>
 
       <button class="round-button" pTooltip="Clear">
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
         <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
 
       </button>
-<<<<<<< HEAD
-      <div class = "vertical"></div>
-     
-        <button class="round-button"  pTooltip="Edit Diagram" (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
-        </button>
-        
-        <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
-=======
       <div class="vertical"></div>
 
       <button class="round-button" pTooltip="Edit Diagram"
@@ -188,7 +89,6 @@
 
 
       <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
             class="fa fa-paint-brush" aria-hidden="true"></i>
           <span class="caret"></span>
         </button> -->
@@ -352,7 +252,7 @@
           <p-dropdown wtf [options]="paths" (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '500px','margin': '5px'}">
 
-          </p-dropdown>
+          </p-dropdown> 
         </span>
 
 
@@ -397,47 +297,6 @@
     <div id="bordered" [ngStyle]="{'width': setFilerWidth()}" [style.display]="chartFullscreen?'none':'inline'">
 
 
-<<<<<<< HEAD
-        <button class="skewed">
-          
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
-  
-        </button>
-        
-        <button class="round-button" pTooltip="Save Options" >
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg" class="dropdown-toggle" id="dropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-             <ul class="dropdown-menu" (click)="preventClose($event)"   style="background-color: #4f4f4f;width: 180px;height:240px">
-              <li style="margin-left: 10px;margin-right: 10px;"><a   (click)="saveJsonVisible = true"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Download to Cloud.svg">
-                Download/Save</a></li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a   (click)="loadDiagramsTable()" style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg">
-                Load</a></li>
-                <li style="margin-left: 10px;margin-right: 10px;"><a  (click)="saveJsonVisible = true"  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Download.svg">
-                  Download</a></li>
-                  <li style="margin-left: 10px;margin-right: 10px;" pTooltip="upload diagram">
-            
-                  <a pTooltip="upload diagram" (click)="diagramsLoadDialog = true"><label style="margin: 0px;color: #c3c3c3;">
-                    <img src="./../assets/icons/svg/CodeChart_Web_Icons__Upload.svg">
-                    Upload
-                    <!-- <i
-                    class="fa fa-upload" aria-hidden="true"> -->
-                    <input id='fileLoadInput' type="file" (change)="loadFromFile($event)" />
-                  <!-- </i> -->
-                </label></a>
-                </li>
-              <li style="margin-left: 10px;margin-right: 10px;"><a  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Import.svg">
-                Import</a></li>
-                <li style="margin-left: 10px;margin-right: 10px;"><a  style="color: #c3c3c3;"><img src="./../assets/icons/svg/CodeChart_Web_Icons__Export.svg">
-                  Export</a></li>
-                  <div class="dropdown-divider"></div>
-                  <li style="text-align: center;margin-top: -10px;">
-                    <i class="fa fa-angle-up"></i>
-                  </li>
-            </ul>
-      
-        </button>
-         
-=======
 
       <button class="round-button">
         <i class="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
@@ -482,12 +341,12 @@
 
       </button>
 
->>>>>>> db9945fea9e5c8f6c390cd445df5f8a3e07c682f
       <span>
-        <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
+         <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
           [filter]="true" [style]="{'width': '200px','margin': '5px'}" class="p-inputtext-sm">
 
-        </p-dropdown>
+        </p-dropdown> 
+        
 
       </span>
 
@@ -507,42 +366,22 @@
 
 
 
+     
+
 
 
       <button
         style="border-left: 1px solid #747575;border-right: 1px solid #747575;border-bottom: 0px;border-top: 0px;background-color: transparent;"
-        config type="button" data-toggle="dropdown" pTooltip="View Settings">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg" class="dropdown-toggle"
-          id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        pTooltip="View Settings">
+      
+        <app-dropdown [options]="view_settings" icon="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg">
+     
+        </app-dropdown>
+        
 
-        <ul class="dropdown-menu" (click)="preventClose($event)"
-          style="background-color: #4f4f4f;width: 180px;height:280px">
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg">
-              Show Files</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg">
-              Show Labels</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg">
-              Overlay</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Show Lines.svg">
-              Show Lines</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg">
-              Show Range</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg">
-              Light Theme</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: #c3c3c3;"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg">
-              Horizantal</a></li>
-          <div class="dropdown-divider"></div>
-          <li style="text-align: center;margin-top: -10px;">
-            <i class="fa fa-angle-up"></i>
-          </li>
-        </ul>
+      
+         
+        
 
       </button>
 
@@ -602,7 +441,7 @@
       <!-- <div id="filer" class="filer"  (click)="showNodeEditBox=false">
      -->
       <div class="pads dropup" style="pointer-events:auto">
-
+       
         <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
           [style]="{'width': '200px','margin': '5px'}"></p-dropdown>
         <span>

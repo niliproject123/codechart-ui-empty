@@ -1,6 +1,6 @@
 ///aaaa///
 import { AutoComplete, DataTableModule, Dropdown } from 'primeng/primeng'
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core'
+import { Component, OnInit, AfterViewInit, ViewChild,HostListener } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { SearchActions } from './search/search.actions'
 import {
@@ -175,11 +175,25 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public lastDiagramLoaded: string = ''
   public
-  cars: SelectItem[];
+  
+  view_settings = [];
+  view_actions = [];
+  diagram_actions = [];
+  users = []
+  selectedUser: User = null;
 
-
-
-
+  // config = {
+    
+  //   displayKey: "name", //if objects array passed which key to be displayed defaults to description
+  //   search: true, //true/false for the search functionlity defaults to false,
+  //   height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+  //   placeholder: "Select items", // text to be displayed when no item is selected defaults to Select,
+  //   //customComparator: () => {}, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+  //   //limitTo: 2 // a number thats limits the no of options displayed in the UI similar to angular's limitTo pipe
+  //   //moreText: "more items", // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+  //   noResultsFound: "No results found yet!", // text to be displayed when no items are found while searching
+  //   searchPlaceholder: "Search Element" // label thats displayed in search input
+  // };
   constructor(
     public http: HttpClient,
     private jsonPipe: JsonPipe,
@@ -397,26 +411,93 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     const searchActions = [
       {
-        action_icon: "Add File Node",
-        action_name: ""
+        name: "Get File Node",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg",
+        actions:""
       }, {
-        action_icon: "Add Comment",
-        action_name: ""
+        name: " Replace Node",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg",
+        actions:""
       }, {
-        action_icon: "Add Task",
-        action_name: ""
+        name: "Search Folder",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg",
+        actions:""
       }, {
-        action_icon: "Add Code node",
-        action_name: ""
+        name: "Search File",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg",
+        actions:""
       }, {
-        action_icon: "Link Nodes",
-        action_name: ""
+        name: "Search Content",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg",
+        actions:""
+      }, {
+        name: "Create Match",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg",
+        actions:""
       }
-    ]
+    ];
+    
+    const diagramActions = [
+      {
+        name: "Add File Node",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg",
+        actions:""
+      }, {
+        name: "Add Comment",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg",
+        actions:""
+      }, {
+        name: "Add Task",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg",
+        actions:""
+      }, {
+        name: "Add Code node",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg",
+        actions:""
+      }, {
+        name: "Link Nodes",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg",
+        actions:""
+      }
+    ];
+    
+    const viewSettings = [
+      {
+        name: "Show Files",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg",
+        actions:""
+      }, {
+        name: "Show Labels",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg",
+        actions:""
+      }, {
+        name: "Overlay",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg",
+        actions:""
+      }, {
+        name: "Show Range",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg",
+        actions:""
+      }, {
+        name: "Light Theme",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg",
+        actions:""
+      },{
+        name:"horizantal",
+        icon:"./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
+        actions:""
+      }
+    ];
 
     this.paths = paths.paths.map(i => {
       return { label: i, value: i };
     });
+
+    this.diagram_actions = diagramActions
+    
+    this.view_settings = viewSettings
+
+    this.view_actions = searchActions
 
     this.languageRegexes = languages
     this.selectedLanguageRegexes = this.languageRegexes[0].searchOptions
@@ -426,6 +507,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.filesInLegend = [{ "fileNodeId": "\\dev19\\etl-experiments\\statefulset.yaml", "color": "#F73C3C", "fileLabel": "\\statefulset.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\svc.yaml", "color": "#EEEE08", "fileLabel": "\\svc.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\headless-svc.yaml", "color": "#A31AFE", "fileLabel": "\\headless-svc.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\configmap.yaml", "color": "#57FE2D", "fileLabel": "\\configmap.yaml" }, { "fileNodeId": "User Created File_1610281545306", "color": "#12CFFE", "fileLabel": "Spark\nworker" }, { "fileNodeId": "User Created File_1610281629560", "color": "#12CFFE", "fileLabel": "Spark Master" }, { "fileNodeId": "User Created File_1611493911787", "color": "#FD9F16", "fileLabel": "spark configuration" }, { "fileNodeId": "User Created File_1611494059082", "color": "#FD9F16", "fileLabel": "worker docker file" }, { "fileNodeId": "dev19\\etl-experiments\\values.yml", "color": "#FD9F16", "fileLabel": "\\values.yml" }, { "fileNodeId": "pom.xml", "color": "#B68D40", "fileLabel": "pom.xml" }]
   }
+
 
   public get searchObject(): SearchObject {
     return this._searchJson
@@ -492,11 +574,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log('SelectedLanguageRegex')
   }
   preventClose(event: MouseEvent) {
-    event.stopImmediatePropagation();
+    // event.stopPropagation()
+    // event.preventDefault()
+    // console.log("wc for prevent")
+   
   }
-  CloseDropDown(event: MouseEvent) {
-    event.stopImmediatePropagation();
-  }
+ 
 
   setSelectedEdgesSize(size) {
     console.log('setSelectedEdgesSize')
@@ -592,9 +675,30 @@ export class AppComponent implements OnInit, AfterViewInit {
   public setRectangleAroundFile_new() {
     console.log('setRectangleAroundFile_new')
   }
+  types= [
+    {
+        "id": "1",
+        "value": "Type 1"
+    },
+    {
+         "id": "2",
+         "value": "Type 2"
+    },
+    {
+          "id": "3",
+          "value": "Type 3"
+    }];
 
   ngOnInit(): void {
     console.log('ngOnInit')
+    const defaultUser = new User('1', 'User 1', '111 Lane St')
+
+    this.users.push(defaultUser)
+    this.users.push(new User('2', 'User 2', '222 Lane St'))
+    this.users.push(new User('3', 'User 3', '333 Lane St'))
+    this.users.push(new User('4', 'User 4', '444 Lane St'))
+
+    this.selectedUser = defaultUser
   }
 
   public codeSelectionChange(event: Ace.Selection) {
@@ -802,5 +906,23 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   clearFailedReloaded() {
     console.log('clearFailedReloaded')
+  }
+  onUserChange(event) {
+    console.log('onUserChange', event.target.value)
+  }
+}
+
+
+
+
+export class User {
+  id: string;
+  name: string;
+  address: string;
+
+  constructor(id, name, address) {
+    this.id = id,
+    this.name = name;
+    this.address = address;
   }
 }

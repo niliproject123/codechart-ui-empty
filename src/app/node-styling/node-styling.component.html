@@ -1,4 +1,6 @@
-<div class="pads" style="padding: 10px;">
+
+<div class="pads" style="padding: 10px;width: 300px;">
+  <textarea placeholder="textbox" style="width: 100%;height: 75px;background-color: #c3c3c3;border-radius: 5px;"></textarea>
   <div style="display: flex;">
     <span class="tab" style="border-right: 1px solid #333333" [ngClass]="stylingType===StylingTypes.edge ? 'active' : 'inactive'" (click)="changeType($event, StylingTypes.edge)">Edge</span>
     <span class="tab" [ngClass]="stylingType===StylingTypes.node ?  'active' : 'inactive'" (click)="changeType($event, StylingTypes.node)">Node</span>
@@ -6,44 +8,45 @@
   <div *ngIf="stylingType==StylingTypes.node">
     <ul class="pads_ul">
       <li>
-            <span>
+            <span style="background-color: #c3c3c3;width: 100%;height:auto;margin-top: 5px;margin-bottom: 5px;">
                <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{
                  'background-color':style.background, 'border-color': style.border
                 }"
                      (click)="appComponent.setSelectionNodeStyle(style)">
-            </span>
+               </span>
+               
             </span>
       </li>
-      <li>
+      <!-- <li>
         <button *ngFor="let image of appComponent.allNodeImages" [style.background]="'url('+ image.path +')'"
                 class="imageButton" (click)="appComponent.setSelectionImage(image.path)" [style.backgroundSize]="'80%'"
                 [style.backgroundPosition]="'center'" [style.backgroundRepeat]="'no-repeat'"
                 pTooltip="{{image.name}}"></button>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <button *ngFor="let shape of appComponent.nodeShapes" class="imageButton" [ngClass]="shape.faClass"
                 (click)="appComponent.setSelectionShape(shape.visShape)" pTooltip="{{shape.visShape}}"></button>
-      </li>
-      <li class="column">
+      </li> -->
+       <li class="column">
         <div>
           <div class="title">Node size:</div>
           <span *ngFor="let size of sizes; let indexOf = index">
-               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','border-radius':'5px','height':'30px','width':'40px'}"
                        (click)="appComponent.setSelectedNodesSize(size)"> {{size}} </button>
                </span>
           <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
-                 (keyup)="appComponent.setSelectedNodesSize($event.target.value)" style="width: 40px"/>
+                 (keyup)="appComponent.setSelectedNodesSize($event.target.value)" style="width: 40px;margin-top: 0px;"/>
         </div>
         <div>
           <div class="title">Font size:</div>
           <span *ngFor="let size of sizes; let indexOf = index">
-               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','border-radius':'5px','height':'30px','width':'40px'}"
                        (click)="appComponent.setSelectedNodesFontSize(size)"> {{size}} </button>
                </span>
           <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
                  (keyup)="appComponent.setSelectedNodesFontSize($event.target.value)" style="width: 40px"/>
         </div>
-      </li>
+      </li> 
       <li>
             <span>
             <button (click)="appComponent.showHideFile()">Hide/Show File</button>
@@ -100,5 +103,5 @@
         <input placeholder='length' type="text" (keyup)="appComponent.setSelectedEdgesLength($event.target.value)" style="width: 60px"/>
       </li>
     </ul>
-  </div>
+  </div> 
 </div>

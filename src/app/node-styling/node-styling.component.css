@@ -1,13 +1,17 @@
 .colorpick {
-  margin: 1px;
   cursor: pointer;
   padding-left: 10px;
+  height: 15px;
+  margin: 3px;
+  width: 40px;
+  display: inline-grid;  
 }
 
 .colorpick:hover {
   padding: 10px;
   margin: 5px;
   border: 1px solid black
+  
 }
 
 ul {
@@ -29,12 +33,12 @@ ul {
 
 li {
   display:flex;
-  text-align: center;
+  text-align: left;
 }
 
 .pads {
   border: 1px solid #333333;
-  background-color: #f9ecf2;
+  background-color: #4f4f4f;
   border-radius: 15px;
 }
 
@@ -65,8 +69,11 @@ li {
 
 .active {
   border-top: 1px solid #333333;
+  background-color: #333333;
+  
 }
 
 .inactive {
   border-bottom: 1px solid #333333;
+  color: #c3c3c3;
 }

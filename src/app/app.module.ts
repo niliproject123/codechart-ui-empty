@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { DropdownComponent } from './dropdown/dropdown.component'
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
 import {AutoCompleteModule, CheckboxModule, DataTableModule, DialogModule, DropdownModule, SharedModule, TooltipModule} from 'primeng/primeng';
@@ -13,13 +14,20 @@ import {AppInterceptorsService} from './services/AppInterceptorService';
 import { SaveLoadService } from './services/SaveLoadService';
 import { PropertiesPipe } from './pipes/appProperties';
 
+import { ArrayFilterPipe } from './dropdown/filter-by.pipe';
+import { LimitToPipe } from './dropdown/limit-to.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     CodeViewerComponent,
     NodeStylingComponent,
-    NodeStylingComponent,
-    PropertiesPipe
+    PropertiesPipe,
+    DropdownComponent,
+    ArrayFilterPipe,
+    LimitToPipe,
+    
   ],
   imports: [
     BrowserModule,

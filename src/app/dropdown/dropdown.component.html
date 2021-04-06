@@ -1,0 +1,16 @@
+<div>
+<img src={{icon}} class="dropdown-toggle"
+id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+<ul class="dropdown-menu dropdown_margin_ul">
+  <li *ngFor="let item of options"><a href="#">
+    <img src={{item.icon}}>
+      {{item.name}}</a>
+    </li>
+ 
+  <div class="dropdown-divider"></div>
+  <li>
+    <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top.svg">
+  </li>
+</ul>
+</div>
