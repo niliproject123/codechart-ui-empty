@@ -6,7 +6,7 @@
 </div>
 <div class="main">
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
-    <div generalActions class="generalActions pads max-50" style="pointer-events:auto">
+    <div generalActions class="generalActions pads max-50" style="pointer-events:auto;text-align: center;">
 
 
 
@@ -88,21 +88,13 @@
 
 
 
-      <!-- <button (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" type="button"><i
-            class="fa fa-paint-brush" aria-hidden="true"></i>
-          <span class="caret"></span>
-        </button> -->
-      <!-- </div> -->
-
-      <!-- <button (click)="chartFullscreen=!chartFullscreen" class="clearSearchButton">
-        <i class="fa" [ngClass]="(chartFullscreen) ? 'fa-compress' : 'fa-expand'" aria-hidden="true"></i>
-      </button> -->
+     
       <div class="vertical"></div>
 
       <button class="round-button">
-        <i class="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
+        <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
           (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
-      </button>
+      </button> 
 
 
       <!-- <button class="round-button" pTooltip="undo" (click)="undo()" class="mr5"><i class="fa fa-undo" aria-hidden="true"> </i></button> -->
@@ -249,7 +241,7 @@
       </div>
       <div class="pads dropup" style="pointer-events:auto">
         <span>
-          <p-dropdown wtf [options]="paths" (click)="pathDropdownClick($event)"
+          <p-dropdown wtf [options]="paths"  (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '500px','margin': '5px'}">
 
           </p-dropdown> 
@@ -299,14 +291,17 @@
 
 
       <button class="round-button">
-        <i class="fa" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
+        
+        <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
           (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
       </button>
 
       <button class="skewed">
+        <div>
+          <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
 
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
-
+        </div>
+        
       </button>
 
       <button class="round-button" pTooltip="Save Options">
@@ -352,16 +347,12 @@
 
 
 
-      <span class="form-horizontal">
+      <span class="btn-group">
         <input type="text" name="..." class="form-control" placeholder="file pattern"
           style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern" />
 
         <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
-          (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-50px;margin-top:-2px;min-height:36px;border-left: 0.5px solid #747575;
-                ">
-          <!-- <p>(.*)</p> -->
-          <img src="./../assets/icons/icon-regex.svg">
-        </button>
+          (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-60px;margin-top:0px;min-height:36px;border-left: 0.5px solid #747575;color:#4f4f4f;">(.*)</button>
       </span>
 
 
@@ -455,8 +446,88 @@
             style="border:1px solid #747575;background-color:#2d2d2d;height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -3px;">
             <img src="./../assets/icons/add.png">
           </span>
-
-          <!-- </button> -->
+          
+          <!-- <span>
+          <button class="round-button">
+            <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
+    
+          </button>
+        </span> -->
+          <!-- <span style="text-align: center;">
+          <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions"
+            (click)="fitAllNodesOnScreen()">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
+    
+            <div class="element">
+                <app-dropdown [options]="view_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+         
+                </app-dropdown>
+    
+            </div>
+          </button>
+    
+    
+    
+    
+          <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Diagram Actions"
+            (click)="fitAllNodesOnScreen()">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
+    
+            <div class="element">
+                <app-dropdown [options]="diagram_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+         
+                </app-dropdown>
+              
+    
+            </div>
+          </button>
+       
+          
+    
+          <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
+            <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" pTooltip="Add to Top"
+                style="margin-top: 15px;">
+              <br />
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg" pTooltip="Add to Bottom"
+                style="margin-top: -15px;">
+            </div>
+            <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
+              <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" pTooltip="Add to Left"
+                style="margin-top: 20px;">
+    
+    
+            </div>
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg" pTooltip="Add to Right"
+              style="margin-left: 5px;margin-top: 20px;">
+    
+          </div>
+          
+          <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
+          </button>
+          <button class="round-button" pTooltip="undo" (click)="undo()">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
+          </button>
+    
+          <button class="round-button" pTooltip="Clear">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
+    
+          </button>
+      
+          <button class="round-button" pTooltip="Edit Diagram"
+            (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
+            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
+          </button>
+    
+    
+    
+          
+          <button class="round-button">
+            <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
+              (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
+          </button>
+          </span> -->
         </span>
       </div>
       <div id="vis_element" style="height:100%" (click)="clickedChart($event)"></div>

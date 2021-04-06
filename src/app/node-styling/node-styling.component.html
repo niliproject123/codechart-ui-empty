@@ -7,16 +7,17 @@
   </div>
   <div *ngIf="stylingType==StylingTypes.node">
     <ul class="pads_ul">
-      <li>
-            <span style="background-color: #c3c3c3;width: 100%;height:auto;margin-top: 5px;margin-bottom: 5px;">
-               <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{
-                 'background-color':style.background, 'border-color': style.border
-                }"
-                     (click)="appComponent.setSelectionNodeStyle(style)">
-               </span>
-               
-            </span>
+      <li style="background-color: #c3c3c3;width: 100%;height:auto;margin-top: 5px;margin-bottom: 5px;">
+        <span>
+           <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{
+             'background-color':style.border
+            }"
+                 (click)="appComponent.setSelectionEdgeStyle(style.border)">
+           </span>
+           
+        </span>
       </li>
+      
       <!-- <li>
         <button *ngFor="let image of appComponent.allNodeImages" [style.background]="'url('+ image.path +')'"
                 class="imageButton" (click)="appComponent.setSelectionImage(image.path)" [style.backgroundSize]="'80%'"
@@ -29,78 +30,132 @@
       </li> -->
        <li class="column">
         <div>
-          <div class="title">Node size:</div>
+          <div class="title">Node size:
+            <p-dropdown  [options]="dropdownSizeSelection" [filter]="false" [(ngModel)]="SelectedNodeSize" [style]="{'width': '60px','margin': '5px','color':white}">
+
+            </p-dropdown>
+          </div>
           <span *ngFor="let size of sizes; let indexOf = index">
-               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','border-radius':'5px','height':'30px','width':'40px'}"
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','background-color':checkbackgroundcolor(size,SelectedNodeSize),'color':checkcolor(size,SelectedNodeSize),'border-radius':'5px','height':'30px','width':'40px'}"
                        (click)="appComponent.setSelectedNodesSize(size)"> {{size}} </button>
                </span>
-          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
-                 (keyup)="appComponent.setSelectedNodesSize($event.target.value)" style="width: 40px;margin-top: 0px;"/>
+          <!-- <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedNodesSize($event.target.value)" style="width: 40px;margin-top: 0px;"/> -->
         </div>
         <div>
-          <div class="title">Font size:</div>
+          <div class="title">Font size:
+            <p-dropdown  [options]="dropdownSizeSelection" [filter]="false" [(ngModel)]="SelectedNodeFontSize" [style]="{'width': '60px','margin': '5px','color':white}">
+
+            </p-dropdown>
+          </div>
           <span *ngFor="let size of sizes; let indexOf = index">
-               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','border-radius':'5px','height':'30px','width':'40px'}"
+               <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','background-color':checkbackgroundcolor(size,SelectedNodeFontSize),'color':checkcolor(size,SelectedNodeFontSize),'border-radius':'5px','height':'30px','width':'40px'}"
                        (click)="appComponent.setSelectedNodesFontSize(size)"> {{size}} </button>
                </span>
-          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
-                 (keyup)="appComponent.setSelectedNodesFontSize($event.target.value)" style="width: 40px"/>
+          <!-- <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedNodesFontSize($event.target.value)" style="width: 40px"/> -->
         </div>
       </li> 
+      <hr>
+      <div class="title">Symbols
+      </div>
+      <div class="btn-group" style="column-gap: 10px;">
+
+      <button class="btnCircle btnBackgroundColor btnColor"><img
+        src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+
+        <button class="btnCircle btnBackgroundColor btnColor"><img
+          src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+
+          <button class="btnCircle btnBackgroundColor btnColor"><img
+            src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+            <button class="btnCircle btnBackgroundColor btnColor"><img
+              src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+       </div>
+     
+    
       <li>
             <span>
-            <button (click)="appComponent.showHideFile()">Hide/Show File</button>
+            <button class="btn_style" (click)="appComponent.showHideFile()">Hide/Show File</button>
             </span>
       </li>
     </ul>
   </div>
   <div *ngIf="stylingType==StylingTypes.edge">
     <ul class="pads_ul">
-      <li>
-         <span>
-            <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{'background-color':style.border}"
-                  (click)="appComponent.setSelectionEdgeStyle(style.border)">
-         </span>
-         </span>
+      <li style="background-color: #c3c3c3;width: 100%;height:auto;margin-top: 5px;margin-bottom: 5px;">
+        <span>
+           <span *ngFor="let style of appComponent.nodeStyles" class="colorpick" [ngStyle]="{
+             'background-color':style.border
+            }"
+                 (click)="appComponent.setSelectionEdgeStyle(style.border)">
+           </span>
+           
+        </span>
       </li>
+      
       <li class="column">
         <div>
-          <div class="title">Edge size:</div>
+          <div class="title">Edge size:  
+            <p-dropdown  [options]="dropdownSizeSelection" [filter]="false" [(ngModel)]="SelectedEdgeSize" [style]="{'width': '60px','margin': '5px','color':white}">
+
+            </p-dropdown>
+          </div>
           <span *ngFor="let size of sizes; let indexOf = index">
-            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
-                    (click)="appComponent.setSelectedEdgesSize(size)"> {{size}} </button>
+            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','background-color':checkbackgroundcolor(size,SelectedEdgeSize),'color':checkcolor(size,SelectedEdgeSize),'border-radius':'5px','height':'30px','width':'40px'}"
+                   > {{size}}  </button>
             </span>
-          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
-                 (keyup)="appComponent.setSelectedEdgesSize($event.target.value)" style="width: 40px"/>
+          <!-- <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedEdgesSize($event.target.value)" style="width: 40px"/> -->
         </div>
         <div>
-          <div class="title">Edge font size:</div>
+          <div class="title">Edge font size:
+
+            <p-dropdown  [options]="dropdownSizeSelection" [filter]="false" [(ngModel)]="SelectedEdgeFontSize" [style]="{'width': '60px','margin': '5px','color':white}">
+
+            </p-dropdown>
+          
+          </div>
           <span *ngFor="let size of sizes; let indexOf = index">
-            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px'}"
+            <button [ngStyle]="{'_font-size': sizeSteps.start+sizeSteps.step*indexOf+'px','background-color':checkbackgroundcolor(size,SelectedEdgeFontSize),'color':checkcolor(size,SelectedEdgeFontSize),'border-radius':'5px','height':'30px','width':'40px'}"
                     (click)="appComponent.setSelectedEdgesFontSize(size)"> {{size}} </button>
             </span>
-          <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
-                 (keyup)="appComponent.setSelectedEdgesFontSize($event.target.value)" style="width: 40px"/>
+          <!-- <input placeholder='size' type="text" [ngModel]="appComponent.selectedNodeSize"
+                 (keyup)="appComponent.setSelectedEdgesFontSize($event.target.value)" style="width: 40px"/> -->
         </div>
       </li>
-      <li>
-        <button (click)="appComponent.setSelectedEdgesDash(true)"> dash</button>
-        <button (click)="appComponent.setSelectedEdgesDash(false)"> normal</button>
+      <hr>
+      <li style="display:inline-table;column-gap: 5px;">
+        <button class="btn_style"  (click)="appComponent.setSelectedEdgesDash(true)"> Dashed</button>
+        <button class="btn_style" (click)="appComponent.setSelectedEdgesDash(false)"> Solid</button>
+        <p-dropdown  [options]="dropdownlengthSelection" [filter]="false" [(ngModel)]="SelectedLength" [style]="{'width': '75px','height':'20px','margin-top': '-15px','color':'#7e7e7e','border-radius':'7px','border':'1px solid #7e7e7e'}">
+
+        </p-dropdown>
       </li>
-      <li>
+      <li style="margin-top: 10px;">
          <span>
-         <button class="fa fa-long-arrow-right " (click)="appComponent.setEdgePoint(true, false)"></button>
+         <button class="btn_style_arrow"  (click)="appComponent.setEdgePoint(true, false)">
+          <i class='fas fa-long-arrow-alt-right'></i>
+
+
+         </button>
          </span>
         <span>
-         <button class="fa fa-long-arrow-left " (click)="appComponent.setEdgePoint(false, true)"></button>
+          <button class="btn_style_arrow"  (click)="appComponent.setEdgePoint(false, true)">
+            <i class="fas fa-long-arrow-alt-left"></i>
+          </button>
          </span>
         <span>
-         <button (click)="appComponent.setEdgePoint(false, false)">-</button>
+          <button class="btn_style_arrow"  (click)="appComponent.setEdgePoint(false, false)">
+            <i class="fas fa-arrows-alt-h"></i>
+         </button>
          </span>
         <span>
-         <button class="fa fa-arrows-h" (click)="appComponent.setEdgePoint(true, true)"></button>
+          <button class="btn_style_arrow" (click)="appComponent.setEdgePoint(true, true)">
+            <i class="fas fa-minus"></i>
+          </button>
          </span>
-        <input placeholder='length' type="text" (keyup)="appComponent.setSelectedEdgesLength($event.target.value)" style="width: 60px"/>
+        <!-- <input placeholder='length' type="text" (keyup)="appComponent.setSelectedEdgesLength($event.target.value)" style="width: 60px"/> -->
       </li>
     </ul>
   </div> 

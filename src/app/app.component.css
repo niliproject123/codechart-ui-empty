@@ -34,6 +34,7 @@
     flex-direction: column;
     height: 100%;
     margin: 0px;
+    overflow: hidden;
 }
 
 .controls {
@@ -151,13 +152,25 @@ span.seperator {
     border-left: 1px solid #747575;
     height: 50px;
 }
+/* :host::ng-deep .ui-dropdown-panel .ui-dropdown-items-wrapper{
+    scrollbar-width: thin;
+    scrollbar-color: #CFD8DC #90A4AE;;
+} */
+
+
 :host::ng-deep .ui-widget-content {
     background: #1a1a1a;
     color:white;
+  
 }
+
 :host::ng-deep .ui-dropdown-filter-container{
    color: #595959;
+  
 }
+/* :host::ng-deep .ui-dropdown-items-wrapper{
+    background-color: red;
+} */
 
 :host::ng-deep input.ui-dropdown-filter.ui-inputtext.ui-widget.ui-state-default.ui-corner-all{
     border:1px solid #444545;
@@ -182,6 +195,7 @@ span.seperator {
 :host::ng-deep .ui-state-default {
     background-color: transparent;
     border: 0px;
+    
 }
  :host::ng-deep .ui-dropdown .ui-dropdown-trigger {
   background: color #c3c3c3;
@@ -194,6 +208,7 @@ span.seperator {
     background-color: black;
     transform: skewX(-20deg);
     height: 50px;
+    width: 50px;
 }
 
 .round-button {
