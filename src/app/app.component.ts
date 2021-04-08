@@ -18,6 +18,7 @@ import { Network, DataSet, Node, Edge, IdType, NetworkEvents } from 'vis'
 import { ChartUtils, AttributesKey } from './chart/chart.utils'
 import { ChartActions, PositioningOptions } from './chart/chart.actions'
 import { Ace } from 'ace-builds'
+import { ThemeService } from "./theme/theme.service";
 
 export interface Shape {
   name: string
@@ -198,7 +199,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     public http: HttpClient,
     private jsonPipe: JsonPipe,
     private httpInterceptService: AppInterceptorsService,
-    public saveLoadService: SaveLoadService
+    public saveLoadService: SaveLoadService,
+    private themeService: ThemeService
   ) {
     this.searchObject = StartSearchJson
     this.typesMapping = typesMapping
@@ -700,6 +702,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.selectedUser = defaultUser
   }
+  toggleTheme() {
+    if (this.themeService.isDarkTheme()) {
+      this.themeService.setLightTheme();
+    } else {
+      this.themeService.setDarkTheme();
+    }
+
+  }
 
   public codeSelectionChange(event: Ace.Selection) {
     console.log('codeSelectionChange')
@@ -793,6 +803,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public resetDiagramDetails() {
     console.log('resetDiagramDetails')
+  }
+  ClickSearchActionsItem(value: string) {
+    if(value == "Get File Node"){
+      this.openFileVisible = true
+        
+    }
+    if(value == "Light Theme"){
+       this.toggleTheme();
+    }
   }
 
   onSelectLoadTable(event) {

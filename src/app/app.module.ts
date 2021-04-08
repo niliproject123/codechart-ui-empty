@@ -16,6 +16,8 @@ import { PropertiesPipe } from './pipes/appProperties';
 
 import { ArrayFilterPipe } from './dropdown/filter-by.pipe';
 import { LimitToPipe } from './dropdown/limit-to.pipe';
+import { NavComponent } from './nav/nav.component';
+import { ThemeModule } from "./theme/theme.module";
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { LimitToPipe } from './dropdown/limit-to.pipe';
     DropdownComponent,
     ArrayFilterPipe,
     LimitToPipe,
+    NavComponent,
     
   ],
   imports: [
@@ -42,7 +45,8 @@ import { LimitToPipe } from './dropdown/limit-to.pipe';
     SharedModule,
     AutoCompleteModule,
     CheckboxModule,
-    AceEditorModule
+    AceEditorModule,
+    ThemeModule,
   ],
   exports: [
   ],

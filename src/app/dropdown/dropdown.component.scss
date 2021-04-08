@@ -16,7 +16,7 @@
 
 
 .dropdown_margin_ul{
-    background-image:linear-gradient(to right,#4f4f4f , #727272);
+    background-image:linear-gradient(to right,var(--background-secondary) , #727272);
     width: auto;
     height:auto;
     row-gap: 10px;
@@ -29,7 +29,7 @@
 
 }
 .dropdown_margin_ul li a{
-    color: #c3c3c3;
+    color: var(--foreground-default);
 }
 
 .dropdown_margin_ul li:nth-last-child(-n + 3)
@@ -45,7 +45,7 @@
 }
 
 .dropdown_margin_ul li:last-child img{
-    color: #c3c3c3;
+    color: var(--foreground-default);
     vertical-align: bottom;
      
 }

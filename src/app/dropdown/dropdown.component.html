@@ -3,7 +3,7 @@
 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 <ul class="dropdown-menu dropdown_margin_ul">
-  <li *ngFor="let item of options"><a href="#">
+  <li *ngFor="let item of options"><a href="#" (click)="ClickItem(item.name)">
     <img src={{item.icon}}>
       {{item.name}}</a>
     </li>

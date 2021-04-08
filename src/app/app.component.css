@@ -1,3 +1,117 @@
+.error {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: var(--error-default);
+    color: var(--error-light);
+  }
+
+
+  nav {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--background-tertiary);
+    color: var(--foreground-quaternary);
+    font-size: 1rem;
+  }
+
+  
+  nav .title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .split {
+    height: 4rem;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 0px;
+
+    
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    background-color:var(--background-default);
+    color:var(--foreground-default);
+    border-right:1px solid var(--foreground-default);
+    text-align: center;
+    
+
+  }
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    background-color:transparent;
+  }
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color:var(--background-default);
+    color:var(--foreground-default);
+  }
+
+  .input-container {
+    display: inline-table;
+    width: 250px;
+    
+ 
+  }
+  
+  .icon {
+    padding: 10px;
+    margin-left: -3px;
+    background:transparent;
+    color: var(--background-secondary);
+    min-width: 50px;
+    text-align: center;
+    border-right: 2px solid var(--foreground-tertiary);
+    border-top: 2px solid var(--foreground-tertiary);
+    border-bottom: 2px solid var(--foreground-tertiary);
+    border-radius: 5px;
+    
+  }
+  
+  .input-field {
+    width: 70%;
+    padding: 10px;
+    outline: none;
+    border: 2px solid var(--foreground-tertiary);
+    border-radius: 5px;
+  }
+  
+  .input-field:focus {
+    border: 2px solid var(--foreground-tertiary);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .searchInput {
     width: 20%;
     overflow: auto;
@@ -64,8 +178,8 @@
 }
 
 input {
-    background-color: #2d2d2d;
-    color: #c3c3c3;
+    background-color: var(--background-default);
+    color: var(--foreground-default);
 }
 
 .max-50 {
@@ -131,13 +245,13 @@ span.seperator {
 .filer {
     display: flex;
     /*height:900px;*/
-    border: 1px solid #747575;
+    /* border: 1px solid var(--foreground-tertiary); */
 }
 
 .filer #bordered {
     border-right: 1px solid rgb(51, 51, 51);
     border-bottom: 1px solid rgb(51, 51, 51);
-    background-color: #4f4f4f;
+    background-color: var(--background-secondary);
 }
 
 .fullWidth {
@@ -149,7 +263,7 @@ span.seperator {
 }
 
 .vertical {
-    border-left: 1px solid #747575;
+    border-left: 1px solid var(--foreground-tertiary);
     height: 50px;
 }
 /* :host::ng-deep .ui-dropdown-panel .ui-dropdown-items-wrapper{
@@ -159,13 +273,13 @@ span.seperator {
 
 
 :host::ng-deep .ui-widget-content {
-    background: #1a1a1a;
-    color:white;
+    background:var(--background-tertiary);
+    color:var(--foreground-light);
   
 }
 
 :host::ng-deep .ui-dropdown-filter-container{
-   color: #595959;
+   color: var(--foreground-dark);
   
 }
 /* :host::ng-deep .ui-dropdown-items-wrapper{
@@ -173,23 +287,23 @@ span.seperator {
 } */
 
 :host::ng-deep input.ui-dropdown-filter.ui-inputtext.ui-widget.ui-state-default.ui-corner-all{
-    border:1px solid #444545;
+    border:1px solid var(--background-light);
     border-radius: 5px;
     height: 30px;
-    background-color: #2d2d2d;
+    background-color:var(--background-default);
 }
 :host::ng-deep .ui-dropdown-item {
     background-color: transparent;
-    color: #595a5a;
+    color: var(--background-middle);
 }
 :host::ng-deep .ui-dropdown-item:hover {
-    color: #4f4f4f;
-    background-color: white;
+    color: var(--background-secondary);
+    background-color: var(--foreground-light);
 }
 
 :host::ng-deep .ui-inputtext {
-    background: #2d2d2d;
-    color: #c3c3c3;
+    background:var(--background-default);
+    color:var(--foreground-default);
     text-overflow: ellipsis;
 }
 :host::ng-deep .ui-state-default {
@@ -198,11 +312,11 @@ span.seperator {
     
 }
  :host::ng-deep .ui-dropdown .ui-dropdown-trigger {
-  background: color #c3c3c3;
+  background: color var(--foreground-default);
 } 
 :host::ng-deep .fa-caret-down:before {
     content: '\f078';
-    color: #c3c3c3;
+    color: var(--foreground-default);
 }
 .skewed {
     background-color: black;
@@ -219,7 +333,7 @@ span.seperator {
     outline: none;
     cursor: pointer;
     border-style: none;
-    color: white;
+    color: var(--foreground-light);
     background-color: transparent;
     border-radius: 100%;
     overflow: none;
@@ -312,7 +426,7 @@ button.left {
 }
 
 .vis-network {
-    background-color: #2d2d2d !important;
+    background-color: var(--background-default) !important;
 }
 
 .ace_print-margin {
@@ -384,14 +498,14 @@ button {
     border-style: solid;
     padding: 3px;
     margin: 5px;
-    background-color: white;
+    background-color: var(--foreground-light);
     /* border-color: aqua; */
     border-radius: 10px 0px 10px 0px;
     font-weight: bold;
     cursor: default;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
-    color: white;
+    color: var(--foreground-light);
 }
 
 .label {
@@ -400,7 +514,7 @@ button {
     background-color: gray;
     border: 1px solid rgb(51, 51, 51);
     /*border-radius: 10px;*/
-    color: white;
+    color: var(--foreground-light);
 }
 
 /* button:hover{
@@ -445,12 +559,12 @@ button.active {
     border: 1px solid rgb(51, 51, 51);
     border-radius: 2px;
     padding: 3px;
-    background-color: white;
+    background-color: var(--foreground-light);
 }
 
 .pads {
     /* border: 1px solid #333333; */
-    background-color: #4f4f4f;
+    background-color: var(--background-secondary);
     height: 49px;
     /* border-radius: 15px; */
 }

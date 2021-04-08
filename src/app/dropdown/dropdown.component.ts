@@ -34,6 +34,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class DropdownComponent implements  OnInit,AfterViewInit,OnChanges{
   @Input() public options: any = [];
   @Input() public icon:string;
+  @Output() ItemClickEvent = new EventEmitter<string>();
+
  
 
   
@@ -46,6 +48,10 @@ export class DropdownComponent implements  OnInit,AfterViewInit,OnChanges{
  ngOnChanges(){
  
  }
+ ClickItem(value: string) {
+   console.log("click item in child",value)
+  this.ItemClickEvent.emit(value);
+}
  closedropdown(){
    alert("drop down close event occurs")
  }

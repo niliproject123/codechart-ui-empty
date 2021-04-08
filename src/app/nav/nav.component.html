@@ -1,0 +1,21 @@
+<p>
+  nav works!
+</p>
+<nav>
+
+  <!-- <fa-icon [icon]="faDollarSign"></fa-icon> -->
+  <div class="split left">
+    <button class="round-button">
+        
+      <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
+        (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
+    </button>
+
+  </div>
+  
+  <div class="split right">
+    <h1 (click)="toggleTheme()">Change Theme</h1>
+ 
+  </div>
+  <!-- <fa-icon [icon]="faLightbulb" (click)="toggleTheme()"></fa-icon> -->
+</nav>
