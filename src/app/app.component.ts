@@ -1,6 +1,6 @@
 ///aaaa///
 import { AutoComplete, DataTableModule, Dropdown } from 'primeng/primeng'
-import { Component, OnInit, AfterViewInit, ViewChild,HostListener } from '@angular/core'
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { SearchActions } from './search/search.actions'
 import {
@@ -175,7 +175,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public lastDiagramLoaded: string = ''
   public
-  
+
   view_settings = [];
   view_actions = [];
   diagram_actions = [];
@@ -183,7 +183,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   selectedUser: User = null;
 
   // config = {
-    
+
   //   displayKey: "name", //if objects array passed which key to be displayed defaults to description
   //   search: true, //true/false for the search functionlity defaults to false,
   //   height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
@@ -408,84 +408,86 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.codeEditor.demoText = (data)
       );
 
+    this.availableFiles = ["C:\\visualizer\\visualizer-node\\node\\src\\App.ts", "C:\\visualizer\\visualizer-node\\node\\src\\config.ts", "C:\\visualizer\\visualizer-node\\node\\src\\index.ts", "C:\\visualizer\\visualizer-node\\node\\src\\LocalRepo.ts", "C:\\visualizer\\visualizer-node\\node\\src\\SaveWrapper.ts", "C:\\visualizer\\visualizer-node\\node\\src\\update_data_nov_2019_etl_step1.json", "C:\\visualizer\\visualizer-node\\node\\src\\VisiInCode.ts"]
+
 
     const searchActions = [
       {
         name: "Get File Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: " Replace Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search Folder",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search File",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search Content",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Create Match",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg",
-        actions:""
+        actions: ""
       }
     ];
-    
+
     const diagramActions = [
       {
         name: "Add File Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Comment",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Task",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Code node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Link Nodes",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg",
-        actions:""
+        actions: ""
       }
     ];
-    
+
     const viewSettings = [
       {
         name: "Show Files",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Show Labels",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Overlay",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Show Range",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Light Theme",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg",
-        actions:""
-      },{
-        name:"horizantal",
-        icon:"./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
-        actions:""
+        actions: ""
+      }, {
+        name: "horizantal",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
+        actions: ""
       }
     ];
 
@@ -494,7 +496,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     this.diagram_actions = diagramActions
-    
+
     this.view_settings = viewSettings
 
     this.view_actions = searchActions
@@ -577,9 +579,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     // event.stopPropagation()
     // event.preventDefault()
     // console.log("wc for prevent")
-   
+
   }
- 
+
 
   setSelectedEdgesSize(size) {
     console.log('setSelectedEdgesSize')
@@ -675,18 +677,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   public setRectangleAroundFile_new() {
     console.log('setRectangleAroundFile_new')
   }
-  types= [
+  types = [
     {
-        "id": "1",
-        "value": "Type 1"
+      "id": "1",
+      "value": "Type 1"
     },
     {
-         "id": "2",
-         "value": "Type 2"
+      "id": "2",
+      "value": "Type 2"
     },
     {
-          "id": "3",
-          "value": "Type 3"
+      "id": "3",
+      "value": "Type 3"
     }];
 
   ngOnInit(): void {
@@ -847,6 +849,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public filterAvailableFiles(value) {
     console.log('filterAvailableFiles')
+    this.openFileSuggestions = this.availableFiles
+      .filter(i => i.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+      .sort((a, b) => {
+        const split = value.split('.');
+        if (split.length > 1) {
+          const filename = split[split.length - 1];
+          if (filename.startsWith(value)) return 1;
+          else return -1;
+        } else return 0;
+      });
   }
 
   openFile(fullPath: any) {
@@ -922,7 +934,7 @@ export class User {
 
   constructor(id, name, address) {
     this.id = id,
-    this.name = name;
+      this.name = name;
     this.address = address;
   }
 }
