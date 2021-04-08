@@ -93,7 +93,7 @@ export const Options = {
 }
 
 export interface SelectedDiagramInfo extends QueryDto {
-  id: number
+  id: string
   projectList: string[]
 }
 
@@ -125,7 +125,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public saveJsonVisible = false
   public showDiagramsLoadTable = false
   public currentDiagramDetails: SelectedDiagramInfo = {
-    id: -1,
+    id: "-1",
     projectList: [],
   }
   public saveFullVisible = false
