@@ -82,7 +82,7 @@ td {
 } */
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 1em;
 }
 
 ::-webkit-scrollbar-track {
