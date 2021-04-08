@@ -53,6 +53,45 @@ td {
     left: 0 !important;
 }
 
-.myDropdown {
-    border: 4px rgba(0, 255, 0, 0.4) !important;
+/* ::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #2d2d2d;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+} */
+/* ::-webkit-scrollbar {
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px slategrey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #2d2d2d;
+    outline: 1px solid slategrey;
+} */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px grey;
+    /* border-radius: 10px; */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #2d2d2d;
+    box-shadow: inset 0 0 6px dimgray;
 }
