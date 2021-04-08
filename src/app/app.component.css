@@ -246,10 +246,13 @@ span.seperator {
     display: flex;
     /*height:900px;*/
     /* border: 1px solid var(--foreground-tertiary); */
+
+    /* border: 1px solid #747575; */
+
 }
 
 .filer #bordered {
-    border-right: 1px solid rgb(51, 51, 51);
+    /* border-right: 1px solid rgb(51, 51, 51); */
     border-bottom: 1px solid rgb(51, 51, 51);
     background-color: var(--background-secondary);
 }
@@ -271,7 +274,6 @@ span.seperator {
     scrollbar-color: #CFD8DC #90A4AE;;
 } */
 
-
 :host::ng-deep .ui-widget-content {
     background:var(--background-tertiary);
     color:var(--foreground-light);
@@ -281,6 +283,12 @@ span.seperator {
 :host::ng-deep .ui-dropdown-filter-container{
    color: var(--foreground-dark);
   
+    background: #1a1a1a;
+    color: white;
+}
+
+:host::ng-deep .ui-dropdown-filter-container {
+    color: #595959;
 }
 /* :host::ng-deep .ui-dropdown-items-wrapper{
     background-color: red;
@@ -309,7 +317,6 @@ span.seperator {
 :host::ng-deep .ui-state-default {
     background-color: transparent;
     border: 0px;
-    
 }
  :host::ng-deep .ui-dropdown .ui-dropdown-trigger {
   background: color var(--foreground-default);

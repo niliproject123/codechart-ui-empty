@@ -1,6 +1,6 @@
 ///aaaa///
 import { AutoComplete, DataTableModule, Dropdown } from 'primeng/primeng'
-import { Component, OnInit, AfterViewInit, ViewChild,HostListener } from '@angular/core'
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { SearchActions } from './search/search.actions'
 import {
@@ -94,7 +94,7 @@ export const Options = {
 }
 
 export interface SelectedDiagramInfo extends QueryDto {
-  id: number
+  id: string
   projectList: string[]
 }
 
@@ -126,7 +126,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public saveJsonVisible = false
   public showDiagramsLoadTable = false
   public currentDiagramDetails: SelectedDiagramInfo = {
-    id: -1,
+    id: "-1",
     projectList: [],
   }
   public saveFullVisible = false
@@ -176,7 +176,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public lastDiagramLoaded: string = ''
   public
-  
+
   view_settings = [];
   view_actions = [];
   diagram_actions = [];
@@ -184,7 +184,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   selectedUser: User = null;
 
   // config = {
-    
+
   //   displayKey: "name", //if objects array passed which key to be displayed defaults to description
   //   search: true, //true/false for the search functionlity defaults to false,
   //   height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
@@ -410,84 +410,86 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.codeEditor.demoText = (data)
       );
 
+    this.availableFiles = ["C:\\visualizer\\visualizer-node\\node\\src\\App.ts", "C:\\visualizer\\visualizer-node\\node\\src\\config.ts", "C:\\visualizer\\visualizer-node\\node\\src\\index.ts", "C:\\visualizer\\visualizer-node\\node\\src\\LocalRepo.ts", "C:\\visualizer\\visualizer-node\\node\\src\\SaveWrapper.ts", "C:\\visualizer\\visualizer-node\\node\\src\\update_data_nov_2019_etl_step1.json", "C:\\visualizer\\visualizer-node\\node\\src\\VisiInCode.ts"]
+
 
     const searchActions = [
       {
         name: "Get File Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: " Replace Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search Folder",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search File",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Search Content",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Create Match",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg",
-        actions:""
+        actions: ""
       }
     ];
-    
+
     const diagramActions = [
       {
         name: "Add File Node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Comment",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Task",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Add Code node",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Link Nodes",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg",
-        actions:""
+        actions: ""
       }
     ];
-    
+
     const viewSettings = [
       {
         name: "Show Files",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Show Labels",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Overlay",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Show Range",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg",
-        actions:""
+        actions: ""
       }, {
         name: "Light Theme",
         icon: "./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg",
-        actions:""
-      },{
-        name:"horizantal",
-        icon:"./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
-        actions:""
+        actions: ""
+      }, {
+        name: "horizantal",
+        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
+        actions: ""
       }
     ];
 
@@ -496,7 +498,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     this.diagram_actions = diagramActions
-    
+
     this.view_settings = viewSettings
 
     this.view_actions = searchActions
@@ -508,6 +510,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
     this.filesInLegend = [{ "fileNodeId": "\\dev19\\etl-experiments\\statefulset.yaml", "color": "#F73C3C", "fileLabel": "\\statefulset.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\svc.yaml", "color": "#EEEE08", "fileLabel": "\\svc.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\headless-svc.yaml", "color": "#A31AFE", "fileLabel": "\\headless-svc.yaml" }, { "fileNodeId": "\\dev19\\etl-experiments\\configmap.yaml", "color": "#57FE2D", "fileLabel": "\\configmap.yaml" }, { "fileNodeId": "User Created File_1610281545306", "color": "#12CFFE", "fileLabel": "Spark\nworker" }, { "fileNodeId": "User Created File_1610281629560", "color": "#12CFFE", "fileLabel": "Spark Master" }, { "fileNodeId": "User Created File_1611493911787", "color": "#FD9F16", "fileLabel": "spark configuration" }, { "fileNodeId": "User Created File_1611494059082", "color": "#FD9F16", "fileLabel": "worker docker file" }, { "fileNodeId": "dev19\\etl-experiments\\values.yml", "color": "#FD9F16", "fileLabel": "\\values.yml" }, { "fileNodeId": "pom.xml", "color": "#B68D40", "fileLabel": "pom.xml" }]
+
+    this.diagramsList = demoDiagramData
+
   }
 
 
@@ -569,6 +574,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   setSelectedEdgesDash(isDashed) {
     console.log('setSelectedEdgesDash')
   }
+
+  public loadDiagramsTable() {
+    this.showDiagramsLoadTable = true
+  }
+
+
   setSelectedLanguage(value) {
     console.log('SelectedLanguage')
   }
@@ -579,9 +590,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     // event.stopPropagation()
     // event.preventDefault()
     // console.log("wc for prevent")
-   
+
   }
- 
+
 
   setSelectedEdgesSize(size) {
     console.log('setSelectedEdgesSize')
@@ -677,18 +688,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   public setRectangleAroundFile_new() {
     console.log('setRectangleAroundFile_new')
   }
-  types= [
+  types = [
     {
-        "id": "1",
-        "value": "Type 1"
+      "id": "1",
+      "value": "Type 1"
     },
     {
-         "id": "2",
-         "value": "Type 2"
+      "id": "2",
+      "value": "Type 2"
     },
     {
-          "id": "3",
-          "value": "Type 3"
+      "id": "3",
+      "value": "Type 3"
     }];
 
   ngOnInit(): void {
@@ -866,6 +877,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public filterAvailableFiles(value) {
     console.log('filterAvailableFiles')
+    this.openFileSuggestions = this.availableFiles
+      .filter(i => i.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+      .sort((a, b) => {
+        const split = value.split('.');
+        if (split.length > 1) {
+          const filename = split[split.length - 1];
+          if (filename.startsWith(value)) return 1;
+          else return -1;
+        } else return 0;
+      });
   }
 
   openFile(fullPath: any) {
@@ -941,7 +962,598 @@ export class User {
 
   constructor(id, name, address) {
     this.id = id,
-    this.name = name;
+      this.name = name;
     this.address = address;
   }
 }
+
+const demoDiagramData = [
+  {
+    "id": "LrvAS2984tLivAzZ",
+    "story": "analytics search in attivio",
+    "labels": [
+      "\\AttivioResponseDTO.java",
+      "\\AttivioResponseDTO.java",
+      "\\AttivioResponseDTO.java",
+      "\\AttivioResponseDTO.java",
+      "\\AttivioResponseDTO.java",
+      "\\AttivioResponseDTO.java",
+      "totalTime",
+      "\\AttivioResponseDTO.java",
+      "AttivioResponseDTO",
+      "\\WebintSearchService.java",
+      "\\WebintSearchService.java",
+      "\\WebintSearchService.java",
+      "\\WebintSearchService.java",
+      "search endpoint",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "search api",
+      "\\WebintSearchService.java",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "excecute search",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "\\AttivioApi.java",
+      "log attivio request",
+      "\\AttivioApi.java",
+      "logging format",
+      "\\AttivioApi.java",
+      "actuall execution \nof query"
+    ],
+    "fileNames": [
+      "\\AttivioResponseDTO.java",
+      "\\WebintSearchService.java",
+      "\\AttivioApi.java"
+    ],
+    "projectList": [
+      "C:\\DEV\\omnix\\omnix 4.2\\fusion-analytics-api\\WebintAnalytics_API"
+    ],
+    "createdAt": "2021-03-31T13:02:41.525Z",
+    "updatedAt": "2021-03-31T13:02:41.525Z"
+  },
+  {
+    "id": "RjiIjzyiNJx8xeX7",
+    "projectList": [],
+    "story": "etl monitor and retry",
+    "labels": [
+      "batches",
+      "config db",
+      "properties",
+      "retries",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\retry.controller.js",
+      "\\retry.service.js",
+      "\\retry.service.js",
+      "\\retry.service.js",
+      "\\retry.controller.js",
+      "\\retry.controller.js",
+      "\\retry.service.js",
+      "\\retry.service.js",
+      "\\retry.controller.js",
+      "\\retry.service.js",
+      "\\JobService.scala",
+      "\\JobService.scala",
+      "\\JobService.scala",
+      "\\JobService.scala",
+      "\\MasterConnector.scala",
+      "\\MasterConnector.scala",
+      "\\MasterComponent.scala",
+      "\\MasterComponent.scala",
+      "\\JdbcConnector.scala",
+      "\\JdbcConnector.scala",
+      "\\MasterConnector.scala",
+      "\\MasterConnector.scala",
+      "\\MasterConnector.scala",
+      "monitor api",
+      "config api",
+      "ETL",
+      "\\MasterComponent.scala",
+      "\\MasterComponent.scala",
+      "\\MasterComponent.scala",
+      "KAFKA",
+      "\\MonitorKafka.ts",
+      "\\MonitorKafka.ts",
+      "\\retry.service.js",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "error processing in transformers",
+      "retry \ncomponents",
+      "REST",
+      "incremental connectors"
+    ],
+    "fileNames": [
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\retry.controller.js",
+      "\\retry.service.js",
+      "\\JobService.scala",
+      "\\MasterConnector.scala",
+      "\\MasterComponent.scala",
+      "\\JdbcConnector.scala",
+      "monitor api",
+      "config api",
+      "ETL",
+      "\\MonitorKafka.ts",
+      "error processing in transformers"
+    ],
+    "createdAt": "2021-03-29T19:43:11.499Z",
+    "updatedAt": "2021-03-29T19:43:11.499Z"
+  },
+  {
+    "id": "265ubFCpsoPT3upG",
+    "projectList": [],
+    "story": "etl execution",
+    "labels": [
+      "\\JobService.scala",
+      "\\JobService.scala",
+      "load etl jobs from config api",
+      "\\JobService.scala",
+      "execute jobs",
+      "\\JobService.scala",
+      "create connectors \nfor setting retry",
+      "\\JobService.scala",
+      "\\JobService.scala",
+      "create workflow \nfrom json",
+      "\\Ingestion.scala",
+      "\\Ingestion.scala",
+      "Ingestion",
+      "\\Ingestion.scala",
+      "\\Pipe.scala",
+      "\\Pipe.scala",
+      "Pipe",
+      "\\OmnixIngestionService.scala",
+      "\\ExecutePipeline.scala",
+      "\\ExecutePipeline.scala",
+      "def\nstartIngestion",
+      "\\ExecutePipeline.scala",
+      "\"init\" df",
+      "\\ExecutePipeline.scala",
+      "\\Pipe.scala",
+      "\\ExecutePipeline.scala",
+      "create pipeline pool of\npipe -> pipeline",
+      "\\ExecutePipeline.scala",
+      "\\ExecutePipeline.scala",
+      "def\nexecute\npipe line",
+      "\\ExecutePipeline.scala",
+      "yes",
+      "\\ExecutePipeline.scala",
+      "no",
+      "\\ExecutePipeline.scala",
+      "pipe result \nexists in loaded",
+      "\\ExecutePipeline.scala",
+      "for each dependency\nincluding incoming DF\ncheck if not exists in loaded\nperform execute()\nto add result to loaded",
+      "dependecies are the DFs this\n pipe needs in order to run\nactually results of pipes",
+      "\\ExecutePipeline.scala",
+      "perform pipeline\nadd result to loaded",
+      "loaded = \nmap of pipes results",
+      "\\ExecutePipeline.scala",
+      "set spark session",
+      "\\ExecutePipeline.scala",
+      "create empty df",
+      "\\cellebrite_etl_file_flow.json",
+      "\\cellebrite_etl_file_flow.json",
+      "all jobs start \nwith \"init\"\ndf",
+      "\\OmnixIngestionService.scala",
+      "\\OmnixIngestionService.scala",
+      "\\OmnixIngestionService.scala",
+      "\\ExecutePipeline.scala",
+      "\\ExecutePipeline.scala",
+      "\\ExecutePipeline.scala",
+      "create pipes` stages (processors)\nfrom transformer configs"
+    ],
+    "fileNames": [
+      "\\JobService.scala",
+      "\\Ingestion.scala",
+      "\\Pipe.scala",
+      "\\OmnixIngestionService.scala",
+      "\\ExecutePipeline.scala",
+      "\\cellebrite_etl_file_flow.json"
+    ],
+    "createdAt": "2021-03-21T20:41:51.526Z",
+    "updatedAt": "2021-03-21T20:49:43.471Z"
+  },
+  {
+    "id": "1O7HQNpYBXV6xTNf",
+    "projectList": [],
+    "story": "rdbs validation",
+    "labels": [
+      "\\AttivioDocValidator.java",
+      "\\AttivioDocValidator.java",
+      "\\DDMCacheListener.java",
+      "\\DDMCacheListener.java",
+      "update ddm",
+      "\\AttivioDocValidator.java",
+      "validate fields",
+      "\\ValidFieldsValidator.java",
+      "\\ValidFieldsValidator.java",
+      "\\AttivioDocValidator.java",
+      "\\AttivioDocValidator.java",
+      "validate closed lists",
+      "\\ClosedListFieldValidator.java",
+      "\\ClosedListFieldValidator.java",
+      "\\DdmProvider.java",
+      "\\DdmProvider.java",
+      "\\DdmProvider.java",
+      "\\DdmRequester.java",
+      "\\DdmRequester.java",
+      "\\DdmRequester.java",
+      "build ddm from json"
+    ],
+    "fileNames": [
+      "\\AttivioDocValidator.java",
+      "\\DDMCacheListener.java",
+      "\\ValidFieldsValidator.java",
+      "\\ClosedListFieldValidator.java",
+      "\\DdmProvider.java",
+      "\\DdmRequester.java"
+    ],
+    "createdAt": "2021-03-21T16:03:12.984Z",
+    "updatedAt": "2021-03-21T16:20:47.627Z"
+  },
+  {
+    "id": "gpQh5yRvg1JBtMDU",
+    "projectList": [],
+    "story": "ETL monitor api monitoring queries",
+    "description": "ETL monitoring queries and endpoints",
+    "labels": [
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\RestServer.ts",
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\MonitoringQueries.ts",
+      "\\RestServer.ts"
+    ],
+    "fileNames": [
+      "\\RestServer.ts",
+      "\\MonitoringQueries.ts"
+    ],
+    "createdAt": "2021-03-17T21:02:36.554Z",
+    "updatedAt": "2021-03-17T21:02:36.554Z"
+  },
+  {
+    "id": "7fDkmN1XtfZxqU9y",
+    "projectList": [],
+    "story": "Arduino loop",
+    "createdAt": "2021-02-14T15:25:48.399Z",
+    "updatedAt": "2021-03-16T20:39:35.692Z",
+    "fileNames": [
+      "\\nili_arduino.ino",
+      "\\Operator.java"
+    ],
+    "labels": [
+      "\\nili_arduino.ino",
+      "infinite loop",
+      "\\nili_arduino.ino",
+      "read incoming \nstring from Arduino",
+      "\\nili_arduino.ino",
+      "light leds",
+      "\\nili_arduino.ino",
+      "get switches",
+      "\\nili_arduino.ino",
+      "send switches to \nArduino",
+      "\\nili_arduino.ino",
+      "calculate location",
+      "\\nili_arduino.ino",
+      "on + off leds by \ncolor",
+      "\\nili_arduino.ino",
+      "* Arduino runs on grid of leds, lighting a led for an instant.\n then runs on switches getting press.\n\n* input LED string and \nr06g12...\nwhere furst char is color, second is positon\n\n* output  press string is [row,col]..\n",
+      "\\Operator.java"
+    ]
+  },
+  {
+    "id": "6RLvS7bKt9quIYlO",
+    "projectList": [],
+    "story": "lights on off",
+    "description": "pressing on screen turns lights on or off\nblue tooth communication",
+    "labels": [
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "\\ConnectionManager.java",
+      "\\Timer.java",
+      "\\activity_main.xml",
+      "button decleration",
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "lights on",
+      "\\ConnectionManager.java",
+      "send last lights string\nto arduino",
+      "\\MainActivity.java",
+      "lights off",
+      "\\ConnectionManager.java",
+      "send empty \nlights string"
+    ],
+    "fileNames": [
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "\\ConnectionManager.java",
+      "\\Timer.java"
+    ],
+    "createdAt": "2021-02-14T16:07:58.550Z",
+    "updatedAt": "2021-03-12T08:05:14.322Z"
+  },
+  {
+    "id": "sKXQ2pKZ8S2IVB5K",
+    "projectList": [],
+    "story": "cached index",
+    "description": "index wrapper",
+    "labels": [
+      "\\application.properties",
+      "\\application.properties",
+      "name of cache index",
+      "\\ElasticConfiguration.java",
+      "\\ElasticConfiguration.java",
+      "\\ElasticConfiguration.java",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheApi.java",
+      "\\ElasticConfiguration.java",
+      "\\ElasticConfiguration.java",
+      "get cached index name",
+      "set cahced index name",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheService.java",
+      "\\EntityCacheService.java",
+      "delete cache endpoint",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheCleanupScheduler.java",
+      "\\EntityCacheCleanupScheduler.java",
+      "scheduled clean up",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheService.java",
+      "\\EntityCacheService.java",
+      "delete by ID enspoint"
+    ],
+    "fileNames": [
+      "\\application.properties",
+      "\\ElasticConfiguration.java",
+      "\\EntityCacheApi.java",
+      "\\EntityCacheService.java",
+      "\\EntityCacheCleanupScheduler.java"
+    ],
+    "createdAt": "2021-03-08T13:16:09.317Z",
+    "updatedAt": "2021-03-08T13:16:09.317Z"
+  },
+  {
+    "id": "2qwWyKBQVVHnolMC",
+    "projectList": [],
+    "story": "cc git design 1",
+    "labels": [
+      "configs.json",
+      "login to git",
+      "get info from manager\npath of repo on local disk",
+      "in memory user credentials\ngit, cc user",
+      "users DB\ncc organization name\ngit user name\nrepo",
+      "code folders",
+      "folder per organiztion",
+      "folder per repo",
+      "folder per branch",
+      "git",
+      "git actions checkout / pull",
+      "git manager module",
+      "checkout / pull",
+      "get project folder",
+      "git manager module",
+      "diagram manager module\n",
+      "diagram actions",
+      "diagram actions",
+      "diagram db\nadd users/organizations",
+      "online users login using organization (which sets main folder) and git user (which is same as cc user).",
+      "diagrams per user",
+      "online using git",
+      "online without git",
+      "server: ui, git manager, diagram manager, agent, code folder,",
+      "users login using cc user, organization",
+      "on server: ui, diagram manager, \non local machine: code folder, agent",
+      "all local",
+      "everything is local, with one user and organization: \"local\"",
+      "3 modes of operation set in API",
+      "only available on \"git\" mode",
+      "agent module",
+      "search actions\nsave/reload code",
+      "search actions/\nsave/reload code",
+      "\\App.ts",
+      "\\App.ts",
+      "411-440:private async createDiagram(re...",
+      "\\App.ts",
+      "611-1020:private processDir(dir: string...",
+      "\\App.ts",
+      "diagram manager module\n",
+      "agent module",
+      "\\LocalRepo.ts",
+      "LocalRepo",
+      "App.ts",
+      "API",
+      "UI",
+      "user selects local/online mode.\nin future we can set this to on premise location",
+      "\\SaveLoadService.ts",
+      "\\SaveLoadService.ts",
+      "SaveLoadService",
+      "\\search.actions.ts",
+      "SearchActions"
+    ],
+    "fileNames": [
+      "code folders",
+      "folder per organiztion",
+      "folder per repo",
+      "folder per branch",
+      "git manager module",
+      "diagram manager module\n(SaveWrapper)",
+      "agent module",
+      "\\App.ts",
+      "\\LocalRepo.ts",
+      "\\SaveLoadService.ts",
+      "\\search.actions.ts"
+    ],
+    "createdAt": "2021-02-25T16:59:21.810Z",
+    "updatedAt": "2021-02-27T20:11:44.546Z"
+  },
+  {
+    "id": "8YdBMSio0JqPJr6y",
+    "projectList": [],
+    "story": "play pause",
+    "description": "nili\npressing on screen plays/pauses song",
+    "labels": [
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "\\ConnectionManager.java",
+      "\\activity_main.xml",
+      "button decleration",
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "toggle play/pause",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "\\MainActivity.java",
+      "set is paused",
+      "\\MainActivity.java",
+      "\\Timer.java",
+      "\\Timer.java",
+      "set is paused in timer"
+    ],
+    "fileNames": [
+      "\\activity_main.xml",
+      "\\MainActivity.java",
+      "\\ConnectionManager.java",
+      "\\Timer.java"
+    ],
+    "createdAt": "2021-02-14T16:07:58.550Z",
+    "updatedAt": "2021-02-22T09:01:00.711Z"
+  },
+  {
+    "id": "WH6Z4VJnAJCmehMn",
+    "projectList": [],
+    "story": "floating menu",
+    "description": "obtigo ui",
+    "labels": [
+      "\\floating-menu-button.component.ts",
+      "\\floating-menu-button.component.scss",
+      "\\floating-menu-button.component.html",
+      "\\_overlay.scss",
+      "\\_overlay.scss",
+      "\\floating-menu-button.component.html",
+      "\\floating-menu-button.component.ts",
+      "\\basic-full-query.component.html",
+      "\\basic-full-query.component.html",
+      "\\basic-full-query.component.html",
+      "\\basic-full-query.component.ts",
+      "\\basic-full-query.component.ts"
+    ],
+    "fileNames": [
+      "\\floating-menu-button.component.ts",
+      "\\floating-menu-button.component.scss",
+      "\\floating-menu-button.component.html",
+      "\\_overlay.scss",
+      "\\basic-full-query.component.html",
+      "\\basic-full-query.component.ts"
+    ],
+    "createdAt": "2021-02-20T21:25:19.648Z",
+    "updatedAt": "2021-02-20T21:25:19.648Z"
+  },
+  {
+    "id": "7GqIPlXnA3f6o9k8",
+    "projectList": [],
+    "story": "rectangle draw",
+    "description": "code chart",
+    "labels": [
+      "app.component.ts",
+      "app.component.ts",
+      "app.component.ts",
+      "app.component.ts",
+      "app.component.ts"
+    ],
+    "fileNames": [
+      "app.component.ts"
+    ],
+    "createdAt": "2021-02-19T21:43:36.438Z",
+    "updatedAt": "2021-02-19T21:43:36.438Z"
+  },
+  {
+    "id": "k7SiZ2kWMtg0BCHa",
+    "projectList": [],
+    "story": "reload code",
+    "description": "code chart",
+    "labels": [
+      "app.component.html",
+      "app.component.html",
+      "click on reload button",
+      "app.component.ts",
+      "app.component.ts",
+      "app.component.ts",
+      "\\save.load.ts",
+      "\\save.load.ts",
+      "\\save.load.ts",
+      "\\chart.actions.ts",
+      "\\chart.actions.ts",
+      "\\chart.actions.ts",
+      "\\chart.actions.ts",
+      "reload a single file\nreturn updated nodes and \nfailed reload match nodes as '!' nodes",
+      "\\chart.actions.ts",
+      "creates a '!' node to (be displayed_\nconnected to match node",
+      "\\chart.actions.ts",
+      "sorts match by line number\nwith offsets",
+      "\\chart.actions.ts",
+      "save new offsets for matches\n-we move along line numbers in original and new file content\n-increasing/decreasing offsets according to diff\n- when reaching a node with line number that matches the new line offset we update the offset array",
+      "\\chart.actions.ts",
+      "update match nodes with new offsets",
+      "\\chart.actions.ts",
+      "add '!' nodes to nodes in which text after \ndiff doesn`t match new text",
+      "\\chart.actions.ts",
+      "indexes (line numbers)\nfor original content\nand new content",
+      "\\chart.actions.ts",
+      "get line numbers\nstart line number, end line number, in content line number"
+    ],
+    "fileNames": [
+      "app.component.html",
+      "app.component.ts",
+      "\\save.load.ts",
+      "\\chart.actions.ts"
+    ],
+    "createdAt": "2021-02-19T16:27:15.460Z",
+    "updatedAt": "2021-02-19T16:27:15.460Z"
+  }
+]

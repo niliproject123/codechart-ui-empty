@@ -25,7 +25,7 @@ export interface CreateDiagramDto extends DiagramMetadata {
 }
 
 interface ResultMetadata extends DiagramMetadata {
-  id: number
+  id: string
   createdAt: string
   updatedAt: string
 }
@@ -42,11 +42,11 @@ export interface ResultDiagram {
 export interface QueryDto {
   description?: string
   story?: string
-  labels?: string
+  labels?: string | string[]
   user?: string
   type?: string
   projects?: string
-  fileNames?: string
+  fileNames?: string | String[]
   general?: string,
 }
 
@@ -56,7 +56,7 @@ export interface ResultDiagramUI extends QueryDto {
     nodes: Node[],
     edges: Edge[]
   },
-  id: number,
+  id: string,
   projectList: string[],
   createdAt?: string,
   updatedAt?: string
@@ -80,11 +80,11 @@ export class SaveLoadService {
       map((response: FullDiagramDto) => {
         let result: ResultDiagramUI = Object.assign(
           response, {
-            fileNames: response.fileNames ? response.fileNames.join(" ; ") : "",
-            labels: response.labels ? response.labels.join(" ; ") : "",
-            projects: response.projects ? response.projects.join(" ; ") : "",
-            projectList: response.projects
-          }
+          fileNames: response.fileNames ? response.fileNames.join(" ; ") : "",
+          labels: response.labels ? response.labels.join(" ; ") : "",
+          projects: response.projects ? response.projects.join(" ; ") : "",
+          projectList: response.projects
+        }
         )
         return result
       })
@@ -113,7 +113,7 @@ export class SaveLoadService {
       map((data: ResultDiagram[]) => {
         let results: ResultDiagramUI[] = []
         data.forEach(apiDiagram => {
-          let result: ResultDiagramUI = {id: null, projectList: []}
+          let result: ResultDiagramUI = { id: null, projectList: [] }
           for (let key in apiDiagram.metadata) {
             let value = apiDiagram.metadata[key]
             if (!value) continue
