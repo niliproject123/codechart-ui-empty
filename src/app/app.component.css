@@ -131,11 +131,11 @@ span.seperator {
 .filer {
     display: flex;
     /*height:900px;*/
-    border: 1px solid #747575;
+    /* border: 1px solid #747575; */
 }
 
 .filer #bordered {
-    border-right: 1px solid rgb(51, 51, 51);
+    /* border-right: 1px solid rgb(51, 51, 51); */
     border-bottom: 1px solid rgb(51, 51, 51);
     background-color: #4f4f4f;
 }
@@ -157,23 +157,21 @@ span.seperator {
     scrollbar-color: #CFD8DC #90A4AE;;
 } */
 
-
 :host::ng-deep .ui-widget-content {
     background: #1a1a1a;
-    color:white;
-  
+    color: white;
 }
 
-:host::ng-deep .ui-dropdown-filter-container{
-   color: #595959;
-  
+:host::ng-deep .ui-dropdown-filter-container {
+    color: #595959;
 }
 /* :host::ng-deep .ui-dropdown-items-wrapper{
     background-color: red;
 } */
 
-:host::ng-deep input.ui-dropdown-filter.ui-inputtext.ui-widget.ui-state-default.ui-corner-all{
-    border:1px solid #444545;
+:host::ng-deep
+    input.ui-dropdown-filter.ui-inputtext.ui-widget.ui-state-default.ui-corner-all {
+    border: 1px solid #444545;
     border-radius: 5px;
     height: 30px;
     background-color: #2d2d2d;
@@ -195,11 +193,10 @@ span.seperator {
 :host::ng-deep .ui-state-default {
     background-color: transparent;
     border: 0px;
-    
 }
- :host::ng-deep .ui-dropdown .ui-dropdown-trigger {
-  background: color #c3c3c3;
-} 
+:host::ng-deep .ui-dropdown .ui-dropdown-trigger {
+    background: color #c3c3c3;
+}
 :host::ng-deep .fa-caret-down:before {
     content: '\f078';
     color: #c3c3c3;
