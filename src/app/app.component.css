@@ -56,6 +56,7 @@
     transform: translate(0%, -50%);
     background-color:transparent;
   }
+  
   /* Control the right side */
   .right {
     right: 0;
@@ -197,11 +198,22 @@ input {
 
 .generalActions {
     position: fixed;
-    top: -5px;
+    top: 0px;
     right: 0px;
     margin: 0px;
     display: flex;
-    align-items: flex-end;
+     align-items: flex-end; 
+   
+}
+.pads.dropup .generalActions_div {
+    position: fixed;
+    top: 0px;
+    /* right: 0px; */
+    margin: 0px;
+    display: flex;
+    /* align-items: flex-end; */
+    width: auto;
+
 }
 
 .searchLocations {
@@ -233,6 +245,7 @@ button.btn.btn-primary.dropdown-toggle {
 .dropdown .dropdown-menu .dropdown-item {
     cursor: pointer;
 }
+
 span.seperator {
     /* background-color: rgb(51,51,51); */
     /* margin-left: 4px; */
@@ -341,7 +354,7 @@ span.seperator {
     cursor: pointer;
     border-style: none;
     color: var(--foreground-light);
-    background-color: transparent;
+    background-color:var(--background-dark);
     border-radius: 100%;
     overflow: none;
     text-align: center;
@@ -349,16 +362,28 @@ span.seperator {
     margin-right: 5px;
     margin-bottom: 5px;
 }
+.edit_btn{
+    background-color:var(--background-dark);
+    border-radius: 5px;
+    border:1px solid var(--foreground-tertiary);
+    color: var(--foreground-light);
+}
+.round-button:hover{
+    background-color:var(--foreground-dark);
+}
+.edit_btn:hover{
+    background-color:var(--foreground-dark);
+}
 .parent {
     color: #0074d9;
-    margin-bottom: 1px;
+    margin-bottom: 0px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .element {
-    margin-top: -25px;
-    margin-left: 20px;
+    margin-top: -30px;
+    margin-left: 15px;
     background-color: transparent;
     padding: 10px;
     color: #000;

@@ -1,104 +1,33 @@
-<div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
+ <div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
   <textarea *ngIf="selectedNode" id='nodeTitleInput' [ngModel]="selectedNode?.label"
     (keyup)="setTitle($event)"></textarea>
   <node-styling [appComponent]="this"></node-styling>
-
+ 
 </div>
 <div class="main">
   <div *ngIf="!filerFullscreen" id="topbox" class="controls" style="pointer-events:none">
-    <div generalActions class="generalActions pads max-50" style="pointer-events:auto;">
-
-
-
-
-      <!-- <button class="round-button">
-        <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
-
-      </button>
-
-      <div class="vertical"></div>
-
-      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions"
-        (click)="fitAllNodesOnScreen()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
-
-        <div class="element">
-          <app-dropdown [options]="view_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
-
-          </app-dropdown>
-
-        </div>
-      </button>
-
-
-
-
-      <div class="vertical"></div>
-      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Diagram Actions"
-        (click)="fitAllNodesOnScreen()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
-
-        <div class="element">
-          <app-dropdown [options]="diagram_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
-
-          </app-dropdown>
-
-
-        </div>
-      </button>
-      <div class="vertical"></div>
-
-
-      <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
-        <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" pTooltip="Add to Top"
-            style="margin-top: 15px;">
-          <br />
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg" pTooltip="Add to Bottom"
-            style="margin-top: -15px;">
-        </div>
-        <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" pTooltip="Add to Left"
-            style="margin-top: 20px;">
-
-
-        </div>
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg" pTooltip="Add to Right"
-          style="margin-left: 5px;margin-top: 20px;">
-
-      </div>
-      <div class="vertical"></div>
-
-      <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
-      </button>
-      <button class="round-button" pTooltip="undo" (click)="undo()">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
-      </button>
-
-      <button class="round-button" pTooltip="Clear">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
-
-      </button>
-      <div class="vertical"></div>
-
-      <button class="round-button" pTooltip="Edit Diagram"
+    <div generalActions class="generalActions" style="pointer-events:auto;">
+      
+        <span style="border-right: 1px solid var(--foreground-tertiary);">
+        <button class="round-button" pTooltip="Edit Diagram"
         (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
-      </button>
-
-
-
-
-      <div class="vertical"></div>
-
+          <img src="./../assets/icons/dark/Dark Theme Icons__Edit Diagram Up.png">
+  
+          <div class="element">
+            <img src="./../assets/icons/dark/Dark Theme Icons__Menu Arrow Down.png">
+     
+  
+          </div>
+        </button>
+      </span>
       <button class="round-button">
         <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
           (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
-      </button> -->
+      </button>  
+  
+        
+        
 
-
-    
     </div>
     <div class="searchButtons max-50">
 
@@ -191,10 +120,10 @@
         <button pTooltip="save diagram" (click)="saveJsonVisible = true">
           <i class="fa fa-download" aria-hidden="true"></i>/<i class="fa fa-cloud-download" aria-hidden="true"></i>
         </button>
-        <button pTooltip="upload diagram" (click)="diagramsLoadDialog = true"><label style="margin: 0px"><i
+         <button pTooltip="upload diagram" (click)="diagramsLoadDialog = true"><label style="margin: 0px"><i
               class="fa fa-upload" aria-hidden="true">
               <input id='fileLoadInput' type="file" (change)="loadFromFile($event)" />
-            </i></label></button>
+            </i></label></button> 
         <button pTooltip="load diagram" (click)="loadDiagramsTable()"><label style="margin: 0px"><i
               class="fa fa-cloud-upload" aria-hidden="true">
             </i></label></button>
@@ -205,10 +134,10 @@
       </div>
       <div class="pads dropup" style="pointer-events:auto">
         <span>
-          <p-dropdown wtf [options]="paths" (click)="pathDropdownClick($event)"
+          <p-dropdown wtf [options]="paths"  (click)="pathDropdownClick($event)"
             (onChange)="setSelectedPath($event.value)" [filter]="true" [style]="{'width': '500px','margin': '5px'}">
 
-          </p-dropdown>
+          </p-dropdown> 
         </span>
 
 
@@ -252,40 +181,43 @@
   <div id="filer" class="filer" (click)="showNodeEditBox=false">
      <div id="bordered" [ngStyle]="{'width': setFilerWidth()}" [style.display]="chartFullscreen?'none':'inline'">
 
-
+     
 
       <button class="round-button">
-
+        
         <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
           (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
       </button>
 
       <button class="skewed">
         <div>
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__CodeChart Logo.svg">
+          <img src="./../assets/icons/dark/Dark Theme Icons__CodeChart Logo.png">
 
         </div>
-
+        
       </button>
 
       <button class="round-button" pTooltip="Save Options">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Save Options.svg" class="dropdown-toggle"
+        <img src="./../assets/icons/dark/Dark Theme Icons__Save Options.png" class="dropdown-toggle"
           id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
         <ul class="dropdown-menu" (click)="preventClose($event)"
           style="background-color:var(--background-secondary);width: 180px;height:240px">
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color:var(--foreground-default);"><img
+          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="saveJsonVisible = true" style="color:var(--foreground-default);"><img
                 src="./../assets/icons/svg/CodeChart_Web_Icons__Save Download to Cloud.svg">
               Download/Save</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color:var(--foreground-default);"><img
+          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="loadDiagramsTable()" style="color:var(--foreground-default);"><img
                 src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg">
               Load</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color:var(--foreground-default);"><img
+          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="saveJsonVisible = true" style="color:var(--foreground-default);"><img
                 src="./../assets/icons/svg/CodeChart_Web_Icons__Download.svg">
               Download</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: var(--foreground-default);"><img
+            <li style="margin-left: 10px;margin-right: 10px;" pTooltip="upload diagram"><a (click)="diagramsLoadDialog = true" style="color: var(--foreground-default);">
+               <img
                 src="./../assets/icons/svg/CodeChart_Web_Icons__Upload.svg">
-              Upload</a></li>
+              <input #fileLoadInput id='fileLoadInput' type="file" (change)="loadFromFile($event)" /> 
+              Upload</a>
+             </li>
           <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: var(--foreground-default);"><img
                 src="./../assets/icons/svg/CodeChart_Web_Icons__Import.svg">
               Import</a></li>
@@ -301,11 +233,11 @@
       </button>
 
       <span>
-        <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
+         <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
           [filter]="true" [style]="{'width': '200px','margin': '5px'}" class="p-inputtext-sm">
 
-        </p-dropdown>
-
+        </p-dropdown> 
+        
 
       </span>
 
@@ -321,25 +253,24 @@
 
 
 
+     
 
 
-
-
-      <button
-        style="border-left: 1px solid var(--foreground-tertiary);border-right: 1px solid var(--foreground-tertiary);border-bottom: 0px;border-top: 0px;background-color: transparent;"
-        pTooltip="View Settings">
-      
-        <app-dropdown [options]="view_settings"  (ItemClickEvent)='ClickSearchActionsItem($event)' icon="./../assets/icons/svg/CodeChart_Web_Icons__View Settings Up.svg">
-        </app-dropdown>
-
-
-
-
-
-
-
-
-      </button>
+      <span style="border-right: 1px solid var(--foreground-tertiary);">
+        <button class="parent round-button" style="margin-bottom: 0px;" pTooltip="View Settings"
+        >
+          <img src="./../assets/icons/dark/Dark Theme Icons__View Settings Closed.png">
+  
+          <div class="element">
+            <app-dropdown [options]="view_settings"  (ItemClickEvent)='ClickSearchActionsItem($event)' icon="./../assets/icons/dark/Dark Theme Icons__Menu Arrows Down.png">
+     
+            </app-dropdown>
+          
+  
+          </div>
+        </button>
+      </span>
+    
 
       <ul class="dropdown-menu">
         <li>
@@ -370,22 +301,22 @@
 
 
       <button pTooltip="Reduce Text" (click)="codeEditor.decreaseFileContentFont()" class="zoom" class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Smaller Text.svg">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Reduce Text Size.png">
 
       </button>
 
       <button pTooltip="Enlarge Text" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Larger Text.svg">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Increase Text Size.png">
 
 
       </button>
 
       <button class="round-button" pTooltip="Reload from Code">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Reload.svg" (click)="reloadFromCode()">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Reload.png" (click)="reloadFromCode()">
 
       </button>
       <button class="round-button" pTooltip="Approve Changes">
-        <img src="./../assets/icons/svg/CodeChart_Web_Icons__Approve Changes.svg" (click)="clearFailedReloaded()">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Approve Changes.png" (click)="clearFailedReloaded()">
 
       </button>
 
@@ -397,134 +328,95 @@
       <div id="filer" class="filer"  (click)="showNodeEditBox=false">
     
       <div class="pads dropup" style="pointer-events:auto;width: 100%;">
-        <span style="max-width: 90%;" class="center"> 
+        <p-dropdown  [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
+        [style]="{'width': 'auto','margin': '5px'}"></p-dropdown>
+      
+        <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
+          [style]="{'width': 'auto'}">
 
-      <!-- <div id="filer" class="filer"  (click)="showNodeEditBox=false">
-     -->
-        <p-dropdown wtf [options]="dropdownLanguageSelection" (onChange)="setSelectedLanguage($event.value)"
-          [style]="{'width': 'auto','margin': '5px'}"></p-dropdown>
-        
-          <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
-            [style]="{'width': 'auto'}">
+        </p-dropdown>
 
-          </p-dropdown>
-
-          <span
-            style="border:1px solid var(--foreground-tertiary);color:var(--foreground-default);background-color:var(--background-default);height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -3px;">
-            
-            <i class="fa fa-plus"
-                  aria-hidden="true"></i>
-          </span>
+        <span
+          style="border:1px solid var(--foreground-tertiary);color:var(--foreground-default);background-color:var(--background-default);height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -3px;">
           
-          
-          <span style="border-right: 1px solid var(--foreground-tertiary);">
-
-           <span>
-          <button class="round-button">
-            <img src="./../assets/icons/edit.png" style="margin-bottom: -10px;">
-
-          </button>
-
+          <i class="fa fa-plus"
+                aria-hidden="true"></i>
         </span>
-        <!-- <div class="vertical"></div> -->
+        
+        
         <span style="border-right: 1px solid var(--foreground-tertiary);">
-        <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions"
-          (click)="fitAllNodesOnScreen()" >
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
-  
-          <div class="element">
-              <app-dropdown (ItemClickEvent)='ClickSearchActionsItem($event)' [options]="view_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">     
-              </app-dropdown>
-  
-          </div>
-        </button>
-      </span>
-  
-  
-  
-       <span style="border-right: 1px solid var(--foreground-tertiary);">
-         <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Diagram Actions"
-          (click)="fitAllNodesOnScreen()">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg">
-  
-          <div class="element">
-              <app-dropdown [options]="diagram_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
+        <button class="edit_btn">
+          <i class="fas fa-pencil-alt"></i>
        
-              </app-dropdown>
-            
-  
-          </div>
-        </button> 
-        </span>
-        
-        <span style="border-right: 1px solid var(--foreground-tertiary);">
-         <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
-          <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Top Selected.svg" pTooltip="Add to Top"
-              style="margin-top: 15px;">
-            <br />
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Bottom.svg" pTooltip="Add to Bottom"
-              style="margin-top: -15px;">
-          </div>
-          <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Left.svg" pTooltip="Add to Left"
-              style="margin-top: 20px;">
-  
-  
-          </div>
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Add to Right.svg" pTooltip="Add to Right"
-            style="margin-left: 5px;margin-top: 20px;">
-  
-        </div> 
-        </span>
-        
-         <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Fit All.svg">
-        </button>
-        <button class="round-button" pTooltip="undo" (click)="undo()">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Undo.svg">
-        </button>
-        <span style="border-right: 1px solid var(--foreground-tertiary);">
-        <button class="round-button" pTooltip="Clear">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Clear.svg">
-  
         </button>
       </span>
-        <span  style="border-right: 1px solid var(--foreground-tertiary);">
-        <button class="round-button" pTooltip="Edit Diagram"
-          (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)">
-          <img src="./../assets/icons/svg/CodeChart_Web_Icons__Edit Diagram Down.svg">
-        </button>
+      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions"
+        (click)="fitAllNodesOnScreen()" >
+        <img src="./../assets/icons/dark/Dark Theme Icons__Get File Node.png">
+
+        <div class="element">
+            <app-dropdown (ItemClickEvent)='ClickSearchActionsItem($event)' [options]="view_actions" icon="./../assets/icons/dark/Dark Theme Icons__Menu Arrow Down.png">     
+            </app-dropdown>
+
+        </div>
+      </button>
+    </span>
+
+
+
+     <span style="border-right: 1px solid var(--foreground-tertiary);">
+       <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Diagram Actions"
+        (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Link Nodes.png">
+
+        <div class="element">
+            <app-dropdown [options]="diagram_actions" icon="./../assets/icons/dark/Dark Theme Icons__Menu Arrow Down.png">
+     
+            </app-dropdown>
+          
+
+        </div>
+      </button> 
+      </span>
+      
+      <span style="border-right: 1px solid var(--foreground-tertiary);">
+       <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
+        <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
+          <img src="./../assets/icons/dark/Dark Theme Icons__Add to Top Selected.png" pTooltip="Add to Top"
+            style="margin-top: 15px;">
+          <br />
+          <img src="./../assets/icons/dark/Dark Theme Icons__Add to Bottom.png" pTooltip="Add to Bottom"
+            style="margin-top: -15px;">
+        </div>
+        <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
+          <img src="./../assets/icons/dark/Dark Theme Icons__Add to Left.png" pTooltip="Add to Left"
+            style="margin-top: 20px;">
+
+
+        </div>
+        <img src="./../assets/icons/dark/Dark Theme Icons__Add to Right.png" pTooltip="Add to Right"
+          style="margin-left: 5px;margin-top: 20px;">
+
+      </div> 
+      </span>
+      
+       <button class="round-button" pTooltip="fit all" (click)="fitAllNodesOnScreen()">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Fit All.png">
+      </button>
+      <button class="round-button" pTooltip="undo" (click)="undo()">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Undo.png">
+      </button>
+      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <button class="round-button" pTooltip="Clear">
+        <img src="./../assets/icons/dark/Dark Theme Icons__Clear.png">
+
+      </button>
+    </span>
+    
    
-         </span>
 
-        </span>
-        <span style="max-width: 10%;float: right;">
-          <button class="round-button">
-            <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
-              (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
-          </button>
-        </span> 
-           <span style="text-align: center;">
-          <button class="parent round-button" style="margin-bottom: 5px;" pTooltip="Search Actions"
-            (click)="fitAllNodesOnScreen()">
-            <img src="./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg">
-
-            <div class="element">
-                <app-dropdown [options]="view_actions" icon="./../assets/icons/svg/CodeChart_Web_Icons__menu arrow.svg">
-
-                </app-dropdown>
-
-            </div>
-          </button>
-
-
-
-
-         </span>
-     </span>
-
-
+        
       </div>
       <div id="vis_element" style="height:100%" (click)="clickedChart($event)"></div>
 

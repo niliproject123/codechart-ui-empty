@@ -416,27 +416,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     const searchActions = [
       {
         name: "Get File Node",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Get File Node.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Get File Node.png",
         actions: ""
       }, {
         name: " Replace Node",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Replace Node.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Replace Node.png",
         actions: ""
       }, {
         name: "Search Folder",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Folder.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Search Folder.png",
         actions: ""
       }, {
         name: "Search File",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search File.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Search File.png",
         actions: ""
       }, {
         name: "Search Content",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Search Content.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Search Content.png",
         actions: ""
       }, {
         name: "Create Match",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Create Match.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Create Match.png",
         actions: ""
       }
     ];
@@ -444,23 +444,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     const diagramActions = [
       {
         name: "Add File Node",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add File Node.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Add File Node.png",
         actions: ""
       }, {
         name: "Add Comment",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Comment.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Add Comment.png",
         actions: ""
       }, {
         name: "Add Task",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Task.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Add Task.png",
         actions: ""
       }, {
         name: "Add Code node",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Add Code Node.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Add Code Node.png",
         actions: ""
       }, {
         name: "Link Nodes",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Link Nodes.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Link Nodes.png",
         actions: ""
       }
     ];
@@ -468,27 +468,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     const viewSettings = [
       {
         name: "Show Files",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Files.svg",
+        icon: "./../assets/icons/dark//Dark Theme Icons__Show Files.png",
         actions: ""
       }, {
         name: "Show Labels",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Labels.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Show Labels.png",
         actions: ""
       }, {
         name: "Overlay",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Overlay.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Overlay.png",
         actions: ""
       }, {
         name: "Show Range",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Show Range.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Show Range.png",
         actions: ""
       }, {
         name: "Light Theme",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Light Theme.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Light Theme.png",
         actions: ""
       }, {
         name: "horizantal",
-        icon: "./../assets/icons/svg/CodeChart_Web_Icons__Horizontal.svg",
+        icon: "./../assets/icons/dark/Dark Theme Icons__Horizontal.png",
         actions: ""
       }
     ];
