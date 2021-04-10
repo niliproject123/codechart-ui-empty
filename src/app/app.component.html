@@ -1,4 +1,4 @@
- <div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
+<div *ngIf="showNodeEditBox" class="stylingPopup" id='nodeStylePopup'>
   <textarea *ngIf="selectedNode" id='nodeTitleInput' [ngModel]="selectedNode?.label"
     (keyup)="setTitle($event)"></textarea>
   <node-styling [appComponent]="this"></node-styling>
@@ -20,6 +20,7 @@
           </div>
         </button>
       </span>
+      
       <button class="round-button">
         <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
           (click)="chartFullscreen=!chartFullscreen" aria-hidden="true"></i>
@@ -189,13 +190,11 @@
           (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
       </button>
 
-      <button class="skewed">
-        <div>
-          <img src="./../assets/icons/dark/Dark Theme Icons__CodeChart Logo.png">
+      <span class="skewed">
+          <img src="./../assets/icons/dark/Dark Theme Icons__CodeChart Logo.png" style="margin-left: 6px;margin-top: 5px;">
 
-        </div>
         
-      </button>
+        </span>
 
       <button class="round-button" pTooltip="Save Options">
         <img src="./../assets/icons/dark/Dark Theme Icons__Save Options.png" class="dropdown-toggle"
@@ -304,6 +303,8 @@
         <img src="./../assets/icons/dark/Dark Theme Icons__Reduce Text Size.png">
 
       </button>
+
+     
 
       <button pTooltip="Enlarge Text" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
         <img src="./../assets/icons/dark/Dark Theme Icons__Increase Text Size.png">
@@ -433,7 +434,12 @@
   <p-header> Get File</p-header>
   <p-autoComplete #openfileInput [suggestions]="openFileSuggestions"
     (onSelect)="openFile($event); openFileVisible=false" (completeMethod)="filterAvailableFiles($event.query)"
-    [delay]="0" [size]="120"></p-autoComplete>
+    [delay]="0" [size]="120"  [inputStyle]="{'width':'100%'}"></p-autoComplete>
+    <div style="height: 200px;color:var(--foreground-default);background-color:transparent;">
+      
+      <tree-root [nodes]="objects" [options]="options"   [ngClass]="'expand-tree'"></tree-root>
+      
+    </div>
 </p-dialog>
 <p-dialog [width]="400" [(visible)]="saveJsonVisible">
   <p-header> Save Diagram </p-header>

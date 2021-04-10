@@ -31,6 +31,7 @@ export class NodeStylingComponent implements OnInit {
 
   public sizes = sizes
   public length = length
+  public icons = ["./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"]
   constructor() {
   }
 

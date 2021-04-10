@@ -182,7 +182,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   diagram_actions = [];
   users = []
   selectedUser: User = null;
-
+  options = {};
+  public objects = [];
+ 
   // config = {
 
   //   displayKey: "name", //if objects array passed which key to be displayed defaults to description
@@ -411,8 +413,64 @@ export class AppComponent implements OnInit, AfterViewInit {
       );
 
     this.availableFiles = ["C:\\visualizer\\visualizer-node\\node\\src\\App.ts", "C:\\visualizer\\visualizer-node\\node\\src\\config.ts", "C:\\visualizer\\visualizer-node\\node\\src\\index.ts", "C:\\visualizer\\visualizer-node\\node\\src\\LocalRepo.ts", "C:\\visualizer\\visualizer-node\\node\\src\\SaveWrapper.ts", "C:\\visualizer\\visualizer-node\\node\\src\\update_data_nov_2019_etl_step1.json", "C:\\visualizer\\visualizer-node\\node\\src\\VisiInCode.ts"]
-
-
+   
+    this.objects = [
+      {
+      id: 1,
+      name: 'C:',
+      children: [
+        {
+           id: 2, 
+           name: 'visualizer',
+           children: [
+             {
+               id:3,
+               name:'visualizer-node',
+               children:[{
+                 id:4,
+                 name:'node',
+                 children:[
+                   {
+                     id:5,
+                     name:'src',
+                     children:[
+                       {
+                        id:6,
+                        name:'App.ts',
+                       },{
+                         id:7,
+                         name:'config.ts'
+                       },{
+                         id:8,
+                         name:'index.ts'
+                       },{
+                        id:9,
+                        name:'LocalRepo.ts'
+                       },{
+                        id:10,
+                        name:'SaveWrapper.ts'
+                       },{
+                        id:11,
+                        name:'update_data_nov_2019_etl_step1.json'
+                       },{
+                        id:12,
+                        name:'VisiInCode.ts'
+                       }
+                 ]
+                }
+                
+               ]
+             }
+           ]
+      }
+       
+      ]
+    }
+  ]
+}
+];
+   
+  
     const searchActions = [
       {
         name: "Get File Node",
@@ -514,6 +572,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.diagramsList = demoDiagramData
 
   }
+
+  
+
+// Build tree from root
+// tree = this.buildTree('');
+
+// By default, tree is an array
+// If it contains only one element which is an object, 
+// return this object instead to match OP request
+//if (tree.length == 1 && (typeof AppComponent.tree[0] === 'object')) {
+ //   tree = tree[0];
+//}
+
+// Serialize tree for debug purposes
+//console.log(JSON.stringify(tree, null, 2));
 
 
   public get searchObject(): SearchObject {

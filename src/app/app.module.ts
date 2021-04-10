@@ -18,7 +18,7 @@ import { ArrayFilterPipe } from './dropdown/filter-by.pipe';
 import { LimitToPipe } from './dropdown/limit-to.pipe';
 import { NavComponent } from './nav/nav.component';
 import { ThemeModule } from "./theme/theme.module";
-
+import { TreeModule } from 'angular-tree-component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { ThemeModule } from "./theme/theme.module";
     CheckboxModule,
     AceEditorModule,
     ThemeModule,
+    TreeModule.forRoot()
+   
   ],
   exports: [
   ],

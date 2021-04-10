@@ -1,3 +1,7 @@
+
+
+
+
 .error {
     display: flex;
     align-items: center;
@@ -339,11 +343,16 @@ span.seperator {
     color: var(--foreground-default);
 }
 .skewed {
-    background-color: black;
+    background-image:linear-gradient(to bottom,#252525 , var(--background-secondary));
     transform: skewX(-20deg);
     height: 50px;
     width: 50px;
+    
 }
+.skewed img{
+    transform:skewX(20deg);
+    text-align: center;
+}    
 
 .round-button {
     min-width: 40px;
@@ -359,9 +368,32 @@ span.seperator {
     overflow: none;
     text-align: center;
     padding: 0;
-    margin-right: 5px;
+    margin-right: 15px;
     margin-bottom: 5px;
 }
+.btn-circle span {
+    vertical-align: middle;
+    display: table-cell;
+    color: var(--foreground-light);
+}
+
+.btn-circle {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: table;
+    font-size: auto;
+    vertical-align: middle;
+    color: var(--foreground-light);
+    background-color:var(--background-dark);
+    font-weight: bold;
+    text-decoration: none;
+}
+.btn-circle:hover{
+    background-color:var(--foreground-dark);
+}
+
 .edit_btn{
     background-color:var(--background-dark);
     border-radius: 5px;
