@@ -434,10 +434,10 @@
   <p-header> Get File</p-header>
   <p-autoComplete #openfileInput [suggestions]="openFileSuggestions"
     (onSelect)="openFile($event); openFileVisible=false" (completeMethod)="filterAvailableFiles($event.query)"
-    [delay]="0" [size]="120"  [inputStyle]="{'width':'100%'}"></p-autoComplete>
-    <div style="height: 200px;color:var(--foreground-default);background-color:transparent;">
+    [delay]="0" [size]="120"  [inputStyle]="{'background-color':'var(--background-dark)','border':'1px solid var(--foreground-default)'}"></p-autoComplete>
+    <div style="height: 400px;color:var(--foreground-default);background-color:transparent;">
       
-      <tree-root [nodes]="objects" [options]="options"   [ngClass]="'expand-tree'"></tree-root>
+      <tree-root [nodes]="objects" [options]="options"></tree-root>
       
     </div>
 </p-dialog>
