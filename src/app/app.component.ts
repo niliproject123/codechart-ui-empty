@@ -573,8 +573,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.diagramsList = demoDiagramData
 
   }
-
-  
+ 
  setcolor(i){
    if(i == this.filesInLegend.length -1)
    {
@@ -784,15 +783,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }];
 
   ngOnInit(): void {
-    console.log('ngOnInit')
-    const defaultUser = new User('1', 'User 1', '111 Lane St')
-
-    this.users.push(defaultUser)
-    this.users.push(new User('2', 'User 2', '222 Lane St'))
-    this.users.push(new User('3', 'User 3', '333 Lane St'))
-    this.users.push(new User('4', 'User 4', '444 Lane St'))
-
-    this.selectedUser = defaultUser
+  
   }
   toggleTheme() {
     if (this.themeService.isDarkTheme()) {
@@ -807,7 +798,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log('codeSelectionChange')
   }
 
-  public messageBoxQueue: messageBoxItem[] = []
+  public messageBoxQueue: messageBoxItem[] = [
+
+    {
+      title:"Error",
+      displayTime:0,
+      "message":"The thing did not work so try something else"
+    }
+  ]
 
   public addMessage(title: string, message, displayTime) {
     console.log('addMessage')

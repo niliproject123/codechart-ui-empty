@@ -31,6 +31,8 @@
     "jquery": "^3.4.0",
     "md5": "^2.2.1",
     "ng2-ace-editor": "^0.3.1",
+    "ng2-directory-tree": "^0.4.0",
+    "ng2-file-tree": "~0.4.0",
     "node-sass": "^5.0.0",
     "primeflex": "2.0.0",
     "primeicons": "4.1.0",

@@ -32,30 +32,24 @@
     </div>
     
     <div class="searchButtons max-50">
-      <span style="pointer-events:auto;">
-      <div style="padding-bottom:0px;">
-        <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth(),'margin':'0px'}"
-          [style.display]="filerFullscreen?'none':'inline'">
-          <span *ngFor="let fileItem of filesInLegend;let i = index;" class="fileLegendItem_background"  [ngStyle]="setcolor(i)"> 
+      <!-- <span style="pointer-events:auto;"> -->
+      <!-- <div style="padding-bottom:0px;"> -->
+        <span *ngFor="let fileItem of filesInLegend;let i = index;" class="fileLegendItem_background"  [ngStyle]="setcolor(i)"> 
+          <span  class="fileLegendItem" [ngStyle]="{'background-color': fileItem.color}">
+            {{fileItem.fileLabel}} 
+        </span>
+        </span>
+       
+        <!-- <div class="h100" 
+          [style.display]="filerFullscreen?'none':'inline'" [ngStyle]="{'width': setChartWidth(),'margin':'0px'}">
+           <span *ngFor="let fileItem of filesInLegend;let i = index;" class="fileLegendItem_background"  [ngStyle]="setcolor(i)"> 
             <span  class="fileLegendItem" [ngStyle]="{'background-color': fileItem.color,'width':'auto'}">
               {{fileItem.fileLabel}} 
           </span>
           </span>
-         
-           
-         
-              <!-- <span style="background-color: red;row-gap: 0px;column-gap: 0px;">
-                <span class="fileLegendItem"  [ngStyle]="{'background-color': fileItem.color,'width':'auto'}">
-                  {{fileItem.fileLabel}}
-                </span>
-               
-              </span> -->
-             
-      
-          
-        </div>
-      </div>
-      </span>
+        </div> -->
+      <!-- </div>
+      </span> -->
       <!-- <span style="pointer-events:auto;">
       
 
@@ -262,7 +256,7 @@
 
       <span class="btn-group">
         <input type="text" name="..." class="form-control" placeholder="file pattern"
-          style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern" />
+          style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern" class="p-inputtext-sm"/>
 
         <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
           (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-60px;margin-top:0px;min-height:36px;border-left: 0.5px solid var(--foreground-tertiary);color:var(--background-secondary);">(.*)</button>
@@ -443,8 +437,11 @@
   
   </div>
   <div id='message_box'>
-    <pre style="font-weight: bolder; font-size:40px">{{messageBoxQueue[0]?.title}}</pre>
-    <div style="font-size:25px">{{messageBoxQueue[0]?.message}}</div>
+    <pre style="font-weight: bolder; font-size:40px"><i class="fas fa-warning" style="margin-right: 10px;"></i>{{messageBoxQueue[0]?.title}}</pre>
+    <div style="font-size:18px;color:#575757;;">{{messageBoxQueue[0]?.message}}</div>
+    <div>
+    <button type="button" class="btn_style" style="width: 70px;height: 30px;float: right;">okay</button>
+    </div>
   </div>
 </div>
 <p-dialog [contentStyle]="{'overflow':'visible'}" [(visible)]="openFileVisible" [width]="1500" [height]="500"
@@ -455,6 +452,14 @@
     [delay]="0" [size]="120"  [inputStyle]="{'background-color':'var(--background-dark)'}"></p-autoComplete>
     <div style="height: 400px;color:var(--foreground-default);background-color:transparent;">
       
+      <!-- <file-tree [tree]="objects"
+                          (onChange)="clickFileTree($event)"
+                          [keyboardWatch]=true>
+               </file-tree> -->
+               <!-- <directory-tree [directory]="objects"
+                               (onChange)="logging($event)"
+                               [keyboardWatch]=true>
+               </directory-tree> -->
       <tree-root [nodes]="objects" [options]="options"></tree-root>
       
     </div>
