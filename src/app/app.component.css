@@ -89,7 +89,7 @@
     
   }
   
-  .input-field {
+  /* .input-field {
     width: 70%;
     padding: 10px;
     outline: none;
@@ -99,7 +99,7 @@
   
   .input-field:focus {
     border: 2px solid var(--foreground-tertiary);
-  }
+  } */
 
 
 
@@ -190,12 +190,14 @@ input {
 .max-50 {
     max-width: 50%;
 }
-
+.visjs{
+    margin-left: 0px;
+    margin-right: 0px;
+}
 .searchButtons {
     position: fixed;
-    bottom: 15px;
+    bottom: 5px;
     right: 0px;
-    padding: 10px;
     display: flex;
     align-items: flex-end;
 }
@@ -326,11 +328,38 @@ span.seperator {
     background-color: var(--foreground-light);
 }
 
+  input:focus {
+
+    outline: 2px solid  lightgray;  
+   }
+   input.visited {
+     
+    outline: 2px solid  lightgray;  
+   }
+:host::ng-deep .ui-widget-header{
+    background: linear-gradient(to bottom,var(--background-secondary) 0%, var(--background-secondary) 100%);
+    height: 50px;
+    color:var(--foreground-default);
+}
+.btn_style{
+    margin:auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 120px;
+    width: auto;
+    height: 30px;
+    border: 1px solid #7e7e7e;
+    border-radius: 5px;
+    background-color: black;
+    color: #c3c3c3;
+  }
+  
 :host::ng-deep .ui-inputtext {
     background:var(--background-default);
     color:var(--foreground-default);
     text-overflow: ellipsis;
 }
+
 :host::ng-deep .ui-state-default {
     background-color: transparent;
     border: 0px;
@@ -461,11 +490,11 @@ span {
 button.selected {
 }
 
-input {
+/* input {
     border: 1px solid rgb(51, 51, 51);
     margin-right: 4px;
     margin-left: 4px;
-}
+} */
 
 button.left {
     border-left: 1px solid rgb(51, 51, 51);
@@ -486,8 +515,7 @@ button.left {
     z-index: 999;
 }
 
-.visjs {
-}
+
 
 .vis-network {
     background-color: var(--background-default) !important;
@@ -558,15 +586,31 @@ button {
 }
 
 .fileLegendItem {
-    margin-left: 5px;
-    border-style: solid;
-    padding: 3px;
-    margin: 5px;
-    background-color: var(--foreground-light);
+    /* margin-left: 5px; */
+    /* border-style: solid; */
+    /* padding: 3px;
+    margin: 5px; */
+    
     /* border-color: aqua; */
-    border-radius: 10px 0px 10px 0px;
+    border-radius: 0px 10px 0px 10px;
+    min-width: 180px;
     font-weight: bold;
+    height: 30px;
     cursor: default;
+    width: auto;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+    color: var(--foreground-light);
+}
+.fileLegendItem_background {
+    
+    min-width: 180px;
+    font-weight: bold;
+    height: 30px;
+    cursor: default;
+    width: auto;
+    text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
     color: var(--foreground-light);

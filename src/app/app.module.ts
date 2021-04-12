@@ -47,7 +47,7 @@ import { TreeModule } from 'angular-tree-component';
     CheckboxModule,
     AceEditorModule,
     ThemeModule,
-    TreeModule.forRoot()
+    TreeModule
    
   ],
   exports: [

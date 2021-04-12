@@ -30,20 +30,38 @@
         
 
     </div>
+    
     <div class="searchButtons max-50">
-
-      <span style="pointer-events:auto;" class="pads searchPatterns">
-        <div style="padding-bottom: 5px;">
-          <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth()}"
-            [style.display]="filerFullscreen?'none':'inline'">
-            <span class="fileLegendItem" *ngFor="let fileItem of filesInLegend"
-              [ngStyle]="{'background-color': fileItem.color}">{{fileItem.fileLabel}}</span>
-          </div>
+      <span style="pointer-events:auto;">
+      <div style="padding-bottom:0px;">
+        <div class="h100w50 visjs" [ngStyle]="{'width': setChartWidth(),'margin':'0px'}"
+          [style.display]="filerFullscreen?'none':'inline'">
+          <span *ngFor="let fileItem of filesInLegend;let i = index;" class="fileLegendItem_background"  [ngStyle]="setcolor(i)"> 
+            <span  class="fileLegendItem" [ngStyle]="{'background-color': fileItem.color,'width':'auto'}">
+              {{fileItem.fileLabel}} 
+          </span>
+          </span>
+         
+           
+         
+              <!-- <span style="background-color: red;row-gap: 0px;column-gap: 0px;">
+                <span class="fileLegendItem"  [ngStyle]="{'background-color': fileItem.color,'width':'auto'}">
+                  {{fileItem.fileLabel}}
+                </span>
+               
+              </span> -->
+             
+      
+          
         </div>
+      </div>
+      </span>
+      <!-- <span style="pointer-events:auto;">
+      
 
       
-      </span>
-      <span class="alignContentToCenter" style="padding-left:20px" style="pointer-events:auto">
+      </span> -->
+      <!-- <span class="alignContentToCenter" style="padding-left:20px" style="pointer-events:auto">
        
         <div class="columnarButtonsWrapper">
           <div chartAdditions style="display: flex; flex-direction: column" class="pads chartAdditions">
@@ -114,9 +132,9 @@
               (click)="Options.positioning=PositioningOptions.DOWN"></button>
           </div>
         </div>
-      </span>
+      </span> -->
     </div>
-    <div class="searchLocations max-50" style="display: flex; flex-direction: column; align-items: baseline; ">
+    <!-- <div class="searchLocations max-50" style="display: flex; flex-direction: column; align-items: baseline; ">
       <div class="pads dropup" style="pointer-events:auto">
         <button pTooltip="save diagram" (click)="saveJsonVisible = true">
           <i class="fa fa-download" aria-hidden="true"></i>/<i class="fa fa-cloud-download" aria-hidden="true"></i>
@@ -177,7 +195,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <div id="filer" class="filer" (click)="showNodeEditBox=false">
      <div id="bordered" [ngStyle]="{'width': setFilerWidth()}" [style.display]="chartFullscreen?'none':'inline'">
@@ -434,27 +452,35 @@
   <p-header> Get File</p-header>
   <p-autoComplete #openfileInput [suggestions]="openFileSuggestions"
     (onSelect)="openFile($event); openFileVisible=false" (completeMethod)="filterAvailableFiles($event.query)"
-    [delay]="0" [size]="120"  [inputStyle]="{'background-color':'var(--background-dark)','border':'1px solid var(--foreground-default)'}"></p-autoComplete>
+    [delay]="0" [size]="120"  [inputStyle]="{'background-color':'var(--background-dark)'}"></p-autoComplete>
     <div style="height: 400px;color:var(--foreground-default);background-color:transparent;">
       
       <tree-root [nodes]="objects" [options]="options"></tree-root>
       
     </div>
 </p-dialog>
-<p-dialog [width]="400" [(visible)]="saveJsonVisible">
+<p-dialog [width]="500" [(visible)]="saveJsonVisible">
   <p-header> Save Diagram </p-header>
   <div> Story Name: </div>
-  <input type="text" style="width:95%" [(ngModel)]="currentDiagramDetails.story" />
+  <input type="text" placeholder="The Best Story Ever" style="width:95%;border-radius: 5px;border: 1px solid var(--foreground-dark);"  [(ngModel)]="currentDiagramDetails.story" />
   <div> Description: </div>
-  <textarea style="width:95%" [(ngModel)]="currentDiagramDetails.description"></textarea>
+  <textarea style="width:95%;height: 100px;border-radius: 5px;border: 1px solid var(--foreground-dark);background-color: var(--background-default);" [(ngModel)]="currentDiagramDetails.description"></textarea>
   <div> Project: </div>
-  <input type="text" style="width:95%" [ngModel]="searchObject.dirPath" />
-  <div *ngIf="filesInLegend.length>0"> Files: </div>
+  <input type="text" style="width:95%;border-radius: 5px;border: 1px solid var(--foreground-dark)" [ngModel]="searchObject.dirPath" />
+  <!-- <div *ngIf="filesInLegend.length>0"> Files: </div>
   <div style="display: flex; flex-wrap: wrap">
     <span class="fileLegendItem" *ngFor="let fileItem of filesInLegend"
       [ngStyle]="{'background-color': fileItem.color}">{{fileItem.fileLabel}}</span>
+  </div> -->
+  <div style="margin-top: 15px;">
+    <button type="button" class="btn_style" (click)="jsonSave(); saveJsonVisible=false">Download</button>
+    <button *ngIf="currentDiagramDetails.id" type="button" class="btn_style" (click)="dbSave(false); saveJsonVisible=false">Update
+      Selected</button>
+    <button type="button" class="btn_style" (click)="dbSave(true); saveJsonVisible=false">Save New</button>
+      <button type="button"  class="btn_style" (click)="saveJsonVisible=false">Cancel</button>
+   
   </div>
-  <p-footer>
+  <!-- <p-footer>
     <div>
       <button type="button" (click)="saveJsonVisible=false">Cancel</button>
       <button type="button" (click)="jsonSave(); saveJsonVisible=false">Download</button>
@@ -464,7 +490,7 @@
       <button *ngIf="currentDiagramDetails.id" type="button" (click)="dbSave(false); saveJsonVisible=false">Update
         Selected</button>
     </div>
-  </p-footer>
+  </p-footer> -->
 </p-dialog>
 <p-dialog [(visible)]="showDiagramsLoadTable" [width]="1800">
 

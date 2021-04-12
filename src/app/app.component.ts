@@ -174,8 +174,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   private languageRegexes: Languages[] = []
   public loadedDiagrams: string[] = []
 
-  public lastDiagramLoaded: string = ''
-  public
+  public lastDiagramLoaded: string = '';
+  public colors = ["#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107"];
 
   view_settings = [];
   view_actions = [];
@@ -239,6 +239,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   async initializeData() {
+    console.log("colors are",this.colors);
     const paths = {
       "paths": [
         "C:\\visualizer\\visualizer-angular\\src\\app\\",
@@ -574,20 +575,27 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   
+ setcolor(i){
+   if(i == this.filesInLegend.length -1)
+   {
+    const style = {'background':'linear-gradient('+this.filesInLegend[i].color+', '+this.filesInLegend[i - 1].color+')','width':'auto'};
+    return style;
+  
+     
+   }
+   else if(i == 0){
+    const style = {'background':'linear-gradient('+this.filesInLegend[i+1].color+', '+this.filesInLegend[i].color+')','width':'auto'};
+    return style;
+  
+   }
+   else{
+    const style = {'background':'linear-gradient('+this.filesInLegend[i+1].color+', '+this.filesInLegend[i - 1].color+')','width':'auto'};
+    return style;
+  
+   }
 
-// Build tree from root
-// tree = this.buildTree('');
-
-// By default, tree is an array
-// If it contains only one element which is an object, 
-// return this object instead to match OP request
-//if (tree.length == 1 && (typeof AppComponent.tree[0] === 'object')) {
- //   tree = tree[0];
-//}
-
-// Serialize tree for debug purposes
-//console.log(JSON.stringify(tree, null, 2));
-
+  }
+  
 
   public get searchObject(): SearchObject {
     return this._searchJson
