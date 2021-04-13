@@ -186,6 +186,9 @@ input {
     background-color: var(--background-default);
     color: var(--foreground-default);
 }
+input:focus{
+    border: 0.5px solid lightgray;
+}
 
 .max-50 {
     max-width: 50%;
@@ -435,9 +438,9 @@ span.seperator {
     border:1px solid var(--foreground-tertiary);
     color: var(--foreground-light);
 }
-.round-button:hover{
+/* .round-button:hover{
     background-color:var(--foreground-dark);
-}
+} */
 .edit_btn:hover{
     background-color:var(--foreground-dark);
 }
@@ -455,6 +458,15 @@ span.seperator {
     padding: 10px;
     color: #000;
     position: absolute;
+}
+.icon_arrow{
+    color: var(--foreground-default);
+  
+}
+.icon_arrow:hover{
+    color:var(--background-secondary);
+ 
+  
 }
 
 .round-button:before {

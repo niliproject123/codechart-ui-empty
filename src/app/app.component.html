@@ -14,8 +14,12 @@
           <img src="./../assets/icons/dark/Dark Theme Icons__Edit Diagram Up.png">
   
           <div class="element">
-            <img src="./../assets/icons/dark/Dark Theme Icons__Menu Arrow Down.png">
-     
+            <i class="fas fa-angle-double-down icon_arrow">
+
+            </i>
+  
+            <!-- <img src="./../assets/icons/dark/Dark Theme Icons__Menu Arrow Down.png">
+      -->
   
           </div>
         </button>
@@ -450,19 +454,13 @@
   <p-autoComplete #openfileInput [suggestions]="openFileSuggestions"
     (onSelect)="openFile($event); openFileVisible=false" (completeMethod)="filterAvailableFiles($event.query)"
     [delay]="0" [size]="120"  [inputStyle]="{'background-color':'var(--background-dark)'}"></p-autoComplete>
-    <div style="height: 400px;color:var(--foreground-default);background-color:transparent;">
+    <div style="height: 350px;color:var(--foreground-default);background-color:transparent;">
       
-      <!-- <file-tree [tree]="objects"
-                          (onChange)="clickFileTree($event)"
-                          [keyboardWatch]=true>
-               </file-tree> -->
-               <!-- <directory-tree [directory]="objects"
-                               (onChange)="logging($event)"
-                               [keyboardWatch]=true>
-               </directory-tree> -->
+      
       <tree-root [nodes]="objects" [options]="options"></tree-root>
       
     </div>
+    
 </p-dialog>
 <p-dialog [width]="500" [(visible)]="saveJsonVisible">
   <p-header> Save Diagram </p-header>

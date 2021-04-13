@@ -55,6 +55,15 @@
     vertical-align: bottom;
      
 }
+.icon{
+    color: var(--foreground-default);
+  
+}
+.icon:hover{
+    color:var(--background-secondary);
+ 
+  
+}
     
 .round-button {
     min-width: 40px;
