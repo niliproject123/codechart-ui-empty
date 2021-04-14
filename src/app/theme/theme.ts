@@ -55,6 +55,7 @@ export interface Theme {
       "--background-secondary": "#4f4f4f",
       "--background-tertiary": "#1a1a1a",
       "--background-quaternary":"#aeaeae",
+      "--background-border":"#666666",
       "--background-light": "#444545",
       "--background-dark":"#2d2d2d",
       "--background-middle":"#595a5a",

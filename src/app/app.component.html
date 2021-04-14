@@ -240,10 +240,13 @@
       
           </li>
           <li style="display: inline-table;"> 
-              <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
-               [filter]="true" [style]="{'width': '200px','display':'inline-block'}">
+            <span>
+          
+               <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
+               [filter]="true" [style]="{'width': '200px','display':'inline-block'}"> 
+             </p-dropdown>
      
-             </p-dropdown> 
+             </span> 
       
           </li>
           <li style="display: inline-table;"> 
@@ -252,7 +255,7 @@
                 style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern"/>
       
               <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
-                (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-60px;margin-top:0px;min-height:36px;border-left: 0.5px solid var(--background-quaternary);color:var(--background-secondary);">(.*)</button>
+                (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-60px;margin-top:0px;min-height:36px;border-left: 0.5px solid var(--background-border);color:var(--background-secondary);">(.*)</button>
             </span>
       
           </li>
@@ -340,147 +343,6 @@
 
      </ul>
 
-      <!-- <button class="round-button">
-        
-        <i class="fas" [ngClass]="(filerFullscreen) ? 'fa-compress' : 'fa-expand'"
-          (click)="filerFullscreen=!filerFullscreen" aria-hidden="true"></i>
-      </button>
-
-      <span class="skewed">
-          <img src="./../assets/icons/dark/Dark Theme Icons__CodeChart Logo.png" style="margin-left: 6px;margin-top: 5px;">
-
-        
-        </span>
-
-      <button class="round-button" pTooltip="Save Options">
-        <img src="./../assets/icons/dark/Dark Theme Icons__Save Options.png" class="dropdown-toggle"
-          id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-        <ul class="dropdown-menu" (click)="preventClose($event)"
-          style="background-color:var(--background-secondary);width: 180px;height:240px">
-          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="saveJsonVisible = true" style="color:var(--foreground-default);"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Save Download to Cloud.svg">
-              Download/Save</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="loadDiagramsTable()" style="color:var(--foreground-default);"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg">
-              Load</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a (click)="saveJsonVisible = true" style="color:var(--foreground-default);"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Download.svg">
-              Download</a></li>
-            <li style="margin-left: 10px;margin-right: 10px;" pTooltip="upload diagram"><a (click)="diagramsLoadDialog = true" style="color: var(--foreground-default);">
-               <img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Upload.svg">
-              <input #fileLoadInput id='fileLoadInput' type="file" (change)="loadFromFile($event)" /> 
-              Upload</a>
-             </li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: var(--foreground-default);"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Import.svg">
-              Import</a></li>
-          <li style="margin-left: 10px;margin-right: 10px;"><a href="#" style="color: var(--foreground-default);"><img
-                src="./../assets/icons/svg/CodeChart_Web_Icons__Export.svg">
-              Export</a></li>
-          <div class="dropdown-divider"></div>
-          <li style="text-align: center;margin-top: -10px;">
-            <i class="fa fa-angle-up"></i>
-          </li>
-        </ul>
-
-      </button>
-      <span class="horizantal-list">
-
-      <span>
-         <p-dropdown [options]="paths" (click)="pathDropdownClick($event)" (onChange)="setSelectedPath($event.value)"
-          [filter]="true" [style]="{'width': '200px','display':'inline-block'}">
-
-        </p-dropdown> 
-        
-
-      </span>
-
-
-
-      <span>
-        <input type="text" name="..." class="form-control" placeholder="file pattern"
-          style="width:200px;max-width:280px;display:inline-block" [(ngModel)]="searchObject.filenamePattern"/>
-
-        <button [ngClass]="{'active': searchObject.isFileNameRegex===true}" pTooltip="is pattern regex"
-          (click)="searchObject.isFileNameRegex=!searchObject.isFileNameRegex" type="submit" class="btn" style="margin-left:-60px;margin-top:0px;min-height:36px;border-left: 0.5px solid var(--background-quaternary);color:var(--background-secondary);">(.*)</button>
-      </span>
-
-    </span>
-
-
-     
-
-
-      <span style="border-right: 1px solid var(--foreground-tertiary);">
-        <button class="parent round-button" style="margin-bottom: 0px;" pTooltip="View Settings"
-        >
-          <img src="./../assets/icons/dark/Dark Theme Icons__View Settings Closed.png">
-  
-          <div class="element">
-            <app-dropdown [options]="view_settings"  (ItemClickEvent)='ClickSearchActionsItem($event)' icon="./../assets/icons/dark/Dark Theme Icons__Menu Arrows Down.png">
-     
-            </app-dropdown>
-          
-  
-          </div>
-        </button>
-      </span>
-    
-
-      <ul class="dropdown-menu">
-        <li>
-          <input #customPath placeholder='custom path' (keyup)="setCustomPath($event) " type="text"
-            style="width: 500px;margin: 5px;"
-            [style.backgroundColor]="searchObject.dirPath===customPath.value ? 'lightpink' : ''" />
-        </li>
-        <li>
-          <button [ngClass]="{'active': Options.showCodeLabels===true}" pTooltip="toggle match labels"
-            (click)="toggleMatchNodesLabel()">
-            Show Code Lines
-          </button>
-          <button [ngClass]="{'active': Options.showFileLegend===true}" pTooltip="toggle file legend"
-            (click)="toggleFileLegend()">
-            Show File Legend
-          </button>
-          <button [ngClass]="{'active': Options.keepChartOnLoadFromJson===true}"
-            pTooltip="toggle show code lines on nodes" (click)="toggleReplaceChartWhenLoading()">
-            Keep Chart When Loading
-          </button>
-          <button [ngClass]="{'active': Options.showInContentLines===true}" pTooltip="toggle in content lines"
-            (click)="toggleInContentLines()">
-            Show In Content
-          </button>
-          <br />
-        </li>
-      </ul>
-
-
-      <button pTooltip="Reduce Text" (click)="codeEditor.decreaseFileContentFont()" class="zoom" class="round-button">
-        <img src="./../assets/icons/dark/Dark Theme Icons__Reduce Text Size.png">
-
-      </button>
-
-     
-
-      <button pTooltip="Enlarge Text" (click)="codeEditor.increaseFileContentFont()" class="zoom" class="round-button">
-        <img src="./../assets/icons/dark/Dark Theme Icons__Increase Text Size.png">
-
-
-      </button>
-
-      <button class="round-button" pTooltip="Reload from Code">
-        <img src="./../assets/icons/dark/Dark Theme Icons__Reload.png" (click)="reloadFromCode()">
-
-      </button>
-      <button class="round-button" pTooltip="Approve Changes">
-        <img src="./../assets/icons/dark/Dark Theme Icons__Approve Changes.png" (click)="clearFailedReloaded()">
-
-      </button>
-
-      <code-viewer #aceEditor [appComponent]="this" [fileData]="currentFile"
-        (selectionChange)="codeSelectionChange($event)"></code-viewer> -->
     </div>
   
     <div class="h100w50 visjs" id="filter" class="filer" [ngStyle]="{'width': setChartWidth()}"
@@ -498,33 +360,33 @@
        <li style="display: inline-table;"> 
      
         <p-dropdown wtf [options]="dropdownLanguageRegexSelection" (onChange)="setSelectedLanguageRegex($event.value)"
-          [style]="{'width': 'auto'}">
+          [style]="{'width': 'auto','border-right':'1px solid var(--background-border)'}">
 
         </p-dropdown>
-      </li>
-      <li style="display: inline-table;"> 
-     
         <span
-          style="border:1px solid var(--foreground-tertiary);color:var(--foreground-default);background-color:var(--background-default);height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -3px;">
+          style="border-right:1px solid var(--background-border);border-top:1px solid var(--background-border);border-bottom:1px solid var(--background-border);color:var(--foreground-default);background-color:var(--background-default);height: 30px;width: 30px;text-align: center;margin-top: -2px;margin-left: -4.5px;">
           
           <i class="fa fa-plus"
                 aria-hidden="true"></i>
         </span>
         
-        </li>
+      </li>
+     
         <li style="display: inline-table;"> 
      
-        <span style="border-right: 1px solid var(--foreground-tertiary);">
         <button class="edit_btn">
           <i class="fas fa-pencil-alt"></i>
        
         </button>
-      </span>
+      </li>
+      <li style="display: inline-table;">
+        <span style="border-right: 1px solid var(--background-border);height: 40px;">
+         </span>
       </li>
 
 
       <li style="display: inline-table;"> 
-      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <span style="border-right: 1px solid var(--background-border);">
       <span class="round-button" pTooltip="Search Actions"
         (click)="fitAllNodesOnScreen()" >
         <img src="./../assets/icons/dark/Dark Theme Icons__Get File Node.png" class="filer_img">
@@ -539,7 +401,7 @@
     </li>
 
     <li style="display: inline-table;"> 
-     <span style="border-right: 1px solid var(--foreground-tertiary);">
+     <span style="border-right: 1px solid var(--background-border);">
        <span class="parent round-button" pTooltip="Diagram Actions"
         (click)="fitAllNodesOnScreen()">
         <img src="./../assets/icons/dark/Dark Theme Icons__Link Nodes.png" class="filer_img">
@@ -556,7 +418,7 @@
       </li>
 
       <li style="display: inline-table;"> 
-      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <span style="border-right: 1px solid var(--background-border);">
        <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
         
         <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
@@ -597,7 +459,7 @@
       </li>
 
       <li style="display: inline-table;"> 
-      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <span style="border-right: 1px solid var(--background-border);">
       <span class="round-button" pTooltip="Clear">
         <img src="./../assets/icons/dark/Dark Theme Icons__Clear.png" class="filer_img">
 
@@ -606,7 +468,7 @@
     </li>
      
     <li style="display: inline-table;"> 
-      <span style="border-right: 1px solid var(--foreground-tertiary);">
+      <span style="border-right: 1px solid var(--background-border);">
       <span class="parent round-button" pTooltip="Edit Diagram"
       (click)="showStylingElement($event.x, $event.y, !showNodeEditBox)" >
         <img src="./../assets/icons/dark/Dark Theme Icons__Edit Diagram Up.png">
