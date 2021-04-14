@@ -18,16 +18,16 @@
         </span>
       </li>
       
-      <!-- <li>
+      <li style="background-color: #c3c3c3;">
         <button *ngFor="let image of appComponent.allNodeImages" [style.background]="'url('+ image.path +')'"
                 class="imageButton" (click)="appComponent.setSelectionImage(image.path)" [style.backgroundSize]="'80%'"
                 [style.backgroundPosition]="'center'" [style.backgroundRepeat]="'no-repeat'"
                 pTooltip="{{image.name}}"></button>
-      </li> -->
-      <!-- <li>
+      </li>
+      <li style="background-color: #c3c3c3;">
         <button *ngFor="let shape of appComponent.nodeShapes" class="imageButton" [ngClass]="shape.faClass"
                 (click)="appComponent.setSelectionShape(shape.visShape)" pTooltip="{{shape.visShape}}"></button>
-      </li> -->
+      </li>
        <li class="column">
         <div>
           <div class="title">Node size:
@@ -67,8 +67,9 @@
         <button class="btnCircle btnBackgroundColor btnColor"><img
           src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
 
-          <button class="btnCircle btnBackgroundColor btnColor"><img
-            src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+          <button class="btnCircle btnBackgroundColor btnColor">
+            <i class="fa fa-star"></i>
+           </button>
             <button class="btnCircle btnBackgroundColor btnColor">
               <img src="./../assets/nodes/coding.svg" style="width: 20px;height: 20px;">
             <!-- <span>

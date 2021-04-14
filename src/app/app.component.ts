@@ -175,13 +175,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   public loadedDiagrams: string[] = []
 
   public lastDiagramLoaded: string = '';
-  public colors = ["#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107","#ffffff","#ffc107"];
-
+  
   view_settings = [];
   view_actions = [];
   diagram_actions = [];
   users = []
   selectedUser: User = null;
+  
   options = {};
   public objects = [];
  
@@ -239,7 +239,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   async initializeData() {
-    console.log("colors are",this.colors);
     const paths = {
       "paths": [
         "C:\\visualizer\\visualizer-angular\\src\\app\\",
@@ -573,7 +572,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.diagramsList = demoDiagramData
 
   }
- 
+  onEvent(event:any){
+      if (event && event.target && event.target.childNodes[0]) {
+          this.openFileVisible = false;
+    
+          console.log(event.target.childNodes[0].data)
+      }
+  
+  }
  setcolor(i){
    if(i == this.filesInLegend.length -1)
    {

@@ -217,7 +217,7 @@ input:focus{
     right: 0px;
     margin: 0px;
     display: flex;
-     align-items: flex-end; 
+    align-items: flex-end; 
    
 }
 .pads.dropup .generalActions_div {
@@ -325,7 +325,6 @@ span.seperator {
 :host::ng-deep input.ui-dropdown-filter.ui-inputtext.ui-widget.ui-state-default.ui-corner-all{
     border:1px solid var(--background-light);
     border-radius: 5px;
-    height: 30px;
     background-color:var(--background-default);
 }
 :host::ng-deep .ui-dropdown-item {
@@ -393,10 +392,10 @@ span.seperator {
 }    
 
 .round-button {
+    
     min-width: 40px;
     max-width: 80px;
     text-decoration: none;
-    display: inline-block;
     outline: none;
     cursor: pointer;
     border-style: none;
@@ -404,10 +403,17 @@ span.seperator {
     background-color:var(--background-dark);
     border-radius: 100%;
     overflow: none;
+    vertical-align: middle;
     text-align: center;
     padding: 0;
-    margin-right: 15px;
-    margin-bottom: 5px;
+    margin-right: 10px;
+    height: 40px;
+    
+    
+}
+.filer_img{
+    bottom: -50%;
+    transform: translateY(20%);
 }
 .btn-circle span {
     vertical-align: middle;
@@ -452,7 +458,7 @@ span.seperator {
 }
 
 .element {
-    margin-top: -30px;
+    margin-top: -20px;
     margin-left: 15px;
     background-color: transparent;
     padding: 10px;
@@ -469,20 +475,18 @@ span.seperator {
   
 }
 
-.round-button:before {
+/* .round-button:before {
     content: '';
     display: inline-block;
     vertical-align: middle;
     padding-top: 100%;
-}
+} */
 span {
     display: inline-block;
     vertical-align: middle;
     max-width: 100%;
 }
-.round-button:active {
-    background-color: #2980b9;
-}
+
 
 #filer #fileContent {
     margin: 0px;
