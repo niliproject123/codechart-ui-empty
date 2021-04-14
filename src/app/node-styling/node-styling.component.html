@@ -18,16 +18,13 @@
         </span>
       </li>
       
-      <li style="background-color: #c3c3c3;">
+      <!-- <li style="background-color: #c3c3c3;">
         <button *ngFor="let image of appComponent.allNodeImages" [style.background]="'url('+ image.path +')'"
                 class="imageButton" (click)="appComponent.setSelectionImage(image.path)" [style.backgroundSize]="'80%'"
                 [style.backgroundPosition]="'center'" [style.backgroundRepeat]="'no-repeat'"
                 pTooltip="{{image.name}}"></button>
-      </li>
-      <li style="background-color: #c3c3c3;">
-        <button *ngFor="let shape of appComponent.nodeShapes" class="imageButton" [ngClass]="shape.faClass"
-                (click)="appComponent.setSelectionShape(shape.visShape)" pTooltip="{{shape.visShape}}"></button>
-      </li>
+      </li> -->
+     
        <li class="column">
         <div>
           <div class="title">Node size:
@@ -59,30 +56,33 @@
       <hr>
       <div class="title">Symbols
       </div>
-      <div class="btn-group" style="column-gap: 10px;">
+      <div class="btn-group" style="column-gap: 10px;margin-top: 10px;">
 
-      <button class="btnCircle btnBackgroundColor btnColor"><img
+      <!-- <button class="btnCircle btnBackgroundColor btnColor"><img
         src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
 
         <button class="btnCircle btnBackgroundColor btnColor"><img
-          src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button>
+          src="./../assets/icons/svg/CodeChart_Web_Icons__Load from Cloud.svg"></button> -->
 
           <button class="btnCircle btnBackgroundColor btnColor">
             <i class="fa fa-star"></i>
            </button>
             <button class="btnCircle btnBackgroundColor btnColor">
-              <img src="./../assets/nodes/coding.svg" style="width: 20px;height: 20px;">
-            <!-- <span>
-              <p-dropdown wtf [options]="icons" [style]="{'width': '50px','margin': '5px'}">
-  
-            </p-dropdown> 
-            </span> -->
-          
+              <img src="./../assets/nodes/coding.svg" style="width: 20px;height: 20px;" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+              <ul class="dropdown-menu dropdown_margin_ul">
+                <li *ngFor="let shape of appComponent.nodeShapes"  style="background-color:var(--background-default);display: inline-block;margin: 5px 5px 5px 5px;">
+                  <button  class="btnCircle btnBackgroundColor btnColor_dropdown" [ngClass]="shape.faClass"
+                          (click)="appComponent.setSelectionShape(shape.visShape)" pTooltip="{{shape.visShape}}">
+                        </button>
+                </li>
+              </ul>
             </button>
        </div>
      
     
-      <li>
+      <li style="margin-top: 10px;">
             <span>
             <button class="btn_style" (click)="appComponent.showHideFile()">Hide/Show File</button>
             </span>

@@ -558,21 +558,26 @@
       <li style="display: inline-table;"> 
       <span style="border-right: 1px solid var(--foreground-tertiary);">
        <div style="overflow: hidden" style="margin-left: 5px;margin-right: 5px;">
+        
         <div style=" float:left; padding-bottom:1000px; margin-bottom:-1000px">
           <img src="./../assets/icons/dark/Dark Theme Icons__Add to Top Selected.png" pTooltip="Add to Top"
-            style="margin-top: 15px;">
+            style="margin-top: 15px;" [ngClass]="{'active': Options.positioning===PositioningOptions.UP}"
+            (click)="Options.positioning=PositioningOptions.UP">
           <br />
           <img src="./../assets/icons/dark/Dark Theme Icons__Add to Bottom.png" pTooltip="Add to Bottom"
-            style="margin-top: -15px;">
+            style="margin-top: -15px;" [ngClass]="{'active': Options.positioning===PositioningOptions.DOWN}"
+            (click)="Options.positioning=PositioningOptions.DOWN">
         </div>
         <div style="float:left; padding-bottom:800px; margin-bottom:-800px;margin-left: 5px;">
           <img src="./../assets/icons/dark/Dark Theme Icons__Add to Left.png" pTooltip="Add to Left"
-            style="margin-top: 20px;">
+            style="margin-top: 20px;" [ngClass]="{'active': Options.positioning===PositioningOptions.LEFT}"
+            (click)="Options.positioning=PositioningOptions.LEFT">
 
 
         </div>
         <img src="./../assets/icons/dark/Dark Theme Icons__Add to Right.png" pTooltip="Add to Right"
-          style="margin-left: 5px;margin-top: 20px;">
+          style="margin-left: 5px;margin-top: 20px;"  [ngClass]="{'active': Options.positioning===PositioningOptions.RIGHT}"
+          (click)="Options.positioning=PositioningOptions.RIGHT">
 
       </div> 
       </span>

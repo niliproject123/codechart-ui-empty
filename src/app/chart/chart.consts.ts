@@ -224,10 +224,10 @@ export const allNodeIconImages = [
 ];
 
 export const NodeShapes = [
-  { faClass: "fa fa-square-o", visShape: 'box' },
-  { faClass: "fa fa-circle-thin", visShape: 'circle' },
+  { faClass: "fas fa-square", visShape: 'box' },
+  { faClass: "fas fa-circle", visShape: 'circle' },
   { faClass: 'fa fa-database', visShape: 'database'},
-  { faClass: 'fa fa-diamond', visShape: 'diamond'},
+  { faClass: 'fas fa-gem', visShape: 'diamond'},
   { faClass: 'fa fa-dot-circle-o', visShape: 'dot'},
   { faClass: 'fa fa-star', visShape: 'star'},
   { faClass: 'fa fa-caret-up', visShape: 'triangle'},
