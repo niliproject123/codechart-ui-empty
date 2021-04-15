@@ -5,12 +5,26 @@
   
 
 <ul class="dropdown-menu dropdown_margin_ul">
-  <li *ngFor="let item of options"><a  (click)="ClickItem(item.name)">
+  <li *ngFor="let item of options;let i = index">
+    <span *ngIf="item.toggled">
+    <a  (click)="ClickItem(item.name,i)">
     <button class="round-button">
       <img src={{item.icon}}>
       
     </button>
-      {{item.name}}</a>
+      {{item.name}} 
+    </a>
+    <hr>
+    </span>
+    <span *ngIf="item.toggled == false">
+      <a  (click)="ClickItem(item.name,i)">
+      <button class="round-button">
+        <img src={{item.icon}}>
+        
+      </button>
+        {{item.name}} 
+      </a>
+      </span>
     </li>
  
   <div class="dropdown-divider"></div>

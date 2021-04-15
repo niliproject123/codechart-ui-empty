@@ -80,6 +80,7 @@ import {
 import { ChartWrapper, EventItem } from './chart/chart.wrapper'
 import { Env } from './utils/Env'
 import { SelectItem } from 'primeng/primeng';
+import { Dropdownitem } from './dropdown/dropdown.component'
 
 export const Options = {
   printFileNames: false,
@@ -471,31 +472,31 @@ export class AppComponent implements OnInit, AfterViewInit {
 ];
    
   
-    const searchActions = [
+    const searchActions : Dropdownitem[] = [
       {
         name: "Get File Node",
         icon: "./../assets/icons/dark/Dark Theme Icons__Get File Node.png",
-        actions: ""
+        toggled: false
       }, {
         name: " Replace Node",
         icon: "./../assets/icons/dark/Dark Theme Icons__Replace Node.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Search Folder",
         icon: "./../assets/icons/dark/Dark Theme Icons__Search Folder.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Search File",
         icon: "./../assets/icons/dark/Dark Theme Icons__Search File.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Search Content",
         icon: "./../assets/icons/dark/Dark Theme Icons__Search Content.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Create Match",
         icon: "./../assets/icons/dark/Dark Theme Icons__Create Match.png",
-        actions: ""
+        toggled: false
       }
     ];
 
@@ -503,23 +504,23 @@ export class AppComponent implements OnInit, AfterViewInit {
       {
         name: "Add File Node",
         icon: "./../assets/icons/dark/Dark Theme Icons__Add File Node.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Add Comment",
         icon: "./../assets/icons/dark/Dark Theme Icons__Add Comment.png",
-        actions: ""
+        toggled:false
       }, {
         name: "Add Task",
         icon: "./../assets/icons/dark/Dark Theme Icons__Add Task.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Add Code node",
         icon: "./../assets/icons/dark/Dark Theme Icons__Add Code Node.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Link Nodes",
         icon: "./../assets/icons/dark/Dark Theme Icons__Link Nodes.png",
-        actions: ""
+        toggled: false
       }
     ];
 
@@ -527,27 +528,27 @@ export class AppComponent implements OnInit, AfterViewInit {
       {
         name: "Show Files",
         icon: "./../assets/icons/dark//Dark Theme Icons__Show Files.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Show Labels",
         icon: "./../assets/icons/dark/Dark Theme Icons__Show Labels.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Overlay",
         icon: "./../assets/icons/dark/Dark Theme Icons__Overlay.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Show Range",
         icon: "./../assets/icons/dark/Dark Theme Icons__Show Range.png",
-        actions: ""
+        toggled: false
       }, {
         name: "Light Theme",
         icon: "./../assets/icons/dark/Dark Theme Icons__Light Theme.png",
-        actions: ""
+        toggled: false
       }, {
         name: "horizantal",
         icon: "./../assets/icons/dark/Dark Theme Icons__Horizontal.png",
-        actions: ""
+        toggled: false
       }
     ];
 
@@ -900,14 +901,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   public resetDiagramDetails() {
     console.log('resetDiagramDetails')
   }
-  ClickSearchActionsItem(value: string) {
-    if(value == "Get File Node"){
+  ClickViewActionsItem(param) {
+    this.view_settings[param.index].toggled = !(this.view_settings[param.index].toggled)
+    
+    if(param.value == "Light Theme"){
+       this.toggleTheme();
+    }
+  }
+
+  ClickSearchActionsItem(param) {
+    if(param.value == "Get File Node"){
       this.openFileVisible = true
         
     }
-    if(value == "Light Theme"){
-       this.toggleTheme();
-    }
+  
   }
 
   onSelectLoadTable(event) {
